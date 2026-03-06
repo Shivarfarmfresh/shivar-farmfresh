@@ -160,7 +160,7 @@ img{display:block}
 /* ── CART DRAWER ── */
 .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:190;opacity:0;pointer-events:none;transition:opacity .3s}
 .cart-overlay.open{opacity:1;pointer-events:all}
-.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:380px;max-width:100vw;background:#fff;z-index:200;transform:translateX(110%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-4px 0 40px rgba(0,0,0,.18)}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:390px;max-width:100vw;background:#fff;z-index:200;transform:translateX(110%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-4px 0 40px rgba(0,0,0,.18)}
 .cart-drawer.open{transform:translateX(0)}
 .cdh{padding:20px 24px;background:var(--ink);display:flex;align-items:center;justify-content:space-between}
 .cdh-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff}
@@ -183,9 +183,202 @@ img{display:block}
 .cdf-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .cdf-tl{font-weight:700;font-size:15px}
 .cdf-tv{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--gold)}
-.cdf-wa{width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.5px;margin-bottom:8px;transition:.2s}
-.cdf-wa:hover{opacity:.9}
+.cdf-checkout{width:100%;background:linear-gradient(135deg,var(--leaf),var(--ink));color:#fff;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.5px;margin-bottom:8px;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.cdf-checkout:hover{opacity:.9;transform:translateY(-1px)}
 .cdf-clear{width:100%;background:none;border:1px solid #ddd;color:var(--muted);padding:9px;border-radius:10px;cursor:pointer;font-size:12px}
+
+/* ── CHECKOUT MODAL ── */
+.ck-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center}
+.ck-overlay.open{opacity:1;pointer-events:all}
+.ck-modal{background:#fff;border-radius:24px 24px 0 0;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);box-shadow:0 -8px 48px rgba(0,0,0,.25)}
+.ck-overlay.open .ck-modal{transform:translateY(0)}
+.ck-head{padding:20px 24px 16px;border-bottom:1px solid #f0ebe0;position:sticky;top:0;background:#fff;z-index:2;display:flex;align-items:center;justify-content:space-between}
+.ck-head-left .ck-step-label{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3px}
+.ck-head-left .ck-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink)}
+.ck-close{background:#f5f5f5;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;color:var(--muted)}
+/* progress bar */
+.ck-progress{height:3px;background:#f0f0f0;position:relative}
+.ck-progress-bar{height:100%;background:linear-gradient(to right,var(--leaf2),var(--gold));transition:width .4s ease;border-radius:2px}
+.ck-body{padding:20px 24px 24px}
+
+/* order summary strip */
+.ck-summary{background:var(--cream);border-radius:12px;padding:14px 16px;margin-bottom:20px}
+.ck-summary-title{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.ck-summary-item{display:flex;justify-content:space-between;font-size:13px;color:var(--ink);margin-bottom:5px}
+.ck-summary-item:last-child{margin-bottom:0;padding-top:8px;border-top:1px dashed #ddd;font-weight:700;font-size:15px}
+.ck-summary-item:last-child span:last-child{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:20px}
+
+/* form fields */
+.ck-section-label{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--leaf);text-transform:uppercase;margin:18px 0 10px;display:flex;align-items:center;gap:8px}
+.ck-section-label::after{content:'';flex:1;height:1px;background:#f0ebe0}
+.ck-field{margin-bottom:14px}
+.ck-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.5px;margin-bottom:5px;display:flex;align-items:center;gap:4px}
+.ck-req{color:#e53;font-size:13px}
+.ck-input,.ck-select,.ck-textarea{width:100%;padding:11px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);transition:.2s;background:#fff}
+.ck-input:focus,.ck-select:focus,.ck-textarea:focus{outline:none;border-color:var(--leaf2);box-shadow:0 0 0 3px rgba(45,122,79,.1)}
+.ck-input.error,.ck-select.error,.ck-textarea.error{border-color:#e53;box-shadow:0 0 0 3px rgba(229,51,51,.1)}
+.ck-err-msg{font-size:11px;color:#e53;margin-top:4px;display:none}
+.ck-err-msg.show{display:block}
+.ck-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ck-textarea{resize:none;height:72px}
+
+/* payment method cards */
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.pay-card{border:2px solid #e8e0d0;border-radius:12px;padding:14px 12px;cursor:pointer;transition:.2s;text-align:center;background:#fff;position:relative}
+.pay-card:hover{border-color:var(--leaf2);background:#f8fdf9}
+.pay-card.selected{border-color:var(--leaf2);background:var(--leaf3);box-shadow:0 0 0 1px var(--leaf2)}
+.pay-card input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.pay-icon{font-size:26px;margin-bottom:6px}
+.pay-name{font-size:12px;font-weight:700;color:var(--ink)}
+.pay-desc{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4}
+.pay-card.selected .pay-name{color:var(--leaf)}
+
+/* payment detail panels */
+.pay-detail{display:none;margin-top:16px;animation:fadeSlide .25s ease}
+.pay-detail.show{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* UPI panel */
+.upi-panel{background:var(--ink);border-radius:14px;padding:20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.upi-panel img{width:100px;height:100px;background:#fff;border-radius:10px;padding:6px;border:2px solid var(--gold);flex-shrink:0}
+.upi-panel-info .upi-step{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px;display:flex;gap:8px}
+.upi-panel-info .upi-step strong{color:#fff}
+.upi-id-box{background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.4);border-radius:8px;padding:10px 14px;margin-top:10px}
+.upi-id-box .uid-l{font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase}
+.upi-id-box .uid-v{font-size:16px;font-weight:700;color:var(--gold2);letter-spacing:1px;font-family:'Cormorant Garamond',serif}
+
+/* card panel */
+.card-panel{background:#f8f9ff;border:1px solid #dde4f5;border-radius:14px;padding:18px}
+.card-panel .cp-notice{font-size:12px;color:#5566aa;margin-bottom:14px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.card-icons{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.card-icon{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:700;color:#444}
+.card-icon.visa{color:#1a1f71}
+.card-icon.mc{color:#eb001b}
+.card-icon.rupay{color:#097a44}
+.card-icon.amex{color:#007bc1}
+
+/* netbanking panel */
+.nb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.nb-bank{border:1.5px solid #e8e0d0;border-radius:10px;padding:10px 8px;text-align:center;cursor:pointer;font-size:11px;font-weight:700;color:#444;background:#fff;transition:.2s}
+.nb-bank:hover{border-color:var(--leaf2);color:var(--leaf);background:var(--leaf3)}
+.nb-bank.sel{border-color:var(--leaf2);background:var(--leaf3);color:var(--leaf)}
+.nb-more{font-size:12px;color:var(--leaf2);font-weight:600;cursor:pointer;margin-top:10px;display:block;text-align:center}
+
+/* wa panel */
+.wa-panel{background:linear-gradient(135deg,#e8fff1,#d4f7e4);border:1.5px solid #25d366;border-radius:14px;padding:18px}
+.wa-panel-inner{display:flex;gap:14px;align-items:flex-start}
+.wa-panel-icon{font-size:36px;flex-shrink:0}
+.wa-panel p{font-size:13px;color:#1a3a20;line-height:1.65}
+.wa-panel strong{color:#0a5c20}
+
+/* secure badges */
+.secure-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid #f0ebe0}
+.sec-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-weight:600}
+
+/* nav buttons */
+.ck-nav{display:flex;gap:10px;margin-top:20px}
+.ck-back{flex:0 0 auto;background:none;border:1.5px solid #ddd;color:var(--muted);padding:13px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s}
+.ck-back:hover{border-color:var(--ink);color:var(--ink)}
+.ck-next{flex:1;background:linear-gradient(135deg,var(--leaf),var(--ink));color:#fff;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.3px}
+.ck-next:hover{opacity:.9;transform:translateY(-1px)}
+.ck-next:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* success screen */
+.ck-success{text-align:center;padding:20px 10px 10px}
+.ck-success-icon{font-size:64px;margin-bottom:16px;animation:pop .4s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.ck-success h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.ck-success p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.ck-order-ref{background:var(--cream);border-radius:12px;padding:14px 18px;margin-bottom:20px;text-align:left}
+.ck-order-ref .cor-label{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.ck-order-ref .cor-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--leaf);letter-spacing:2px}
+.ck-wa-btn{width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px}
+.ck-done-btn{width:100%;background:none;border:1.5px solid #ddd;color:var(--muted);padding:11px;border-radius:12px;font-size:14px;cursor:pointer}
+
+/* ── CHECKOUT MODAL ── */
+.ck-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center}
+.ck-overlay.open{opacity:1;pointer-events:all}
+.ck-modal{background:#fff;border-radius:24px 24px 0 0;width:100%;max-width:580px;max-height:93vh;overflow-y:auto;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);box-shadow:0 -8px 48px rgba(0,0,0,.25)}
+.ck-overlay.open .ck-modal{transform:translateY(0)}
+.ck-progress{height:3px;background:#f0f0f0}
+.ck-progress-bar{height:100%;background:linear-gradient(to right,var(--leaf2),var(--gold));transition:width .4s ease}
+.ck-head{padding:18px 22px 14px;border-bottom:1px solid #f0ebe0;position:sticky;top:0;background:#fff;z-index:2;display:flex;align-items:center;justify-content:space-between}
+.ck-step-label{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3px}
+.ck-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink)}
+.ck-close{background:#f5f5f5;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;color:var(--muted)}
+.ck-body{padding:18px 22px 24px}
+/* summary */
+.ck-summary{background:var(--cream);border-radius:12px;padding:14px 16px;margin-bottom:18px}
+.ck-summary-title{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.ck-sum-item{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;color:var(--ink)}
+.ck-sum-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;padding-top:8px;border-top:1px dashed #d8d0c0;margin-top:6px}
+.ck-sum-total span:last-child{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold)}
+/* section label */
+.ck-section-label{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--leaf);text-transform:uppercase;margin:16px 0 10px;display:flex;align-items:center;gap:8px}
+.ck-section-label::after{content:'';flex:1;height:1px;background:#f0ebe0}
+/* fields */
+.ck-field{margin-bottom:13px}
+.ck-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.3px;margin-bottom:4px;display:flex;align-items:center;gap:3px}
+.ck-req{color:#e53;font-size:13px;line-height:1}
+.ck-input,.ck-select{width:100%;padding:11px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);transition:.2s;background:#fff}
+.ck-input:focus,.ck-select:focus{outline:none;border-color:var(--leaf2);box-shadow:0 0 0 3px rgba(45,122,79,.1)}
+.ck-input.error,.ck-select.error{border-color:#e53;box-shadow:0 0 0 3px rgba(229,51,51,.09)}
+.ck-err-msg{font-size:11px;color:#e53;margin-top:4px;display:none}
+.ck-err-msg.show{display:block}
+.ck-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* payment cards */
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.pay-card{border:2px solid #e8e0d0;border-radius:12px;padding:14px 10px;cursor:pointer;transition:.2s;text-align:center;background:#fff;position:relative;user-select:none}
+.pay-card:hover{border-color:var(--leaf2);background:#f8fdf9}
+.pay-card.selected{border-color:var(--leaf2);background:var(--leaf3)}
+.pay-card input{position:absolute;opacity:0;pointer-events:none}
+.pay-icon{font-size:26px;margin-bottom:6px}
+.pay-name{font-size:12px;font-weight:700;color:var(--ink)}
+.pay-card.selected .pay-name{color:var(--leaf)}
+.pay-desc{font-size:10px;color:var(--muted);margin-top:2px}
+/* payment panels */
+.pay-detail{display:none;margin-top:14px;animation:fadeUp .25s ease}
+.pay-detail.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.upi-panel{background:var(--ink);border-radius:14px;padding:18px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.upi-panel img{width:90px;height:90px;background:#fff;border-radius:8px;padding:5px;border:2px solid var(--gold);flex-shrink:0}
+.upi-panel-info{flex:1;min-width:180px}
+.upi-step{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px;display:flex;gap:7px;line-height:1.5}
+.upi-step strong{color:#fff}
+.upi-id-box{background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.4);border-radius:8px;padding:9px 13px;margin-top:10px}
+.uid-l{font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase}
+.uid-v{font-size:15px;font-weight:700;color:var(--gold2);font-family:'Cormorant Garamond',serif;letter-spacing:1px}
+.card-panel{background:#f8f9ff;border:1px solid #dde4f5;border-radius:14px;padding:16px}
+.card-panel .cp-notice{font-size:12px;color:#4455aa;margin-bottom:12px;display:flex;gap:7px;line-height:1.5}
+.card-icons{display:flex;gap:7px;margin-bottom:13px;flex-wrap:wrap}
+.card-icon{background:#fff;border:1px solid #ddd;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700}
+.card-icon.visa{color:#1a1f71}.card-icon.mc{color:#eb001b}.card-icon.rupay{color:#097a44}.card-icon.amex{color:#007bc1}
+.nb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.nb-bank{border:1.5px solid #e8e0d0;border-radius:9px;padding:10px 6px;text-align:center;cursor:pointer;font-size:11px;font-weight:700;color:#555;background:#fff;transition:.2s}
+.nb-bank:hover,.nb-bank.sel{border-color:var(--leaf2);background:var(--leaf3);color:var(--leaf)}
+.wa-panel{background:linear-gradient(135deg,#e8fff1,#d4f7e4);border:1.5px solid #25d366;border-radius:14px;padding:16px}
+.wa-panel-inner{display:flex;gap:12px;align-items:flex-start}
+.wa-panel p{font-size:13px;color:#1a3a20;line-height:1.65}
+/* secure */
+.secure-badges{display:flex;gap:12px;flex-wrap:wrap}
+.sec-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-weight:600}
+/* nav buttons */
+.ck-nav{display:flex;gap:10px;margin-top:18px}
+.ck-back{background:none;border:1.5px solid #ddd;color:var(--muted);padding:12px 18px;border-radius:11px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
+.ck-back:hover{border-color:var(--ink);color:var(--ink)}
+.ck-next{flex:1;background:linear-gradient(135deg,var(--leaf),var(--ink));color:#fff;border:none;padding:13px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.3px}
+.ck-next:hover{opacity:.9;transform:translateY(-1px)}
+/* success */
+.ck-success{text-align:center;padding:10px 6px}
+.ck-success-icon{font-size:60px;margin-bottom:14px;display:block;animation:pop .4s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.ck-success h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.ck-success p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.ck-order-ref{background:var(--cream);border-radius:11px;padding:13px 16px;margin-bottom:10px;text-align:left}
+.cor-label{font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.cor-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--leaf);letter-spacing:2px}
+.ck-wa-btn{width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;margin-top:16px}
+.ck-done-btn{width:100%;background:none;border:1.5px solid #ddd;color:var(--muted);padding:11px;border-radius:11px;font-size:13px;cursor:pointer}
 
 /* ── FOOTER ── */
 footer{background:#060d08;padding:56px 24px 24px}
@@ -400,10 +593,265 @@ footer{background:#060d08;padding:56px 24px 24px}
   <div class="cd-list" id="cdList"></div>
   <div class="cdf">
     <div class="cdf-total"><span class="cdf-tl">Total</span><span class="cdf-tv" id="cdfTotal">₹0</span></div>
-    <button class="cdf-wa" onclick="orderCart()">💬 Order All via WhatsApp</button>
+    <button class="cdf-checkout" onclick="startCheckout()">🛍️ Proceed to Checkout</button>
     <button class="cdf-clear" onclick="clearCart()">🗑 Clear Cart</button>
   </div>
 </div>
+
+<!-- ══════════════════════════════════════════════
+     CHECKOUT MODAL — 3 steps: Address → Payment → Confirm
+     ══════════════════════════════════════════════ -->
+<div class="ck-overlay" id="ckOverlay">
+  <div class="ck-modal" id="ckModal">
+
+    <!-- Progress bar -->
+    <div class="ck-progress"><div class="ck-progress-bar" id="ckBar" style="width:33%"></div></div>
+
+    <!-- Header -->
+    <div class="ck-head">
+      <div class="ck-head-left">
+        <div class="ck-step-label" id="ckStepLabel">Step 1 of 3</div>
+        <div class="ck-title" id="ckTitle">Delivery Address</div>
+      </div>
+      <button class="ck-close" onclick="closeCheckout()">✕</button>
+    </div>
+
+    <div class="ck-body">
+
+      <!-- ══ STEP 1 — ADDRESS ══ -->
+      <div id="ckStep1">
+        <!-- Order summary -->
+        <div class="ck-summary">
+          <div class="ck-summary-title">Order Summary</div>
+          <div id="ckSummaryItems"></div>
+        </div>
+
+        <div class="ck-section-label">📦 Delivery Details</div>
+
+        <div class="ck-row">
+          <div class="ck-field">
+            <div class="ck-label">Full Name <span class="ck-req">*</span></div>
+            <input class="ck-input" id="ck-name" placeholder="e.g. Rajesh Patil" autocomplete="name">
+            <div class="ck-err-msg" id="err-name">Please enter your full name</div>
+          </div>
+          <div class="ck-field">
+            <div class="ck-label">Mobile Number <span class="ck-req">*</span></div>
+            <input class="ck-input" id="ck-phone" placeholder="10-digit mobile" type="tel" maxlength="10" autocomplete="tel">
+            <div class="ck-err-msg" id="err-phone">Enter a valid 10-digit mobile number</div>
+          </div>
+        </div>
+
+        <div class="ck-field">
+          <div class="ck-label">Flat / House No., Building, Street <span class="ck-req">*</span></div>
+          <input class="ck-input" id="ck-line1" placeholder="e.g. 12B, Samarth Nagar, MG Road" autocomplete="address-line1">
+          <div class="ck-err-msg" id="err-line1">Please enter your street address</div>
+        </div>
+
+        <div class="ck-field">
+          <div class="ck-label">Landmark / Area (optional)</div>
+          <input class="ck-input" id="ck-line2" placeholder="e.g. Near Bus Stand, Behind Temple" autocomplete="address-line2">
+        </div>
+
+        <div class="ck-row">
+          <div class="ck-field">
+            <div class="ck-label">City / Town <span class="ck-req">*</span></div>
+            <input class="ck-input" id="ck-city" placeholder="e.g. Pune" autocomplete="address-level2">
+            <div class="ck-err-msg" id="err-city">Please enter your city</div>
+          </div>
+          <div class="ck-field">
+            <div class="ck-label">State <span class="ck-req">*</span></div>
+            <select class="ck-select" id="ck-state" autocomplete="address-level1">
+              <option value="">Select State</option>
+              <option>Maharashtra</option><option>Delhi</option><option>Karnataka</option>
+              <option>Tamil Nadu</option><option>Gujarat</option><option>Rajasthan</option>
+              <option>Uttar Pradesh</option><option>West Bengal</option><option>Telangana</option>
+              <option>Andhra Pradesh</option><option>Kerala</option><option>Madhya Pradesh</option>
+              <option>Bihar</option><option>Punjab</option><option>Haryana</option>
+              <option>Odisha</option><option>Assam</option><option>Jharkhand</option>
+              <option>Chhattisgarh</option><option>Uttarakhand</option><option>Himachal Pradesh</option>
+              <option>Goa</option><option>Tripura</option><option>Manipur</option>
+              <option>Meghalaya</option><option>Nagaland</option><option>Arunachal Pradesh</option>
+              <option>Mizoram</option><option>Sikkim</option><option>J&amp;K</option>
+              <option>Ladakh</option><option>Chandigarh</option><option>Puducherry</option>
+              <option>Andaman &amp; Nicobar</option><option>Lakshadweep</option><option>D&amp;NH</option>
+            </select>
+            <div class="ck-err-msg" id="err-state">Please select your state</div>
+          </div>
+        </div>
+
+        <div class="ck-row">
+          <div class="ck-field">
+            <div class="ck-label">PIN Code <span class="ck-req">*</span></div>
+            <input class="ck-input" id="ck-pin" placeholder="6-digit PIN" type="tel" maxlength="6" autocomplete="postal-code">
+            <div class="ck-err-msg" id="err-pin">Enter a valid 6-digit PIN code</div>
+          </div>
+          <div class="ck-field">
+            <div class="ck-label">Delivery Instructions (optional)</div>
+            <input class="ck-input" id="ck-note" placeholder="e.g. Call before delivery">
+          </div>
+        </div>
+
+        <div class="ck-nav">
+          <button class="ck-next" onclick="goToStep2()">Continue to Payment →</button>
+        </div>
+        <div class="ck-secure">
+          <div class="secure-badges">
+            <div class="sec-badge">🔒 Secure Checkout</div>
+            <div class="sec-badge">🚚 Pan India Delivery</div>
+            <div class="sec-badge">✅ FSSAI Certified</div>
+          </div>
+        </div>
+      </div><!-- /step1 -->
+
+      <!-- ══ STEP 2 — PAYMENT ══ -->
+      <div id="ckStep2" style="display:none">
+
+        <div class="ck-summary" id="ckSummary2"></div>
+
+        <div class="ck-section-label">💳 Choose Payment Method</div>
+
+        <div class="pay-grid">
+          <!-- UPI -->
+          <div class="pay-card selected" id="pc-upi" onclick="selectPay('upi')">
+            <input type="radio" name="pay" value="upi" checked>
+            <div class="pay-icon">📱</div>
+            <div class="pay-name">UPI / QR Code</div>
+            <div class="pay-desc">GPay · PhonePe · Paytm</div>
+          </div>
+          <!-- Credit / Debit Card -->
+          <div class="pay-card" id="pc-card" onclick="selectPay('card')">
+            <input type="radio" name="pay" value="card">
+            <div class="pay-icon">💳</div>
+            <div class="pay-name">Credit / Debit Card</div>
+            <div class="pay-desc">Visa · Mastercard · RuPay</div>
+          </div>
+          <!-- Net Banking -->
+          <div class="pay-card" id="pc-nb" onclick="selectPay('nb')">
+            <input type="radio" name="pay" value="nb">
+            <div class="pay-icon">🏦</div>
+            <div class="pay-name">Net Banking</div>
+            <div class="pay-desc">All major banks</div>
+          </div>
+          <!-- WhatsApp COD -->
+          <div class="pay-card" id="pc-wa" onclick="selectPay('wa')">
+            <input type="radio" name="pay" value="wa">
+            <div class="pay-icon">💬</div>
+            <div class="pay-name">WhatsApp + COD</div>
+            <div class="pay-desc">Order via WhatsApp</div>
+          </div>
+        </div>
+
+        <!-- UPI Panel -->
+        <div class="pay-detail show" id="pd-upi">
+          <div class="upi-panel">
+            <img id="ckQr" src="" alt="UPI QR">
+            <div class="upi-panel-info">
+              <div class="upi-step"><span>1️⃣</span><span>Open <strong>GPay, PhonePe</strong> or Paytm</span></div>
+              <div class="upi-step"><span>2️⃣</span><span>Scan QR or enter UPI ID below</span></div>
+              <div class="upi-step"><span>3️⃣</span><span>Pay exact amount & take screenshot</span></div>
+              <div class="upi-step"><span>4️⃣</span><span>Click <strong>"Place Order"</strong> — we'll confirm on WhatsApp</span></div>
+              <div class="upi-id-box">
+                <div class="uid-l">UPI ID</div>
+                <div class="uid-v" id="ckUpiId">9511627623@ibl</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Panel -->
+        <div class="pay-detail" id="pd-card">
+          <div class="card-panel">
+            <div class="cp-notice">🔒 <span>Card payments are collected securely via <strong>WhatsApp order confirmation</strong>. After placing the order you'll receive a secure payment link from us.</span></div>
+            <div class="card-icons">
+              <span class="card-icon visa">VISA</span>
+              <span class="card-icon mc">MC</span>
+              <span class="card-icon rupay">RuPay</span>
+              <span class="card-icon amex">Amex</span>
+            </div>
+            <div class="ck-field">
+              <div class="ck-label">Name on Card <span class="ck-req">*</span></div>
+              <input class="ck-input" id="ck-cname" placeholder="As printed on your card">
+            </div>
+            <div class="ck-field">
+              <div class="ck-label">Card Number <span class="ck-req">*</span></div>
+              <input class="ck-input" id="ck-cnum" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" oninput="formatCard(this)">
+            </div>
+            <div class="ck-row">
+              <div class="ck-field">
+                <div class="ck-label">Expiry (MM/YY) <span class="ck-req">*</span></div>
+                <input class="ck-input" id="ck-cexp" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+              </div>
+              <div class="ck-field">
+                <div class="ck-label">CVV <span class="ck-req">*</span></div>
+                <input class="ck-input" id="ck-ccvv" placeholder="3 digits" maxlength="4" type="password">
+              </div>
+            </div>
+            <div style="font-size:11px;color:#888;margin-top:8px;display:flex;gap:6px;align-items:center">🔒 Your card details are never stored on our servers</div>
+          </div>
+        </div>
+
+        <!-- Net Banking Panel -->
+        <div class="pay-detail" id="pd-nb">
+          <div style="background:#f8f9ff;border:1px solid #dde4f5;border-radius:14px;padding:16px">
+            <div style="font-size:12px;color:#5566aa;margin-bottom:12px;display:flex;gap:8px">🔒 <span>You will receive a secure net banking link on WhatsApp after placing your order.</span></div>
+            <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Select Your Bank</div>
+            <div class="nb-grid">
+              <div class="nb-bank" onclick="selectBank(this,'SBI')">🏦 SBI</div>
+              <div class="nb-bank" onclick="selectBank(this,'HDFC')">🏦 HDFC</div>
+              <div class="nb-bank" onclick="selectBank(this,'ICICI')">🏦 ICICI</div>
+              <div class="nb-bank" onclick="selectBank(this,'Axis')">🏦 Axis</div>
+              <div class="nb-bank" onclick="selectBank(this,'Kotak')">🏦 Kotak</div>
+              <div class="nb-bank" onclick="selectBank(this,'Other')">🏦 Other</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp COD Panel -->
+        <div class="pay-detail" id="pd-wa">
+          <div class="wa-panel">
+            <div class="wa-panel-inner">
+              <div class="wa-panel-icon">💬</div>
+              <div>
+                <p><strong>How it works:</strong> Click "Place Order" and we'll open a WhatsApp chat with your full order details pre-filled. Confirm on WhatsApp, share your payment screenshot (UPI) or choose Cash on Delivery where available.</p>
+                <p style="margin-top:8px;font-size:12px;color:#2a5a30">💚 Most customers prefer this — fastest order confirmation!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ck-nav">
+          <button class="ck-back" onclick="goToStep1()">← Back</button>
+          <button class="ck-next" id="ckPlaceBtn" onclick="placeOrder()">Place Order ✓</button>
+        </div>
+        <div class="secure-badges" style="margin-top:14px">
+          <div class="sec-badge">🔒 256-bit SSL</div>
+          <div class="sec-badge">🛡️ Secure Payment</div>
+          <div class="sec-badge">↩️ Easy Returns</div>
+        </div>
+      </div><!-- /step2 -->
+
+      <!-- ══ STEP 3 — SUCCESS ══ -->
+      <div id="ckStep3" style="display:none">
+        <div class="ck-success">
+          <div class="ck-success-icon">🎉</div>
+          <h3>Order Placed Successfully!</h3>
+          <p id="ckSuccessMsg">Thank you for your order. We'll confirm your order and dispatch details on WhatsApp shortly.</p>
+          <div class="ck-order-ref">
+            <div class="cor-label">Your Order Reference</div>
+            <div class="cor-val" id="ckOrderRef">SF-000000</div>
+          </div>
+          <div class="ck-order-ref" style="margin-top:8px">
+            <div class="cor-label">Delivering To</div>
+            <div style="font-size:13px;color:var(--ink);margin-top:4px;line-height:1.6" id="ckDeliveryAddr"></div>
+          </div>
+          <button class="ck-wa-btn" id="ckWaConfirmBtn">💬 Open WhatsApp to Confirm</button>
+          <button class="ck-done-btn" onclick="finishOrder()">✓ Done — Continue Shopping</button>
+        </div>
+      </div><!-- /step3 -->
+
+    </div><!-- /ck-body -->
+  </div><!-- /ck-modal -->
+</div><!-- /ck-overlay -->
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
@@ -411,15 +859,20 @@ footer{background:#060d08;padding:56px 24px 24px}
 <script src="assets.js"></script>
 <script src="products.js"></script>
 <script>
-/* ── INIT ── */
+/* ════════════════════════════════
+   INIT
+════════════════════════════════ */
 const brand = getBrand();
 let products = getProducts();
 let cart = JSON.parse(localStorage.getItem('sf_cart')||'[]');
+let selectedPayMethod = 'upi';
+let selectedBank = '';
 
 function init(){
   document.getElementById('navLogo').src = LOGO_B64;
   document.getElementById('footLogo').src = LOGO_B64;
   document.getElementById('qrImg').src = QR_B64;
+  document.getElementById('ckQr').src = QR_B64;
   document.getElementById('navName').textContent = brand.name;
   document.getElementById('navTag').textContent = brand.tagline;
   document.getElementById('footName').textContent = brand.name;
@@ -430,6 +883,7 @@ function init(){
   document.getElementById('footFssai').textContent = 'FSSAI: '+brand.fssai;
   document.getElementById('upiId').textContent = brand.upi;
   document.getElementById('upiPhone').textContent = brand.phone;
+  document.getElementById('ckUpiId').textContent = brand.upi;
   document.getElementById('heroCert').textContent = 'FSSAI '+brand.fssai;
   const waHref = 'https://wa.me/'+brand.whatsapp;
   document.getElementById('navWa').href = waHref;
@@ -439,32 +893,31 @@ function init(){
   renderCart();
 }
 
-/* ── FILTERS ── */
+/* ════════════════════════════════
+   PRODUCT FILTERS + RENDER
+════════════════════════════════ */
 function buildFilters(){
   const cats = ['all', ...new Set(products.map(p=>p.category||'Other'))];
   document.getElementById('filterTabs').innerHTML = cats.map(c=>
     `<button class="ftab${c==='all'?' active':''}" onclick="filterProducts('${c}',this)">${c==='all'?'All Products':c}</button>`
   ).join('');
 }
-
 function filterProducts(cat, el){
   document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
   renderProducts(cat);
 }
-
-/* ── RENDER PRODUCTS ── */
 function renderProducts(cat){
   const grid = document.getElementById('prodGrid');
   const list = products.filter(p => cat==='all' || p.category===cat);
-  if(!list.length){ grid.innerHTML='<div class="no-prods">No products found. Add some in the admin panel!</div>'; return; }
+  if(!list.length){ grid.innerHTML='<div class="no-prods">No products found.</div>'; return; }
   grid.innerHTML = list.map(p=>{
     const off = p.mrp>p.price ? pctOff(p.mrp,p.price) : 0;
-    let badgeClass = 'badge-green';
-    if(p.badge==='Best Value'||p.badge==='Bestseller') badgeClass='badge-gold';
-    else if(p.badge==='Trial Pack') badgeClass='badge-leaf';
-    return `<div class="prod-card" id="pc-${p.id}">
-      ${p.badge?`<div class="pc-badge ${badgeClass}">${p.badge}</div>`:''}
+    let bc = 'badge-green';
+    if(p.badge==='Best Value'||p.badge==='Bestseller') bc='badge-gold';
+    else if(p.badge==='Trial Pack') bc='badge-leaf';
+    return `<div class="prod-card">
+      ${p.badge?`<div class="pc-badge ${bc}">${p.badge}</div>`:''}
       <div class="pc-img">
         ${p.image?`<img src="${p.image}" alt="${p.name}">`:`<div class="pc-img-glow"></div><div class="pc-img-emoji">🌿</div>`}
         ${p.curcumin?`<div class="pc-curc">${p.curcumin} Curcumin</div>`:''}
@@ -480,7 +933,7 @@ function renderProducts(cat){
           ${p.mrp>p.price?`<div class="pc-mrp">₹${p.mrp}</div><div class="pc-pct">${off}% OFF</div>`:''}
         </div>
         <div class="pc-actions">
-          <a class="btn-wa" href="${waURL(p,brand)}" target="_blank">💬 Order via WhatsApp</a>
+          <a class="btn-wa" href="${waURL(p,brand)}" target="_blank">💬 WhatsApp Order</a>
           <button class="btn-cart-add" onclick="addToCart('${p.id}')" title="Add to cart">🛒</button>
         </div>
       </div>
@@ -489,7 +942,9 @@ function renderProducts(cat){
   }).join('');
 }
 
-/* ── CART ── */
+/* ════════════════════════════════
+   CART
+════════════════════════════════ */
 function saveCart(){ localStorage.setItem('sf_cart',JSON.stringify(cart)); }
 
 function addToCart(id){
@@ -499,9 +954,8 @@ function addToCart(id){
   if(ex) ex.qty++;
   else cart.push({id,qty:1});
   saveCart(); renderCart();
-  toast(`✅ ${p.name} (${p.weight}) added!`);
+  toast(`✅ ${p.name} (${p.weight}) added to cart!`);
 }
-
 function updateQty(id,delta){
   const it = cart.find(x=>x.id===id);
   if(!it) return;
@@ -509,8 +963,11 @@ function updateQty(id,delta){
   if(it.qty===0) cart = cart.filter(x=>x.id!==id);
   saveCart(); renderCart();
 }
-
 function clearCart(){ cart=[]; saveCart(); renderCart(); }
+
+function cartTotal(){
+  return cart.reduce((s,it)=>{ const p=products.find(x=>x.id===it.id); return s+(p?p.price*it.qty:0); },0);
+}
 
 function renderCart(){
   const list = document.getElementById('cdList');
@@ -544,19 +1001,178 @@ function renderCart(){
   total_el.textContent = '₹'+total;
 }
 
-function orderCart(){
-  if(!cart.length) return;
-  const lines = cart.map(it=>{ const p=products.find(x=>x.id===it.id); return p?`• ${p.name} ${p.weight} ×${it.qty} = ₹${p.price*it.qty}`:''; }).filter(Boolean);
-  const total = cart.reduce((s,it)=>{ const p=products.find(x=>x.id===it.id); return s+(p?p.price*it.qty:0); },0);
-  const msg = `Hello Shivar Farmfresh! 🌿\n\nMy order:\n\n${lines.join('\n')}\n\n*Total: ₹${total}*\n\nPlease confirm & share delivery details!`;
-  window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(msg)}`,'_blank');
-}
-
 function openCart(){ document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); }
 function closeCart(){ document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); }
 
-/* ── TOAST ── */
-function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('up'); setTimeout(()=>t.classList.remove('up'),2600); }
+/* ════════════════════════════════
+   CHECKOUT MODAL
+════════════════════════════════ */
+function buildSummary(containerId){
+  const lines = cart.map(it=>{ const p=products.find(x=>x.id===it.id); return p?`<div class="ck-summary-item"><span>${p.name} ${p.weight} ×${it.qty}</span><span>₹${p.price*it.qty}</span></div>`:''; }).filter(Boolean);
+  const total = cartTotal();
+  document.getElementById(containerId).innerHTML =
+    `<div class="ck-summary-title">Order Summary</div>${lines.join('')}
+     <div class="ck-summary-item"><span>Total Payable</span><span>₹${total}</span></div>`;
+}
+
+function startCheckout(){
+  if(!cart.length){ toast('🛒 Your cart is empty!'); return; }
+  closeCart();
+  buildSummary('ckSummaryItems');
+  // show step1, hide others
+  document.getElementById('ckStep1').style.display='block';
+  document.getElementById('ckStep2').style.display='none';
+  document.getElementById('ckStep3').style.display='none';
+  setStep(1);
+  document.getElementById('ckOverlay').classList.add('open');
+  document.getElementById('ckModal').scrollTop=0;
+}
+function closeCheckout(){
+  document.getElementById('ckOverlay').classList.remove('open');
+}
+
+function setStep(n){
+  const labels=['','Step 1 of 3','Step 2 of 3','Step 3 of 3'];
+  const titles=['','Delivery Address','Payment Method','Order Confirmed!'];
+  const widths=['','33%','66%','100%'];
+  document.getElementById('ckStepLabel').textContent=labels[n];
+  document.getElementById('ckTitle').textContent=titles[n];
+  document.getElementById('ckBar').style.width=widths[n];
+}
+
+/* ── STEP 1 VALIDATION ── */
+function goToStep2(){
+  let valid = true;
+  function req(id, errId, test){
+    const el = document.getElementById(id);
+    const err = document.getElementById(errId);
+    const ok = test(el.value.trim());
+    el.classList.toggle('error', !ok);
+    err.classList.toggle('show', !ok);
+    if(!ok) valid = false;
+  }
+  req('ck-name','err-name', v=>v.length>=2);
+  req('ck-phone','err-phone', v=>/^\d{10}$/.test(v));
+  req('ck-line1','err-line1', v=>v.length>=5);
+  req('ck-city','err-city', v=>v.length>=2);
+  req('ck-state','err-state', v=>v!=='');
+  req('ck-pin','err-pin', v=>/^\d{6}$/.test(v));
+  if(!valid){
+    // scroll to first error
+    const firstErr = document.querySelector('#ckStep1 .ck-input.error, #ckStep1 .ck-select.error');
+    if(firstErr) firstErr.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  // proceed
+  document.getElementById('ckStep1').style.display='none';
+  document.getElementById('ckStep2').style.display='block';
+  buildSummary('ckSummary2');
+  setStep(2);
+  document.getElementById('ckModal').scrollTop=0;
+}
+
+function goToStep1(){
+  document.getElementById('ckStep2').style.display='none';
+  document.getElementById('ckStep1').style.display='block';
+  setStep(1);
+  document.getElementById('ckModal').scrollTop=0;
+}
+
+/* ── PAYMENT METHOD SELECT ── */
+function selectPay(method){
+  selectedPayMethod = method;
+  ['upi','card','nb','wa'].forEach(m=>{
+    document.getElementById('pc-'+m).classList.toggle('selected', m===method);
+    document.getElementById('pd-'+m).classList.toggle('show', m===method);
+  });
+}
+
+function selectBank(el, bank){
+  document.querySelectorAll('.nb-bank').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  selectedBank = bank;
+}
+
+/* ── CARD INPUT FORMATTERS ── */
+function formatCard(el){
+  let v=el.value.replace(/\D/g,'').slice(0,16);
+  el.value=v.match(/.{1,4}/g)?.join(' ')||v;
+}
+function formatExpiry(el){
+  let v=el.value.replace(/\D/g,'').slice(0,4);
+  if(v.length>2) v=v.slice(0,2)+'/'+v.slice(2);
+  el.value=v;
+}
+
+/* ── PLACE ORDER ── */
+function placeOrder(){
+  // card validation
+  if(selectedPayMethod==='card'){
+    const cname=document.getElementById('ck-cname').value.trim();
+    const cnum=document.getElementById('ck-cnum').value.replace(/\s/g,'');
+    const cexp=document.getElementById('ck-cexp').value.trim();
+    const ccvv=document.getElementById('ck-ccvv').value.trim();
+    if(!cname||cnum.length<15||cexp.length<4||ccvv.length<3){
+      toast('❌ Please fill in all card details correctly');
+      return;
+    }
+  }
+  if(selectedPayMethod==='nb' && !selectedBank){
+    toast('❌ Please select your bank');
+    return;
+  }
+
+  // Build address
+  const name   = document.getElementById('ck-name').value.trim();
+  const phone  = document.getElementById('ck-phone').value.trim();
+  const line1  = document.getElementById('ck-line1').value.trim();
+  const line2  = document.getElementById('ck-line2').value.trim();
+  const city   = document.getElementById('ck-city').value.trim();
+  const state  = document.getElementById('ck-state').value;
+  const pin    = document.getElementById('ck-pin').value.trim();
+  const note   = document.getElementById('ck-note').value.trim();
+  const addr   = [line1, line2, city, state+' '+pin].filter(Boolean).join(', ');
+
+  // Order ref
+  const ref = 'SF-'+Date.now().toString().slice(-6);
+  const total = cartTotal();
+
+  // Order lines for WhatsApp
+  const lines = cart.map(it=>{ const p=products.find(x=>x.id===it.id); return p?`• ${p.name} ${p.weight} ×${it.qty} = ₹${p.price*it.qty}`:''; }).filter(Boolean);
+  const payLabel = {upi:'UPI/QR Code',card:'Credit/Debit Card',nb:`Net Banking (${selectedBank})`,wa:'WhatsApp / COD'}[selectedPayMethod];
+
+  const waMsg = `Hello Shivar Farmfresh! 🌿\n\n*New Order — Ref: ${ref}*\n\n📦 *Items:*\n${lines.join('\n')}\n\n💰 *Total: ₹${total}*\n💳 *Payment: ${payLabel}*\n\n📍 *Deliver to:*\n${name}\n${phone}\n${addr}\n${note?'📝 Note: '+note:''}\n\nPlease confirm this order. Thank you!`;
+
+  // Show success screen
+  document.getElementById('ckStep2').style.display='none';
+  document.getElementById('ckStep3').style.display='block';
+  setStep(3);
+
+  const payMsgs = {
+    upi:'Please complete payment via UPI QR / ID shown earlier and send the screenshot on WhatsApp.',
+    card:'You will receive a secure card payment link on WhatsApp shortly.',
+    nb:`You will receive a net banking payment link for ${selectedBank} on WhatsApp shortly.`,
+    wa:'Your order details will be sent to WhatsApp. Please confirm and arrange payment there.'
+  };
+
+  document.getElementById('ckOrderRef').textContent = ref;
+  document.getElementById('ckSuccessMsg').textContent = payMsgs[selectedPayMethod];
+  document.getElementById('ckDeliveryAddr').innerHTML = `<strong>${name}</strong> · ${phone}<br>${addr}`;
+  document.getElementById('ckWaConfirmBtn').onclick = ()=> window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(waMsg)}`,'_blank');
+
+  document.getElementById('ckModal').scrollTop=0;
+}
+
+function finishOrder(){
+  closeCheckout();
+  clearCart();
+  toast('🎉 Order placed! We\'ll confirm on WhatsApp soon.');
+}
+
+/* ════════════════════════════════
+   TOAST
+════════════════════════════════ */
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('up'); setTimeout(()=>t.classList.remove('up'),3000); }
 
 init();
 </script>
