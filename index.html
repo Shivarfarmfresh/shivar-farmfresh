@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Shivar Farmfresh — Premium Organic Turmeric from Wai-Satara. 5–7% Curcumin. Buy direct from farm.">
+<title>Shivar Farmfresh — Pure Sahyadri Turmeric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+Devanagari:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root{
+  --ink:#0f1c12;--ink2:#2a3d2e;--muted:#6b7c6e;
+  --gold:#c2870c;--gold2:#e8b84b;--gold3:#fff3c4;
+  --leaf:#1e5c32;--leaf2:#2d7a4f;--leaf3:#e6f4ec;
+  --cream:#fdf9ef;--white:#fff;
+  --r:14px;--rL:22px;
+  --sh:0 2px 16px rgba(0,0,0,.07);
+  --shL:0 8px 40px rgba(0,0,0,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:90;background:rgba(15,28,18,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(194,135,12,.3)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;gap:24px}
+.nav-logo-img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex-shrink:0}
+.nav-brand{flex:1}
+.nav-brand-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:#fff;letter-spacing:.5px;line-height:1}
+.nav-brand-sub{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{color:rgba(255,255,255,.6);font-size:12px;font-weight:600;letter-spacing:.5px;padding:6px 10px;border-radius:8px;transition:.2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-wa{background:linear-gradient(135deg,#25d366,#128c7e)!important;color:#fff!important;padding:7px 14px!important;border-radius:20px!important}
+.nav-cart{background:var(--gold);border:none;color:var(--ink);padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;letter-spacing:.5px;transition:.2s}
+.nav-cart:hover{background:var(--gold2)}
+.cart-badge{background:var(--ink);color:var(--gold2);border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(150deg,#071209 0%,#0d2216 40%,#163620 100%);min-height:92vh;display:flex;align-items:center;padding:60px 24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 75% 50%,rgba(194,135,12,.13),transparent);pointer-events:none}
+/* organic blob shape top-right */
+.hero::after{content:'';position:absolute;width:600px;height:600px;right:-180px;top:-180px;border-radius:50%;background:radial-gradient(circle,rgba(30,92,50,.5),transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.35);border-radius:20px;padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold2);text-transform:uppercase;margin-bottom:22px}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,80px);font-weight:700;color:#fff;line-height:1.0;margin-bottom:14px}
+.hero-h1 em{color:var(--gold2);font-style:italic}
+.hero-devi{font-family:'Noto Sans Devanagari',sans-serif;font-size:18px;color:rgba(255,255,255,.38);margin-bottom:22px;letter-spacing:1px}
+.hero-p{font-size:16px;line-height:1.8;color:rgba(255,255,255,.6);max-width:500px;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.btn-hero-primary{background:linear-gradient(135deg,var(--gold),#9a6500);color:#fff;padding:14px 30px;border-radius:50px;font-size:14px;font-weight:700;letter-spacing:.5px;cursor:pointer;border:none;box-shadow:0 6px 24px rgba(194,135,12,.35);transition:.3s}
+.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(194,135,12,.45)}
+.btn-hero-outline{background:transparent;color:#fff;padding:14px 28px;border-radius:50px;font-size:14px;font-weight:600;border:1.5px solid rgba(255,255,255,.3);letter-spacing:.5px;cursor:pointer;transition:.3s}
+.btn-hero-outline:hover{border-color:var(--gold2);color:var(--gold2)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:32px;border-top:1px solid rgba(255,255,255,.08)}
+.hstat-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--gold2);line-height:1}
+.hstat-label{font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-top:4px}
+/* hero card */
+.hero-card{background:rgba(255,255,255,.04);border:1px solid rgba(194,135,12,.25);border-radius:24px;padding:36px 28px;text-align:center;backdrop-filter:blur(10px);position:relative;animation:float 5s ease-in-out infinite alternate}
+@keyframes float{0%{transform:translateY(0)}100%{transform:translateY(-14px)}}
+.hcard-icon{font-size:72px;margin-bottom:14px;filter:drop-shadow(0 6px 18px rgba(194,135,12,.35))}
+.hcard-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;font-weight:700;margin-bottom:6px}
+.hcard-origin{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:18px}
+.hcard-tag{display:inline-block;background:rgba(194,135,12,.18);border:1px solid rgba(194,135,12,.5);color:var(--gold2);font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px}
+.hcard-cert{margin-top:18px;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:1px}
+
+/* ── TRUST BAR ── */
+.trust{background:var(--gold);padding:0}
+.trust-inner{max-width:1200px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
+.trust-item{display:flex;align-items:center;gap:8px;padding:12px 24px;font-size:12px;font-weight:700;color:var(--ink);white-space:nowrap;border-right:1px solid rgba(0,0,0,.1)}
+.trust-item:last-child{border-right:none}
+.trust-item span{font-size:15px}
+
+/* ── SECTION SHELL ── */
+.section{padding:80px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.sect-head{text-align:center;margin-bottom:52px}
+.sect-eye{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.sect-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,50px);font-weight:700;color:var(--ink);line-height:1.15}
+.sect-sub{font-size:15px;color:var(--muted);margin-top:10px;max-width:540px;margin-left:auto;margin-right:auto}
+
+/* ── FILTER TABS ── */
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+.ftab{padding:8px 20px;border-radius:20px;border:1.5px solid #ddd;background:#fff;color:var(--muted);font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.5px;transition:.2s}
+.ftab:hover{border-color:var(--gold);color:var(--ink)}
+.ftab.active{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* ── PRODUCT GRID ── */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.prod-card{background:#fff;border-radius:var(--rL);overflow:hidden;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.05);transition:.3s;display:flex;flex-direction:column;position:relative}
+.prod-card:hover{transform:translateY(-6px);box-shadow:var(--shL)}
+.pc-badge{position:absolute;top:14px;left:14px;z-index:2;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.badge-gold{background:var(--gold);color:#fff}
+.badge-green{background:var(--leaf);color:#fff}
+.badge-leaf{background:var(--leaf3);color:var(--leaf)}
+.pc-img{height:190px;background:linear-gradient(145deg,var(--ink) 0%,var(--ink2) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pc-img-emoji{font-size:68px;filter:drop-shadow(0 4px 14px rgba(194,135,12,.4));position:relative;z-index:1}
+.pc-img-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(194,135,12,.18),transparent 65%)}
+.pc-img img{width:100%;height:100%;object-fit:cover}
+.pc-curc{position:absolute;bottom:10px;right:10px;background:var(--gold);color:#fff;font-size:9px;font-weight:800;padding:3px 10px;border-radius:10px;letter-spacing:.5px}
+.pc-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.pc-cat{font-size:9px;letter-spacing:3px;color:var(--leaf2);text-transform:uppercase;font-weight:700;margin-bottom:5px}
+.pc-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.pc-wt{font-size:12px;color:var(--muted);margin-bottom:10px}
+.pc-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:12px;flex:1}
+.pc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.pc-pill{background:var(--leaf3);color:var(--leaf);font-size:10px;font-weight:600;padding:3px 9px;border-radius:8px}
+.pc-price-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.pc-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--ink)}
+.pc-mrp{font-size:13px;color:#bbb;text-decoration:line-through}
+.pc-pct{background:#fff0d4;color:#9a6500;font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px}
+.pc-actions{display:grid;grid-template-columns:1fr auto;gap:8px}
+.btn-wa{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:11px 14px;border-radius:11px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:.2s;text-decoration:none;letter-spacing:.3px}
+.btn-wa:hover{opacity:.9;transform:translateY(-1px)}
+.btn-cart-add{background:var(--cream);border:2px solid var(--gold);color:var(--gold);padding:11px 13px;border-radius:11px;font-size:14px;cursor:pointer;transition:.2s;font-weight:700}
+.btn-cart-add:hover{background:var(--gold);color:#fff}
+.pc-oos{position:absolute;inset:0;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;letter-spacing:3px;color:#b00;text-transform:uppercase;backdrop-filter:blur(2px)}
+/* no products msg */
+.no-prods{text-align:center;padding:60px;color:var(--muted);font-size:15px;grid-column:1/-1}
+
+/* ── WHY US ── */
+.why{background:var(--ink);padding:80px 24px}
+.why .sect-h2{color:#fff}
+.why .sect-sub{color:rgba(255,255,255,.45)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.why-card{background:rgba(255,255,255,.04);border:1px solid rgba(194,135,12,.18);border-radius:var(--rL);padding:28px;transition:.3s}
+.why-card:hover{background:rgba(194,135,12,.07);transform:translateY(-4px)}
+.wc-icon{font-size:36px;margin-bottom:14px}
+.wc-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.wc-text{font-size:12px;color:rgba(255,255,255,.45);line-height:1.75}
+
+/* ── HOW TO ORDER ── */
+.steps-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0;position:relative}
+.steps-row::before{content:'';position:absolute;top:26px;left:calc(50% - 300px);right:calc(50% - 300px);height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);z-index:0}
+.step{text-align:center;padding:20px;position:relative;z-index:1}
+.step-circle{width:52px;height:52px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;box-shadow:0 4px 16px rgba(194,135,12,.35)}
+.step-title{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:8px}
+.step-text{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* ── UPI SECTION ── */
+.upi-section{background:var(--ink);padding:72px 24px}
+.upi-inner{max-width:860px;margin:0 auto;display:flex;gap:56px;align-items:center;flex-wrap:wrap;justify-content:center}
+.upi-section .sect-h2{color:#fff}
+.upi-section .sect-sub{color:rgba(255,255,255,.4)}
+.qr-box{flex-shrink:0;text-align:center}
+.qr-box img{width:150px;height:150px;background:#fff;border-radius:16px;padding:10px;border:2.5px solid var(--gold);box-shadow:0 0 32px rgba(194,135,12,.3)}
+.qr-label{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.3);margin-top:10px;text-transform:uppercase}
+.upi-steps{flex:1;min-width:260px}
+.upistep{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.usin{width:30px;height:30px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--ink);flex-shrink:0;margin-top:1px}
+.ustxt{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65}
+.ustxt strong{color:#fff}
+.upi-id-pill{background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.4);border-radius:12px;padding:14px 18px;margin-top:20px}
+.uid-label{font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:5px}
+.uid-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--gold2);letter-spacing:1px}
+
+/* ── CART DRAWER ── */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:190;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:380px;max-width:100vw;background:#fff;z-index:200;transform:translateX(110%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-4px 0 40px rgba(0,0,0,.18)}
+.cart-drawer.open{transform:translateX(0)}
+.cdh{padding:20px 24px;background:var(--ink);display:flex;align-items:center;justify-content:space-between}
+.cdh-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff}
+.cdh-close{background:rgba(255,255,255,.1);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.cd-list{flex:1;overflow-y:auto;padding:16px}
+.cd-empty{text-align:center;padding:48px 20px;color:var(--muted)}
+.cd-empty-icon{font-size:48px;margin-bottom:14px}
+.ci{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #f0ebe0}
+.ci-icon{width:56px;height:56px;background:var(--cream);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.ci-body{flex:1}
+.ci-name{font-weight:700;font-size:13px;color:var(--ink)}
+.ci-wt{font-size:11px;color:var(--muted);margin-top:1px}
+.ci-price{font-weight:700;font-size:15px;color:var(--gold);margin-top:4px}
+.ci-qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.ci-qty button{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--leaf2);background:none;color:var(--leaf2);font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.ci-qty-n{font-weight:700;font-size:14px;min-width:22px;text-align:center}
+.ci-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:17px;padding:4px;margin-left:auto}
+.ci-del:hover{color:#e55}
+.cdf{padding:18px 24px;border-top:2px solid #f5ede0}
+.cdf-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cdf-tl{font-weight:700;font-size:15px}
+.cdf-tv{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--gold)}
+.cdf-wa{width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.5px;margin-bottom:8px;transition:.2s}
+.cdf-wa:hover{opacity:.9}
+.cdf-clear{width:100%;background:none;border:1px solid #ddd;color:var(--muted);padding:9px;border-radius:10px;cursor:pointer;font-size:12px}
+
+/* ── FOOTER ── */
+footer{background:#060d08;padding:56px 24px 24px}
+.foot-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.fl-logo{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin-bottom:14px}
+.fl-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:3px}
+.fl-tag{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase;margin-bottom:14px}
+.fl-about{font-size:12px;color:rgba(255,255,255,.4);line-height:1.8}
+.foot-head{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:16px}
+.foot-links a{display:block;color:rgba(255,255,255,.45);font-size:13px;margin-bottom:9px;transition:.2s}
+.foot-links a:hover{color:var(--gold2)}
+.foot-contact-row{display:flex;gap:10px;margin-bottom:10px;font-size:12px;color:rgba(255,255,255,.45);line-height:1.5}
+.foot-bar{max-width:1200px;margin:0 auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.5px}
+.fssai-pill{background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.3);padding:5px 12px;border-radius:8px;color:var(--gold)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:11px 22px;border-radius:40px;font-size:13px;font-weight:600;z-index:400;transition:.3s;border:1px solid rgba(194,135,12,.5);box-shadow:0 6px 24px rgba(0,0,0,.3);pointer-events:none;white-space:nowrap}
+.toast.up{transform:translateX(-50%) translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-card{max-width:360px;margin:0 auto}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr;gap:32px}
+  .nav-links a:not(.nav-wa){display:none}
+  .cart-drawer{width:100vw}
+}
+@media(max-width:600px){
+  .trust-inner{justify-content:flex-start}
+  .steps-row::before{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <img class="nav-logo-img" id="navLogo" src="" alt="logo">
+    <div class="nav-brand">
+      <div class="nav-brand-name" id="navName">Shivar Farmfresh</div>
+      <div class="nav-brand-sub" id="navTag">Pure Sahyadri Gold</div>
+    </div>
+    <div class="nav-links">
+      <a href="#shop">Shop</a>
+      <a href="#why">Why Us</a>
+      <a href="#order">Order</a>
+      <a id="navWa" href="#" target="_blank" class="nav-wa">💬 WhatsApp</a>
+      <button class="nav-cart" onclick="openCart()">🛒 Cart <span class="cart-badge" id="cartBadge">0</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">✦ Premium Organic Spice ✦</div>
+      <h1 class="hero-h1">Pure <em>Sahyadri</em><br>Turmeric Gold</h1>
+      <p class="hero-devi" id="heroHi">सह्याद्रीतील शुद्ध हळद पावडर</p>
+      <p class="hero-p">Farm-to-door organic turmeric from Wai-Satara, Sahyadri. 5–7% curcumin content — 2.5× more potent than anything on a supermarket shelf. FSSAI certified. Zero chemicals.</p>
+      <div class="hero-btns">
+        <a href="#shop" class="btn-hero-primary">Shop Now →</a>
+        <a id="heroWa" href="#" class="btn-hero-outline" target="_blank">💬 WhatsApp Order</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hstat-val">5–7%</div><div class="hstat-label">Curcumin</div></div>
+        <div><div class="hstat-val">100%</div><div class="hstat-label">Organic</div></div>
+        <div><div class="hstat-val">0</div><div class="hstat-label">Additives</div></div>
+        <div><div class="hstat-val">FSSAI</div><div class="hstat-label">Certified</div></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hcard-icon">🌿</div>
+      <div class="hcard-name">Premium Turmeric</div>
+      <div class="hcard-origin">Wai · Satara · Sahyadri</div>
+      <div class="hcard-tag">★ 5–7% Curcumin</div>
+      <div class="hcard-cert" id="heroCert">FSSAI 21524039000444</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><span>✅</span> FSSAI Certified</div>
+    <div class="trust-item"><span>🌿</span> 100% Organic</div>
+    <div class="trust-item"><span>🏔️</span> Sahyadri Origin</div>
+    <div class="trust-item"><span>🚚</span> Pan India Delivery</div>
+    <div class="trust-item"><span>🔒</span> Resealable Pack</div>
+    <div class="trust-item"><span>⚡</span> Same Day Dispatch</div>
+    <div class="trust-item"><span>🫙</span> Zero Fillers</div>
+  </div>
+</div>
+
+<!-- SHOP -->
+<section class="section" id="shop">
+  <div class="section-inner">
+    <div class="sect-head">
+      <div class="sect-eye">✦ Our Products ✦</div>
+      <h2 class="sect-h2">Choose Your Pack</h2>
+      <p class="sect-sub">All packs contain the same premium 5–7% curcumin turmeric. Bigger pack = better value.</p>
+    </div>
+    <div class="filter-tabs" id="filterTabs"></div>
+    <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="sect-head">
+      <div class="sect-eye" style="color:var(--gold)">✦ Why Shivar Farmfresh ✦</div>
+      <h2 class="sect-h2">Not Just Turmeric — It's Science</h2>
+      <p class="sect-sub">Here is what separates our turmeric from every brand on a shelf</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="wc-icon">🔬</div><div class="wc-title">5–7% Curcumin</div><div class="wc-text">Standard market turmeric contains only 2–3% curcumin. Every spoon of ours delivers 2.5× more of the active healing compound.</div></div>
+      <div class="why-card"><div class="wc-icon">🏔️</div><div class="wc-title">Single Origin</div><div class="wc-text">Grown exclusively in mineral-rich Wai-Satara, Sahyadri. Traceable to the exact farm. No blending, no mixing with inferior batches.</div></div>
+      <div class="why-card"><div class="wc-icon">🌱</div><div class="wc-title">Zero Chemicals</div><div class="wc-text">No pesticides. No fillers. No preservatives. No artificial colour. The ingredient list is exactly one item: turmeric.</div></div>
+      <div class="why-card"><div class="wc-icon">✅</div><div class="wc-title">FSSAI Certified</div><div class="wc-text">Fully licensed, fully compliant. Processed at Yashoda Agro Food Processing Unit, Wai. Licence No. 21524039000444.</div></div>
+      <div class="why-card"><div class="wc-icon">🚚</div><div class="wc-title">Direct from Farm</div><div class="wc-text">No retail markup, no middlemen. Order today → packed fresh → shipped directly to your door across India.</div></div>
+      <div class="why-card"><div class="wc-icon">👨‍👩‍👧‍👦</div><div class="wc-title">Safe for All Ages</div><div class="wc-text">Children (3+), adults, pregnant women (in cooking), and seniors. Golden milk, curries, warm water — fits every routine.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section class="section" id="order">
+  <div class="section-inner">
+    <div class="sect-head">
+      <div class="sect-eye">✦ How It Works ✦</div>
+      <h2 class="sect-h2">Order in 3 Simple Steps</h2>
+      <p class="sect-sub">No app needed. Just WhatsApp or UPI scan — done.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step"><div class="step-circle">1</div><div class="step-title">Pick Your Pack</div><div class="step-text">Choose the size that works — 100g trial pack to 1kg family pack. Click "Order via WhatsApp."</div></div>
+      <div class="step"><div class="step-circle">2</div><div class="step-title">Pay via UPI</div><div class="step-text">Scan the QR code with any UPI app — GPay, PhonePe, Paytm. Pay the exact amount.</div></div>
+      <div class="step"><div class="step-circle">3</div><div class="step-title">Share Address</div><div class="step-text">Send payment screenshot + delivery address on WhatsApp. We dispatch same day.</div></div>
+      <div class="step"><div class="step-circle">4</div><div class="step-title">Receive & Enjoy</div><div class="step-text">Pure Sahyadri turmeric at your door. Start your golden milk ritual today!</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- UPI SECTION -->
+<section class="upi-section">
+  <div class="section-inner">
+    <div class="sect-head">
+      <div class="sect-eye" style="color:var(--gold)">✦ Pay Instantly ✦</div>
+      <h2 class="sect-h2">Scan & Pay with Any UPI App</h2>
+      <p class="sect-sub">GPay · PhonePe · Paytm · Any UPI app works</p>
+    </div>
+    <div class="upi-inner">
+      <div class="qr-box">
+        <img id="qrImg" src="" alt="UPI QR">
+        <div class="qr-label">Scan to Pay</div>
+      </div>
+      <div class="upi-steps">
+        <div class="upistep"><div class="usin">1</div><div class="ustxt"><strong>Open</strong> any UPI app — GPay, PhonePe or Paytm</div></div>
+        <div class="upistep"><div class="usin">2</div><div class="ustxt"><strong>Scan</strong> the QR or enter UPI ID manually below</div></div>
+        <div class="upistep"><div class="usin">3</div><div class="ustxt"><strong>Pay</strong> exact product amount &amp; take a screenshot</div></div>
+        <div class="upistep"><div class="usin">4</div><div class="ustxt"><strong>WhatsApp</strong> the screenshot + address to <strong id="upiPhone">+91 99879 82611</strong></div></div>
+        <div class="upi-id-pill">
+          <div class="uid-label">UPI ID / Payment Address</div>
+          <div class="uid-val" id="upiId">9511627623@ibl</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <img class="fl-logo" id="footLogo" src="" alt="logo">
+      <div class="fl-name" id="footName">Shivar Farmfresh</div>
+      <div class="fl-tag" id="footTag">Pure Sahyadri Gold</div>
+      <p class="fl-about">Farm-to-door premium organic turmeric from Wai-Satara, Sahyadri, Maharashtra. FSSAI certified. Direct from our family farm to yours since generations.</p>
+    </div>
+    <div>
+      <div class="foot-head">Quick Links</div>
+      <div class="foot-links">
+        <a href="#shop">Shop Products</a>
+        <a href="#why">Why Shivar Farmfresh</a>
+        <a href="#order">How to Order</a>
+        <a href="#order">Track Order (WhatsApp)</a>
+        <a href="admin.html" style="opacity:.4">Admin Panel 🔐</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-head">Contact Us</div>
+      <div class="foot-contact-row"><span>📱</span><span id="footPhone">+91 99879 82611</span></div>
+      <div class="foot-contact-row"><span>💳</span><span id="footUpi">UPI: 9511627623@ibl</span></div>
+      <div class="foot-contact-row"><span>📍</span><span id="footAddr">Wai-Satara, Sahyadri, Maharashtra</span></div>
+    </div>
+  </div>
+  <div class="foot-bar">
+    <span>© 2024 Shivar Farmfresh Pvt. Ltd. All rights reserved.</span>
+    <span class="fssai-pill" id="footFssai">FSSAI: 21524039000444</span>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cdh">
+    <div class="cdh-title">Your Cart 🛒</div>
+    <button class="cdh-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cd-list" id="cdList"></div>
+  <div class="cdf">
+    <div class="cdf-total"><span class="cdf-tl">Total</span><span class="cdf-tv" id="cdfTotal">₹0</span></div>
+    <button class="cdf-wa" onclick="orderCart()">💬 Order All via WhatsApp</button>
+    <button class="cdf-clear" onclick="clearCart()">🗑 Clear Cart</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="assets.js"></script>
+<script src="products.js"></script>
+<script>
+/* ── INIT ── */
+const brand = getBrand();
+let products = getProducts();
+let cart = JSON.parse(localStorage.getItem('sf_cart')||'[]');
+
+function init(){
+  document.getElementById('navLogo').src = LOGO_B64;
+  document.getElementById('footLogo').src = LOGO_B64;
+  document.getElementById('qrImg').src = QR_B64;
+  document.getElementById('navName').textContent = brand.name;
+  document.getElementById('navTag').textContent = brand.tagline;
+  document.getElementById('footName').textContent = brand.name;
+  document.getElementById('footTag').textContent = brand.tagline.toUpperCase();
+  document.getElementById('footPhone').textContent = brand.phone;
+  document.getElementById('footUpi').textContent = 'UPI: '+brand.upi;
+  document.getElementById('footAddr').textContent = brand.address;
+  document.getElementById('footFssai').textContent = 'FSSAI: '+brand.fssai;
+  document.getElementById('upiId').textContent = brand.upi;
+  document.getElementById('upiPhone').textContent = brand.phone;
+  document.getElementById('heroCert').textContent = 'FSSAI '+brand.fssai;
+  const waHref = 'https://wa.me/'+brand.whatsapp;
+  document.getElementById('navWa').href = waHref;
+  document.getElementById('heroWa').href = waHref;
+  buildFilters();
+  renderProducts('all');
+  renderCart();
+}
+
+/* ── FILTERS ── */
+function buildFilters(){
+  const cats = ['all', ...new Set(products.map(p=>p.category||'Other'))];
+  document.getElementById('filterTabs').innerHTML = cats.map(c=>
+    `<button class="ftab${c==='all'?' active':''}" onclick="filterProducts('${c}',this)">${c==='all'?'All Products':c}</button>`
+  ).join('');
+}
+
+function filterProducts(cat, el){
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderProducts(cat);
+}
+
+/* ── RENDER PRODUCTS ── */
+function renderProducts(cat){
+  const grid = document.getElementById('prodGrid');
+  const list = products.filter(p => cat==='all' || p.category===cat);
+  if(!list.length){ grid.innerHTML='<div class="no-prods">No products found. Add some in the admin panel!</div>'; return; }
+  grid.innerHTML = list.map(p=>{
+    const off = p.mrp>p.price ? pctOff(p.mrp,p.price) : 0;
+    let badgeClass = 'badge-green';
+    if(p.badge==='Best Value'||p.badge==='Bestseller') badgeClass='badge-gold';
+    else if(p.badge==='Trial Pack') badgeClass='badge-leaf';
+    return `<div class="prod-card" id="pc-${p.id}">
+      ${p.badge?`<div class="pc-badge ${badgeClass}">${p.badge}</div>`:''}
+      <div class="pc-img">
+        ${p.image?`<img src="${p.image}" alt="${p.name}">`:`<div class="pc-img-glow"></div><div class="pc-img-emoji">🌿</div>`}
+        ${p.curcumin?`<div class="pc-curc">${p.curcumin} Curcumin</div>`:''}
+      </div>
+      <div class="pc-body">
+        <div class="pc-cat">${p.category||'Organic Spice'}</div>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-wt">${p.weight} · Resealable Zip-Lock</div>
+        <div class="pc-desc">${p.description||''}</div>
+        ${p.benefits&&p.benefits.length?`<div class="pc-pills">${p.benefits.slice(0,4).map(b=>`<span class="pc-pill">${b}</span>`).join('')}</div>`:''}
+        <div class="pc-price-row">
+          <div class="pc-price">₹${p.price}</div>
+          ${p.mrp>p.price?`<div class="pc-mrp">₹${p.mrp}</div><div class="pc-pct">${off}% OFF</div>`:''}
+        </div>
+        <div class="pc-actions">
+          <a class="btn-wa" href="${waURL(p,brand)}" target="_blank">💬 Order via WhatsApp</a>
+          <button class="btn-cart-add" onclick="addToCart('${p.id}')" title="Add to cart">🛒</button>
+        </div>
+      </div>
+      ${!p.stock?`<div class="pc-oos">Out of Stock</div>`:''}
+    </div>`;
+  }).join('');
+}
+
+/* ── CART ── */
+function saveCart(){ localStorage.setItem('sf_cart',JSON.stringify(cart)); }
+
+function addToCart(id){
+  const p = products.find(x=>x.id===id);
+  if(!p||!p.stock) return;
+  const ex = cart.find(x=>x.id===id);
+  if(ex) ex.qty++;
+  else cart.push({id,qty:1});
+  saveCart(); renderCart();
+  toast(`✅ ${p.name} (${p.weight}) added!`);
+}
+
+function updateQty(id,delta){
+  const it = cart.find(x=>x.id===id);
+  if(!it) return;
+  it.qty = Math.max(0,it.qty+delta);
+  if(it.qty===0) cart = cart.filter(x=>x.id!==id);
+  saveCart(); renderCart();
+}
+
+function clearCart(){ cart=[]; saveCart(); renderCart(); }
+
+function renderCart(){
+  const list = document.getElementById('cdList');
+  const badge = document.getElementById('cartBadge');
+  const total_el = document.getElementById('cdfTotal');
+  const qty = cart.reduce((s,x)=>s+x.qty,0);
+  badge.textContent = qty;
+  if(!cart.length){
+    list.innerHTML=`<div class="cd-empty"><div class="cd-empty-icon">🛒</div><p>Your cart is empty</p><p style="margin-top:8px;font-size:12px;color:#aaa">Add products above!</p></div>`;
+    total_el.textContent='₹0'; return;
+  }
+  let total=0;
+  list.innerHTML = cart.map(item=>{
+    const p = products.find(x=>x.id===item.id); if(!p) return '';
+    const sub = p.price*item.qty; total+=sub;
+    return `<div class="ci">
+      <div class="ci-icon">🌿</div>
+      <div class="ci-body">
+        <div class="ci-name">${p.name}</div>
+        <div class="ci-wt">${p.weight}</div>
+        <div class="ci-price">₹${p.price} × ${item.qty} = ₹${sub}</div>
+        <div class="ci-qty">
+          <button onclick="updateQty('${p.id}',-1)">−</button>
+          <span class="ci-qty-n">${item.qty}</span>
+          <button onclick="updateQty('${p.id}',+1)">+</button>
+          <button class="ci-del" onclick="updateQty('${p.id}',-${item.qty})">✕</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  total_el.textContent = '₹'+total;
+}
+
+function orderCart(){
+  if(!cart.length) return;
+  const lines = cart.map(it=>{ const p=products.find(x=>x.id===it.id); return p?`• ${p.name} ${p.weight} ×${it.qty} = ₹${p.price*it.qty}`:''; }).filter(Boolean);
+  const total = cart.reduce((s,it)=>{ const p=products.find(x=>x.id===it.id); return s+(p?p.price*it.qty:0); },0);
+  const msg = `Hello Shivar Farmfresh! 🌿\n\nMy order:\n\n${lines.join('\n')}\n\n*Total: ₹${total}*\n\nPlease confirm & share delivery details!`;
+  window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+function openCart(){ document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); }
+function closeCart(){ document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); }
+
+/* ── TOAST ── */
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('up'); setTimeout(()=>t.classList.remove('up'),2600); }
+
+init();
+</script>
+</body>
+</html>
