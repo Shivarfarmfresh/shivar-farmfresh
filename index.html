@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Shivar Farmfresh — Premium Organic Turmeric from Wai-Satara. 5–7% Curcumin. Buy direct from farm.">
+<meta name="description" content="Shivar Farmfresh — Premium Organic Turmeric from Wai-Satara. 3–5% Curcumin — up to 3× higher than market brands. Buy direct from farm.">
 <title>Shivar Farmfresh — Pure Sahyadri Turmeric</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+Devanagari:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -440,13 +440,13 @@ footer{background:#060d08;padding:56px 24px 24px}
       <div class="hero-eyebrow">✦ Premium Organic Spice ✦</div>
       <h1 class="hero-h1">Pure <em>Sahyadri</em><br>Turmeric Gold</h1>
       <p class="hero-devi" id="heroHi">सह्याद्रीतील शुद्ध हळद पावडर</p>
-      <p class="hero-p">Farm-to-door organic turmeric from Wai-Satara, Sahyadri. 5–7% curcumin content — 2.5× more potent than anything on a supermarket shelf. FSSAI certified. Zero chemicals.</p>
+      <p class="hero-p">Farm-to-door organic turmeric from Wai-Satara, Sahyadri. 3–5% curcumin content — up to 3× higher than standard market turmeric (1–2%). FSSAI certified. Zero chemicals, zero fillers.</p>
       <div class="hero-btns">
         <a href="#shop" class="btn-hero-primary">Shop Now →</a>
         <a id="heroWa" href="#" class="btn-hero-outline" target="_blank">💬 WhatsApp Order</a>
       </div>
       <div class="hero-stats">
-        <div><div class="hstat-val">5–7%</div><div class="hstat-label">Curcumin</div></div>
+        <div><div class="hstat-val">3–5%</div><div class="hstat-label">Curcumin</div></div>
         <div><div class="hstat-val">100%</div><div class="hstat-label">Organic</div></div>
         <div><div class="hstat-val">0</div><div class="hstat-label">Additives</div></div>
         <div><div class="hstat-val">FSSAI</div><div class="hstat-label">Certified</div></div>
@@ -456,7 +456,7 @@ footer{background:#060d08;padding:56px 24px 24px}
       <div class="hcard-icon">🌿</div>
       <div class="hcard-name">Premium Turmeric</div>
       <div class="hcard-origin">Wai · Satara · Sahyadri</div>
-      <div class="hcard-tag">★ 5–7% Curcumin</div>
+      <div class="hcard-tag">★ 3–5% Curcumin</div>
       <div class="hcard-cert" id="heroCert">FSSAI 21524039000444</div>
     </div>
   </div>
@@ -481,7 +481,7 @@ footer{background:#060d08;padding:56px 24px 24px}
     <div class="sect-head">
       <div class="sect-eye">✦ Our Products ✦</div>
       <h2 class="sect-h2">Choose Your Pack</h2>
-      <p class="sect-sub">All packs contain the same premium 5–7% curcumin turmeric. Bigger pack = better value.</p>
+      <p class="sect-sub">All packs contain the same premium 3–5% curcumin turmeric — up to 3× higher than regular shelf brands. Bigger pack = better value per gram.</p>
     </div>
     <div class="filter-tabs" id="filterTabs"></div>
     <div class="prod-grid" id="prodGrid"></div>
@@ -497,7 +497,7 @@ footer{background:#060d08;padding:56px 24px 24px}
       <p class="sect-sub">Here is what separates our turmeric from every brand on a shelf</p>
     </div>
     <div class="why-grid">
-      <div class="why-card"><div class="wc-icon">🔬</div><div class="wc-title">5–7% Curcumin</div><div class="wc-text">Standard market turmeric contains only 2–3% curcumin. Every spoon of ours delivers 2.5× more of the active healing compound.</div></div>
+      <div class="why-card"><div class="wc-icon">🔬</div><div class="wc-title">3–5% Curcumin</div><div class="wc-text">Standard market turmeric contains only 1–2% curcumin. Our Sahyadri-grown turmeric delivers up to 3× more of the active healing compound per spoon.</div></div>
       <div class="why-card"><div class="wc-icon">🏔️</div><div class="wc-title">Single Origin</div><div class="wc-text">Grown exclusively in mineral-rich Wai-Satara, Sahyadri. Traceable to the exact farm. No blending, no mixing with inferior batches.</div></div>
       <div class="why-card"><div class="wc-icon">🌱</div><div class="wc-title">Zero Chemicals</div><div class="wc-text">No pesticides. No fillers. No preservatives. No artificial colour. The ingredient list is exactly one item: turmeric.</div></div>
       <div class="why-card"><div class="wc-icon">✅</div><div class="wc-title">FSSAI Certified</div><div class="wc-text">Fully licensed, fully compliant. Processed at Yashoda Agro Food Processing Unit, Wai. Licence No. 21524039000444.</div></div>
@@ -682,13 +682,19 @@ footer{background:#060d08;padding:56px 24px 24px}
         <div class="ck-row">
           <div class="ck-field">
             <div class="ck-label">PIN Code <span class="ck-req">*</span></div>
-            <input class="ck-input" id="ck-pin" placeholder="6-digit PIN" type="tel" maxlength="6" autocomplete="postal-code">
+            <input class="ck-input" id="ck-pin" placeholder="6-digit PIN" type="tel" maxlength="6" autocomplete="postal-code" oninput="onPinInput(this.value)">
             <div class="ck-err-msg" id="err-pin">Enter a valid 6-digit PIN code</div>
           </div>
           <div class="ck-field">
             <div class="ck-label">Delivery Instructions (optional)</div>
             <input class="ck-input" id="ck-note" placeholder="e.g. Call before delivery">
           </div>
+        </div>
+
+        <!-- LIVE SHIPPING ESTIMATE — appears as soon as PIN is 6 digits -->
+        <div id="ckShippingBox" style="display:none;background:#f0faf4;border:1.5px solid #b2e0c0;border-radius:12px;padding:14px 16px;margin-bottom:4px">
+          <div style="font-size:10px;letter-spacing:2px;color:var(--leaf2);text-transform:uppercase;font-weight:700;margin-bottom:10px">🚚 Estimated Delivery Charges (PIN-based)</div>
+          <div id="ckShippingBreakdown"></div>
         </div>
 
         <div class="ck-nav">
@@ -698,7 +704,7 @@ footer{background:#060d08;padding:56px 24px 24px}
           <div class="secure-badges">
             <div class="sec-badge">🔒 Secure Checkout</div>
             <div class="sec-badge">🚚 Pan India Delivery</div>
-            <div class="sec-badge">✅ FSSAI Certified</div>
+            <div class="sec-badge">✅ 5% GST Included</div>
           </div>
         </div>
       </div><!-- /step1 -->
@@ -1007,163 +1013,221 @@ function closeCart(){ document.getElementById('cartOverlay').classList.remove('o
 /* ════════════════════════════════
    CHECKOUT MODAL
 ════════════════════════════════ */
-function buildSummary(containerId){
-  const lines = cart.map(it=>{ const p=products.find(x=>x.id===it.id); return p?`<div class="ck-summary-item"><span>${p.name} ${p.weight} ×${it.qty}</span><span>₹${p.price*it.qty}</span></div>`:''; }).filter(Boolean);
-  const total = cartTotal();
+function buildSummary(containerId, pin, isCOD) {
+  const breakdown = calcOrderTotal(cart, products, pin||'', isCOD||false);
+  const lines = cart.map(it => {
+    const p = products.find(x => x.id === it.id);
+    return p ? `<div class="ck-sum-item"><span>${p.name} ${p.weight} ×${it.qty}</span><span>₹${p.price * it.qty}</span></div>` : '';
+  }).filter(Boolean);
   document.getElementById(containerId).innerHTML =
-    `<div class="ck-summary-title">Order Summary</div>${lines.join('')}
-     <div class="ck-summary-item"><span>Total Payable</span><span>₹${total}</span></div>`;
+    `<div class="ck-summary-title">Order Summary</div>
+     ${lines.join('')}
+     <div class="ck-sum-item" style="margin-top:8px;padding-top:8px;border-top:1px dashed #d8d0c0"><span>Product Total</span><span>₹${breakdown.productTotal}</span></div>
+     <div class="ck-sum-item"><span>GST (5% — HSN 09103030)</span><span>₹${breakdown.gst}</span></div>
+     <div class="ck-sum-item"><span>Shipping (${breakdown.rate ? breakdown.rate.label : '—'})</span><span>${pin&&pin.length===6 ? '₹'+breakdown.shipping : '—'}</span></div>
+     ${breakdown.cod ? `<div class="ck-sum-item"><span>COD Handling Fee</span><span>₹${breakdown.cod}</span></div>` : ''}
+     <div class="ck-sum-total"><span>Grand Total</span><span>${pin&&pin.length===6 ? '₹'+breakdown.grandTotal : 'Enter PIN →'}</span></div>`;
 }
 
-function startCheckout(){
-  if(!cart.length){ toast('🛒 Your cart is empty!'); return; }
+function onPinInput(val) {
+  const box = document.getElementById('ckShippingBox');
+  const bd  = document.getElementById('ckShippingBreakdown');
+  if (val.length !== 6) { box.style.display = 'none'; return; }
+  const isCOD = selectedPayMethod === 'wa';
+  const b = calcOrderTotal(cart, products, val, isCOD);
+  const zoneColors = { local:'#1a7a3a', metro:'#2255cc', regional:'#7a5500', remote:'#c0392b' };
+  const col = zoneColors[b.zone] || '#555';
+  bd.innerHTML = `
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span style="background:${col};color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:1px">${b.rate.label.split('(')[0].trim()}</span>
+      <span style="font-size:12px;color:var(--muted)">📅 ${b.rate.days}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px">
+      <div style="background:#fff;border-radius:8px;padding:10px 12px">
+        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Product + GST</div>
+        <div style="font-weight:700;color:var(--ink)">₹${b.productTotal} + ₹${b.gst}</div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:10px 12px">
+        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Shipping (${Math.ceil(b.totalGrams/500)}×500g slabs)</div>
+        <div style="font-weight:700;color:var(--ink)">₹${b.shipping}</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;background:var(--ink);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+      <span style="color:rgba(255,255,255,.6);font-size:12px">Grand Total (incl. all taxes)</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold2)">₹${b.grandTotal}</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-top:8px">✦ Courier: Delhivery / DTDC / Shree Maruti (auto-assigned by zone) &nbsp;·&nbsp; ✦ GST @ 5% HSN 09103030</div>`;
+  box.style.display = 'block';
+  // Also update cart drawer total to show estimate
+  document.getElementById('cdfTotal').textContent = '₹' + b.grandTotal + '*';
+}
+
+function startCheckout() {
+  if (!cart.length) { toast('🛒 Your cart is empty!'); return; }
   closeCart();
-  buildSummary('ckSummaryItems');
-  // show step1, hide others
-  document.getElementById('ckStep1').style.display='block';
-  document.getElementById('ckStep2').style.display='none';
-  document.getElementById('ckStep3').style.display='none';
+  document.getElementById('cdfTotal').textContent = '₹' + cartTotal();
+  buildSummary('ckSummaryItems', '', false);
+  document.getElementById('ckStep1').style.display = 'block';
+  document.getElementById('ckStep2').style.display = 'none';
+  document.getElementById('ckStep3').style.display = 'none';
+  document.getElementById('ckShippingBox').style.display = 'none';
   setStep(1);
   document.getElementById('ckOverlay').classList.add('open');
-  document.getElementById('ckModal').scrollTop=0;
+  document.getElementById('ckModal').scrollTop = 0;
 }
-function closeCheckout(){
+
+function closeCheckout() {
   document.getElementById('ckOverlay').classList.remove('open');
 }
 
-function setStep(n){
-  const labels=['','Step 1 of 3','Step 2 of 3','Step 3 of 3'];
-  const titles=['','Delivery Address','Payment Method','Order Confirmed!'];
-  const widths=['','33%','66%','100%'];
-  document.getElementById('ckStepLabel').textContent=labels[n];
-  document.getElementById('ckTitle').textContent=titles[n];
-  document.getElementById('ckBar').style.width=widths[n];
+function setStep(n) {
+  const labels = ['', 'Step 1 of 3', 'Step 2 of 3', 'Step 3 of 3'];
+  const titles  = ['', 'Delivery Address', 'Payment Method', 'Order Confirmed!'];
+  const widths  = ['', '33%', '66%', '100%'];
+  document.getElementById('ckStepLabel').textContent = labels[n];
+  document.getElementById('ckTitle').textContent = titles[n];
+  document.getElementById('ckBar').style.width = widths[n];
 }
 
 /* ── STEP 1 VALIDATION ── */
-function goToStep2(){
+function goToStep2() {
   let valid = true;
-  function req(id, errId, test){
+  function req(id, errId, test) {
     const el = document.getElementById(id);
     const err = document.getElementById(errId);
     const ok = test(el.value.trim());
     el.classList.toggle('error', !ok);
     err.classList.toggle('show', !ok);
-    if(!ok) valid = false;
+    if (!ok) valid = false;
   }
-  req('ck-name','err-name', v=>v.length>=2);
-  req('ck-phone','err-phone', v=>/^\d{10}$/.test(v));
-  req('ck-line1','err-line1', v=>v.length>=5);
-  req('ck-city','err-city', v=>v.length>=2);
-  req('ck-state','err-state', v=>v!=='');
-  req('ck-pin','err-pin', v=>/^\d{6}$/.test(v));
-  if(!valid){
-    // scroll to first error
+  req('ck-name',  'err-name',  v => v.length >= 2);
+  req('ck-phone', 'err-phone', v => /^\d{10}$/.test(v));
+  req('ck-line1', 'err-line1', v => v.length >= 5);
+  req('ck-city',  'err-city',  v => v.length >= 2);
+  req('ck-state', 'err-state', v => v !== '');
+  req('ck-pin',   'err-pin',   v => /^\d{6}$/.test(v));
+  if (!valid) {
     const firstErr = document.querySelector('#ckStep1 .ck-input.error, #ckStep1 .ck-select.error');
-    if(firstErr) firstErr.scrollIntoView({behavior:'smooth',block:'center'});
+    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
-  // proceed
-  document.getElementById('ckStep1').style.display='none';
-  document.getElementById('ckStep2').style.display='block';
-  buildSummary('ckSummary2');
+  document.getElementById('ckStep1').style.display = 'none';
+  document.getElementById('ckStep2').style.display = 'block';
+  const pin = document.getElementById('ck-pin').value.trim();
+  const isCOD = selectedPayMethod === 'wa';
+  buildSummary('ckSummary2', pin, isCOD);
+  // Inject UPI ID
+  document.getElementById('ckUpiId').textContent = brand.upi;
   setStep(2);
-  document.getElementById('ckModal').scrollTop=0;
+  document.getElementById('ckModal').scrollTop = 0;
 }
 
-function goToStep1(){
-  document.getElementById('ckStep2').style.display='none';
-  document.getElementById('ckStep1').style.display='block';
+function goToStep1() {
+  document.getElementById('ckStep2').style.display = 'none';
+  document.getElementById('ckStep1').style.display = 'block';
   setStep(1);
-  document.getElementById('ckModal').scrollTop=0;
+  document.getElementById('ckModal').scrollTop = 0;
 }
 
 /* ── PAYMENT METHOD SELECT ── */
-function selectPay(method){
+function selectPay(method) {
   selectedPayMethod = method;
-  ['upi','card','nb','wa'].forEach(m=>{
-    document.getElementById('pc-'+m).classList.toggle('selected', m===method);
-    document.getElementById('pd-'+m).classList.toggle('show', m===method);
+  ['upi', 'card', 'nb', 'wa'].forEach(m => {
+    document.getElementById('pc-' + m).classList.toggle('selected', m === method);
+    document.getElementById('pd-' + m).classList.toggle('show', m === method);
   });
+  // Rebuild step2 summary if PIN already filled (COD affects shipping total)
+  const pin = document.getElementById('ck-pin').value.trim();
+  if (pin.length === 6) buildSummary('ckSummary2', pin, method === 'wa');
 }
 
-function selectBank(el, bank){
-  document.querySelectorAll('.nb-bank').forEach(b=>b.classList.remove('sel'));
+function selectBank(el, bank) {
+  document.querySelectorAll('.nb-bank').forEach(b => b.classList.remove('sel'));
   el.classList.add('sel');
   selectedBank = bank;
 }
 
 /* ── CARD INPUT FORMATTERS ── */
-function formatCard(el){
-  let v=el.value.replace(/\D/g,'').slice(0,16);
-  el.value=v.match(/.{1,4}/g)?.join(' ')||v;
+function formatCard(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 16);
+  el.value = v.match(/.{1,4}/g)?.join(' ') || v;
 }
-function formatExpiry(el){
-  let v=el.value.replace(/\D/g,'').slice(0,4);
-  if(v.length>2) v=v.slice(0,2)+'/'+v.slice(2);
-  el.value=v;
+function formatExpiry(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 4);
+  if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
+  el.value = v;
 }
 
 /* ── PLACE ORDER ── */
-function placeOrder(){
-  // card validation
-  if(selectedPayMethod==='card'){
-    const cname=document.getElementById('ck-cname').value.trim();
-    const cnum=document.getElementById('ck-cnum').value.replace(/\s/g,'');
-    const cexp=document.getElementById('ck-cexp').value.trim();
-    const ccvv=document.getElementById('ck-ccvv').value.trim();
-    if(!cname||cnum.length<15||cexp.length<4||ccvv.length<3){
-      toast('❌ Please fill in all card details correctly');
-      return;
+function placeOrder() {
+  if (selectedPayMethod === 'card') {
+    const cname = document.getElementById('ck-cname').value.trim();
+    const cnum  = document.getElementById('ck-cnum').value.replace(/\s/g, '');
+    const cexp  = document.getElementById('ck-cexp').value.trim();
+    const ccvv  = document.getElementById('ck-ccvv').value.trim();
+    if (!cname || cnum.length < 15 || cexp.length < 4 || ccvv.length < 3) {
+      toast('❌ Please fill in all card details correctly'); return;
     }
   }
-  if(selectedPayMethod==='nb' && !selectedBank){
-    toast('❌ Please select your bank');
-    return;
+  if (selectedPayMethod === 'nb' && !selectedBank) {
+    toast('❌ Please select your bank'); return;
   }
 
-  // Build address
-  const name   = document.getElementById('ck-name').value.trim();
-  const phone  = document.getElementById('ck-phone').value.trim();
-  const line1  = document.getElementById('ck-line1').value.trim();
-  const line2  = document.getElementById('ck-line2').value.trim();
-  const city   = document.getElementById('ck-city').value.trim();
-  const state  = document.getElementById('ck-state').value;
-  const pin    = document.getElementById('ck-pin').value.trim();
-  const note   = document.getElementById('ck-note').value.trim();
-  const addr   = [line1, line2, city, state+' '+pin].filter(Boolean).join(', ');
+  const name  = document.getElementById('ck-name').value.trim();
+  const phone = document.getElementById('ck-phone').value.trim();
+  const line1 = document.getElementById('ck-line1').value.trim();
+  const line2 = document.getElementById('ck-line2').value.trim();
+  const city  = document.getElementById('ck-city').value.trim();
+  const state = document.getElementById('ck-state').value;
+  const pin   = document.getElementById('ck-pin').value.trim();
+  const note  = document.getElementById('ck-note').value.trim();
+  const addr  = [line1, line2, city, state + ' – ' + pin].filter(Boolean).join(', ');
 
-  // Order ref
-  const ref = 'SF-'+Date.now().toString().slice(-6);
-  const total = cartTotal();
+  const ref = 'SF-' + Date.now().toString().slice(-6);
+  const isCOD = selectedPayMethod === 'wa';
+  const b = calcOrderTotal(cart, products, pin, isCOD);
 
-  // Order lines for WhatsApp
-  const lines = cart.map(it=>{ const p=products.find(x=>x.id===it.id); return p?`• ${p.name} ${p.weight} ×${it.qty} = ₹${p.price*it.qty}`:''; }).filter(Boolean);
-  const payLabel = {upi:'UPI/QR Code',card:'Credit/Debit Card',nb:`Net Banking (${selectedBank})`,wa:'WhatsApp / COD'}[selectedPayMethod];
+  const lines = cart.map(it => {
+    const p = products.find(x => x.id === it.id);
+    return p ? `• ${p.name} ${p.weight} ×${it.qty} = ₹${p.price * it.qty}` : '';
+  }).filter(Boolean);
+  const payLabel = { upi: 'UPI/QR Code', card: 'Credit/Debit Card', nb: `Net Banking (${selectedBank})`, wa: 'WhatsApp / COD' }[selectedPayMethod];
 
-  const waMsg = `Hello Shivar Farmfresh! 🌿\n\n*New Order — Ref: ${ref}*\n\n📦 *Items:*\n${lines.join('\n')}\n\n💰 *Total: ₹${total}*\n💳 *Payment: ${payLabel}*\n\n📍 *Deliver to:*\n${name}\n${phone}\n${addr}\n${note?'📝 Note: '+note:''}\n\nPlease confirm this order. Thank you!`;
+  const waMsg =
+    `Hello Shivar Farmfresh! 🌿\n\n*New Order — Ref: ${ref}*\n\n` +
+    `📦 *Items:*\n${lines.join('\n')}\n\n` +
+    `💰 *Product Total: ₹${b.productTotal}*\n` +
+    `🧾 *GST (5%): ₹${b.gst}*\n` +
+    `🚚 *Shipping (${b.rate.label.split('(')[0].trim()}): ₹${b.shipping}*\n` +
+    `${b.cod ? `📦 *COD Fee: ₹${b.cod}*\n` : ''}` +
+    `✅ *Grand Total: ₹${b.grandTotal}*\n` +
+    `💳 *Payment: ${payLabel}*\n\n` +
+    `📍 *Deliver to:*\n${name}\n${phone}\n${addr}\n` +
+    `${note ? '📝 Note: ' + note : ''}\n\nPlease confirm this order. Thank you!`;
 
-  // Show success screen
-  document.getElementById('ckStep2').style.display='none';
-  document.getElementById('ckStep3').style.display='block';
+  document.getElementById('ckStep2').style.display = 'none';
+  document.getElementById('ckStep3').style.display = 'block';
   setStep(3);
 
   const payMsgs = {
-    upi:'Please complete payment via UPI QR / ID shown earlier and send the screenshot on WhatsApp.',
-    card:'You will receive a secure card payment link on WhatsApp shortly.',
-    nb:`You will receive a net banking payment link for ${selectedBank} on WhatsApp shortly.`,
-    wa:'Your order details will be sent to WhatsApp. Please confirm and arrange payment there.'
+    upi:  'Please complete UPI payment and send the screenshot on WhatsApp to confirm your order.',
+    card: 'You will receive a secure card payment link on WhatsApp shortly.',
+    nb:   `You will receive a net banking payment link for ${selectedBank} on WhatsApp shortly.`,
+    wa:   'Your full order details are ready on WhatsApp. Please confirm and arrange payment there.'
   };
 
   document.getElementById('ckOrderRef').textContent = ref;
   document.getElementById('ckSuccessMsg').textContent = payMsgs[selectedPayMethod];
-  document.getElementById('ckDeliveryAddr').innerHTML = `<strong>${name}</strong> · ${phone}<br>${addr}`;
-  document.getElementById('ckWaConfirmBtn').onclick = ()=> window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(waMsg)}`,'_blank');
-
-  document.getElementById('ckModal').scrollTop=0;
+  document.getElementById('ckDeliveryAddr').innerHTML =
+    `<strong>${name}</strong> · ${phone}<br>${addr}<br>` +
+    `<span style="color:var(--leaf2);font-weight:700;margin-top:4px;display:block">` +
+    `Grand Total: ₹${b.grandTotal} (Products ₹${b.productTotal} + GST ₹${b.gst} + Shipping ₹${b.shipping}${b.cod ? ' + COD ₹' + b.cod : ''})</span>`;
+  document.getElementById('ckWaConfirmBtn').onclick = () =>
+    window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(waMsg)}`, '_blank');
+  document.getElementById('ckModal').scrollTop = 0;
 }
 
-function finishOrder(){
+function finishOrder() {
   closeCheckout();
   clearCart();
   toast('🎉 Order placed! We\'ll confirm on WhatsApp soon.');
