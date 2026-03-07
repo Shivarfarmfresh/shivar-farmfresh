@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Panel — Shivar Farmfresh</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f1c12;--ink2:#1e3a24;--leaf:#1e5c32;--leaf2:#2d7a4f;--leaf3:#e6f4ec;--gold:#c2870c;--gold2:#e8b84b;--cream:#fdf9ef;--white:#fff;--danger:#dc3545;--ok:#198754;--muted:#6c757d;--r:10px;--rL:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#f0f4f1;color:var(--ink);min-height:100vh}
+
+/* layout */
+.layout{display:flex;min-height:100vh}
+
+/* sidebar */
+.sb{width:236px;background:var(--ink);flex-shrink:0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sb-top{padding:22px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+.sb-logo{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin-bottom:10px}
+.sb-name{font-family:'Cormorant Garamond',serif;font-size:17px;color:#fff;font-weight:700;line-height:1.2}
+.sb-sub{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:3px}
+.sb-nav{padding:14px 10px;flex:1}
+.sb-sec{font-size:8.5px;letter-spacing:2.5px;color:rgba(255,255,255,.2);text-transform:uppercase;font-weight:700;padding:12px 8px 5px}
+.sb-a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:rgba(255,255,255,.55);font-size:13px;font-weight:500;cursor:pointer;transition:.18s;margin-bottom:2px;background:none;border:none;width:100%;text-align:left}
+.sb-a:hover,.sb-a.on{background:rgba(194,135,12,.14);color:var(--gold2)}
+.sb-a .ico{font-size:15px;width:20px;text-align:center}
+.sb-bot{padding:14px;border-top:1px solid rgba(255,255,255,.06)}
+.sb-live{display:block;text-align:center;background:var(--gold);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.5px;padding:10px;border-radius:8px;text-decoration:none;transition:.2s}
+.sb-live:hover{background:var(--gold2)}
+
+/* main */
+.main{flex:1;display:flex;flex-direction:column;min-height:100vh;overflow-y:auto}
+.topbar{background:#fff;padding:14px 28px;border-bottom:1px solid #e8e2d8;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.tb-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink)}
+.body{padding:28px;flex:1}
+
+/* tabs */
+.tab{display:none}.tab.on{display:block}
+
+/* cards */
+.card{background:#fff;border-radius:var(--rL);box-shadow:0 2px 12px rgba(0,0,0,.05);overflow:hidden;margin-bottom:22px}
+.card-head{padding:16px 22px;border-bottom:1px solid #f0ebe0;display:flex;align-items:center;justify-content:space-between}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--ink)}
+.card-body{padding:22px}
+
+/* stat row */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-bottom:22px}
+.stat{background:#fff;border-radius:var(--rL);padding:18px 20px;box-shadow:0 2px 10px rgba(0,0,0,.05);border-left:4px solid var(--gold)}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:var(--ink);line-height:1}
+.stat-label{font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-top:4px}
+
+/* table */
+table{width:100%;border-collapse:collapse}
+thead tr{background:var(--ink)}
+thead th{padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;color:var(--gold2);text-transform:uppercase;font-weight:700}
+tbody td{padding:13px 14px;font-size:13px;border-bottom:1px solid #f5f0e8;vertical-align:middle}
+tbody tr:hover{background:#fafaf5}
+tbody tr:last-child td{border-bottom:none}
+.td-name{font-weight:700;color:var(--ink)}
+.td-price{font-weight:700;color:var(--gold)}
+.pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.5px}
+.pill-ok{background:#e6f4ec;color:#1a6632}
+.pill-bad{background:#fde8e8;color:#a71d2a}
+.pill-gold{background:var(--ink);color:var(--gold2)}
+
+/* buttons */
+.btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.3px;transition:.2s;font-family:inherit}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#9a6500}
+.btn-green{background:var(--leaf);color:#fff}
+.btn-green:hover{background:var(--ink2)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-danger:hover{background:#b02a37}
+.btn-ghost{background:transparent;border:1px solid #d0ccc0;color:var(--muted)}
+.btn-ghost:hover{background:#f5f5f5}
+.btn-sm{padding:5px 10px;font-size:11px}
+
+/* forms */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg.full{grid-template-columns:1fr}
+.frow{display:flex;flex-direction:column;gap:5px}
+.frow.span2{grid-column:1/-1}
+.flabel{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.finput,.fsel,.ftarea{padding:9px 13px;border:1.5px solid #ddd;border-radius:8px;font-size:13px;font-family:inherit;color:var(--ink);transition:.2s;background:#fff}
+.finput:focus,.fsel:focus,.ftarea:focus{outline:none;border-color:var(--gold)}
+.ftarea{resize:vertical;min-height:74px}
+.fcheck{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;font-weight:500}
+.fcheck input{width:15px;height:15px;accent-color:var(--leaf)}
+
+/* modal */
+.modal-wrap{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-wrap.on{display:flex}
+.modal{background:#fff;border-radius:var(--rL);width:100%;max-width:580px;max-height:90vh;overflow-y:auto;box-shadow:0 16px 56px rgba(0,0,0,.25)}
+.modal-head{padding:18px 22px;border-bottom:1px solid #f0ebe0;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:2}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--ink)}
+.modal-close{background:#f5f5f5;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px}
+.modal-body{padding:22px}
+.modal-foot{padding:14px 22px;border-top:1px solid #f0ebe0;display:flex;gap:10px;justify-content:flex-end}
+
+/* notice */
+.notice{padding:12px 16px;border-radius:10px;font-size:13px;line-height:1.6;margin-bottom:18px}
+.notice-green{background:var(--leaf3);border-left:4px solid var(--leaf2);color:#0f3320}
+.notice-gold{background:#fff8e1;border-left:4px solid var(--gold);color:#5a3800}
+
+/* settings grid */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+/* deploy steps */
+.dsteps{display:flex;flex-direction:column;gap:14px}
+.ds{background:#fff;border-radius:var(--rL);padding:18px 20px;box-shadow:0 2px 10px rgba(0,0,0,.05);display:flex;gap:14px;align-items:flex-start}
+.ds-n{width:34px;height:34px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--ink);flex-shrink:0}
+.ds-t{font-weight:700;font-size:14px;color:var(--ink);margin-bottom:4px}
+.ds-d{font-size:12px;color:var(--muted);line-height:1.65}
+.ds-d code{background:#f5f0e8;padding:1px 5px;border-radius:4px;font-family:monospace;color:var(--gold);font-size:11px}
+.badge-free{background:var(--leaf3);color:var(--leaf);font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;margin-left:6px}
+
+/* toast */
+.atost{position:fixed;bottom:22px;right:22px;background:var(--ink);color:#fff;padding:11px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:500;border-left:4px solid var(--gold);box-shadow:0 4px 20px rgba(0,0,0,.25);opacity:0;transform:translateY(16px);transition:.3s;pointer-events:none}
+.atost.on{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){.layout{flex-direction:column}.sb{width:100%;height:auto;position:relative}.sg{grid-template-columns:1fr}.fg{grid-template-columns:1fr}.body{padding:16px}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sb">
+  <div class="sb-top">
+    <img class="sb-logo" id="sbLogo" src="" alt="">
+    <div class="sb-name" id="sbName">Shivar Farmfresh</div>
+    <div class="sb-sub">Admin Panel</div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-sec">Dashboard</div>
+    <button class="sb-a on" onclick="tab('dash',this)"><span class="ico">📊</span>Overview</button>
+    <div class="sb-sec">Products</div>
+    <button class="sb-a" onclick="tab('products',this)"><span class="ico">📦</span>All Products</button>
+    <button class="sb-a" onclick="tab('add',this)"><span class="ico">➕</span>Add Product</button>
+    <div class="sb-sec">Orders</div>
+    <button class="sb-a" onclick="tab('orders',this)"><span class="ico">🧾</span>Order Log</button>
+    <div class="sb-sec">Store</div>
+    <button class="sb-a" onclick="tab('brand',this)"><span class="ico">🏷️</span>Brand &amp; Contact</button>
+    <button class="sb-a" onclick="tab('deploy',this)"><span class="ico">🚀</span>Publish Website</button>
+  </nav>
+  <div class="sb-bot">
+    <a class="sb-live" href="index.html" target="_blank">🌐 View Live Store →</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="tb-title" id="tbTitle">Dashboard Overview</div>
+    <div style="display:flex;gap:10px">
+      <a href="index.html" target="_blank" class="btn btn-gold">🌐 Open Store</a>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ══ DASHBOARD ══ -->
+    <div class="tab on" id="tab-dash">
+      <div class="notice notice-green">👋 Welcome! Manage your products, prices and brand info here. All changes reflect instantly on your store.</div>
+      <div class="stat-row" id="statRow"></div>
+      <div class="card">
+        <div class="card-head"><div class="card-title">Products Snapshot</div><button class="btn btn-ghost btn-sm" onclick="tab('products',null)">Manage →</button></div>
+        <table><thead><tr><th>Product</th><th>Weight</th><th>Price</th><th>Stock</th></tr></thead>
+        <tbody id="dashTbl"></tbody></table>
+      </div>
+    </div>
+
+    <!-- ══ ALL PRODUCTS ══ -->
+    <div class="tab" id="tab-products">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Product Catalogue</div><button class="btn btn-green" onclick="tab('add',null)">+ Add Product</button></div>
+        <table><thead><tr><th>Name</th><th>Weight</th><th>Price</th><th>MRP</th><th>Badge</th><th>Stock</th><th>Actions</th></tr></thead>
+        <tbody id="prodTbl"></tbody></table>
+      </div>
+    </div>
+
+    <!-- ══ ADD PRODUCT ══ -->
+    <div class="tab" id="tab-add">
+      <div class="card">
+        <div class="card-head"><div class="card-title" id="addTitle">Add New Product</div></div>
+        <div class="card-body">
+          <div class="fg">
+            <div class="frow"><label class="flabel">Product Name (English)</label><input class="finput" id="f-name" placeholder="e.g. Premium Turmeric Powder"></div>
+            <div class="frow"><label class="flabel">Name in मराठी</label><input class="finput" id="f-hi" placeholder="e.g. प्रीमियम हळद पावडर"></div>
+            <div class="frow"><label class="flabel">Category</label><input class="finput" id="f-cat" placeholder="Turmeric, Spice, Health..."></div>
+            <div class="frow"><label class="flabel">Weight / Size</label><input class="finput" id="f-wt" placeholder="100g, 500g, 1kg..."></div>
+            <div class="frow"><label class="flabel">Selling Price ₹</label><input class="finput" id="f-price" type="number" placeholder="120"></div>
+            <div class="frow"><label class="flabel">MRP / Strike Price ₹</label><input class="finput" id="f-mrp" type="number" placeholder="150"></div>
+            <div class="frow"><label class="flabel">Curcumin %</label><input class="finput" id="f-curc" placeholder="5–7%"></div>
+            <div class="frow"><label class="flabel">Badge Label</label><input class="finput" id="f-badge" placeholder="Bestseller, New, Sale..."></div>
+            <div class="frow span2"><label class="flabel">Description</label><textarea class="ftarea" id="f-desc" placeholder="Product description..."></textarea></div>
+            <div class="frow span2"><label class="flabel">Health Benefits (comma-separated)</label><input class="finput" id="f-ben" placeholder="Boosts Immunity, Anti-Inflammatory, Heart Health"></div>
+            <div class="frow span2"><label class="flabel">Product Image URL (leave blank for default emoji)</label><input class="finput" id="f-img" placeholder="https://..."></div>
+            <div class="frow span2"><label class="fcheck"><input type="checkbox" id="f-stock" checked> In Stock (visible &amp; orderable on store)</label></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:20px">
+            <button class="btn btn-green" onclick="saveProduct()">💾 Save Product</button>
+            <button class="btn btn-ghost" onclick="resetForm()">↺ Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BRAND ══ -->
+    <div class="tab" id="tab-brand">
+      <div class="notice notice-gold">⚠️ These details appear on your store — phone, UPI, WhatsApp, and FSSAI number. Save after editing.</div>
+      <div class="sg">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Brand Identity</div></div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+            <div class="frow"><label class="flabel">Brand Name</label><input class="finput" id="b-name" placeholder="Shivar Farmfresh"></div>
+            <div class="frow"><label class="flabel">Name in मराठी</label><input class="finput" id="b-hi" placeholder="शिवार फार्मफ्रेश"></div>
+            <div class="frow"><label class="flabel">Tagline</label><input class="finput" id="b-tag" placeholder="Pure Sahyadri Gold"></div>
+            <div class="frow"><label class="flabel">Address</label><input class="finput" id="b-addr" placeholder="Wai-Satara, Maharashtra"></div>
+            <div class="frow"><label class="flabel">FSSAI Licence No.</label><input class="finput" id="b-fssai" placeholder="21524039000444"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Contact &amp; Payment</div></div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+            <div class="frow"><label class="flabel">Phone (displayed)</label><input class="finput" id="b-phone" placeholder="+91 99879 82611"></div>
+            <div class="frow"><label class="flabel">WhatsApp Number (no + , with country code)</label><input class="finput" id="b-wa" placeholder="919987982611"></div>
+            <div class="frow"><label class="flabel">UPI ID</label><input class="finput" id="b-upi" placeholder="9511627623@ibl"></div>
+            <div class="frow"><label class="flabel">Email (optional)</label><input class="finput" id="b-email" type="email" placeholder="info@shivarfarmfresh.in"></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-green" onclick="saveBrandData()">💾 Save Settings</button>
+        <button class="btn btn-ghost" onclick="resetBrand()">↺ Reset to Defaults</button>
+      </div>
+    </div>
+
+    <!-- ══ ORDERS ══ -->
+    <div class="tab" id="tab-orders">
+      <div class="notice notice-green">🧾 All orders placed on your website are logged here automatically. This is your audit trail for GST filing.</div>
+      <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;font-size:13px;color:var(--muted)">Orders are saved in this browser. Also connect Google Sheets for permanent cloud backup — see setup guide below.</div>
+        <button class="btn btn-gold" onclick="exportOrdersCSV()">⬇ Export CSV (GST Filing)</button>
+        <button class="btn btn-ghost" onclick="clearOrderLog()">🗑 Clear Log</button>
+      </div>
+      <div id="ordersTable"></div>
+      <div style="margin-top:28px;background:#f8f8f4;border:1.5px solid #e0d8c8;border-radius:14px;padding:20px 22px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px">📊 Connect Google Sheets for Permanent Storage</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px">Every order will automatically appear in a Google Sheet — perfect for monthly GST filing, CA submissions, and team access from any device.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="GOOGLE_SHEETS_SETUP.md" target="_blank" class="btn btn-gold">📖 View Setup Guide</a>
+          <div style="font-size:12px;color:var(--muted);align-self:center">Takes 10 minutes · 100% free · No coding needed</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DEPLOY ══ -->
+    <div class="tab" id="tab-deploy">
+      <div class="notice notice-green">🚀 Your website is ready! Follow the steps below to put it online for FREE in under 5 minutes.</div>
+
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink);margin-bottom:4px">Option A — Netlify Drop <span class="badge-free">EASIEST — No Account Needed</span></h3>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Drag your folder → live in 60 seconds. Free forever.</p>
+      <div class="dsteps">
+        <div class="ds"><div class="ds-n">1</div><div><div class="ds-t">Download the website ZIP</div><div class="ds-d">Click the export button at the bottom of this page to save all files.</div></div></div>
+        <div class="ds"><div class="ds-n">2</div><div><div class="ds-t">Open Netlify Drop</div><div class="ds-d">Go to <code>app.netlify.com/drop</code> — no login needed to start.</div></div></div>
+        <div class="ds"><div class="ds-n">3</div><div><div class="ds-t">Drag &amp; Drop your folder</div><div class="ds-d">Drag the unzipped <code>shivar_website</code> folder onto the Netlify page. Done — you're live!</div></div></div>
+        <div class="ds"><div class="ds-n">4</div><div><div class="ds-t">Share your free URL</div><div class="ds-d">Netlify gives you a URL like <code>amazing-farmfresh.netlify.app</code>. Share it with customers on WhatsApp!</div></div></div>
+        <div class="ds"><div class="ds-n">5</div><div><div class="ds-t">Optional: Your own domain</div><div class="ds-d">Buy <code>shivarfarmfresh.in</code> (~₹700/yr) and connect it free in Netlify settings for a professional URL.</div></div></div>
+      </div>
+
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink);margin:28px 0 4px">Option B — GitHub Pages <span class="badge-free">FREE FOREVER</span></h3>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Best long-term option. Free permanent hosting.</p>
+      <div class="dsteps">
+        <div class="ds"><div class="ds-n">1</div><div><div class="ds-t">Create free account at github.com</div><div class="ds-d">Sign up — it's free. No credit card required.</div></div></div>
+        <div class="ds"><div class="ds-n">2</div><div><div class="ds-t">New repository → name it <code>shivar-farmfresh</code></div><div class="ds-d">Set it to Public. Click "Create repository."</div></div></div>
+        <div class="ds"><div class="ds-n">3</div><div><div class="ds-t">Upload all 4 files</div><div class="ds-d">Upload <code>index.html</code>, <code>admin.html</code>, <code>products.js</code>, <code>assets.js</code> via the "Upload files" button.</div></div></div>
+        <div class="ds"><div class="ds-n">4</div><div><div class="ds-t">Enable GitHub Pages</div><div class="ds-d">Settings → Pages → Source: main branch → Save. Your site is live at <code>yourusername.github.io/shivar-farmfresh</code></div></div></div>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="card-head"><div class="card-title">📁 Your 4 Website Files</div></div>
+        <table>
+          <thead><tr><th>File</th><th>Purpose</th><th>Size</th></tr></thead>
+          <tbody>
+            <tr><td style="font-family:monospace;font-weight:700;color:var(--leaf2)">index.html</td><td style="font-size:12px;color:var(--muted)">Customer storefront — what shoppers see</td><td style="font-size:12px;color:var(--muted)">~33 KB</td></tr>
+            <tr><td style="font-family:monospace;font-weight:700;color:var(--leaf2)">admin.html</td><td style="font-size:12px;color:var(--muted)">This admin panel — manage products &amp; brand</td><td style="font-size:12px;color:var(--muted)">~30 KB</td></tr>
+            <tr><td style="font-family:monospace;font-weight:700;color:var(--leaf2)">products.js</td><td style="font-size:12px;color:var(--muted)">Product data &amp; shared utilities</td><td style="font-size:12px;color:var(--muted)">~3 KB</td></tr>
+            <tr><td style="font-family:monospace;font-weight:700;color:var(--leaf2)">assets.js</td><td style="font-size:12px;color:var(--muted)">Your logo &amp; QR code (embedded, no server needed)</td><td style="font-size:12px;color:var(--muted)">~1.4 MB</td></tr>
+          </tbody>
+        </table>
+        <div style="padding:16px 20px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-green" onclick="exportJSON()">📤 Backup Product Data (JSON)</button>
+          <button class="btn btn-ghost" onclick="importJSON()">📥 Restore from Backup</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+</div><!-- /main -->
+</div><!-- /layout -->
+
+<!-- EDIT MODAL -->
+<div class="modal-wrap" id="editWrap">
+  <div class="modal">
+    <div class="modal-head"><div class="modal-title">Edit Product</div><button class="modal-close" onclick="closeEdit()">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="e-id">
+      <div class="fg">
+        <div class="frow"><label class="flabel">Name (EN)</label><input class="finput" id="e-name"></div>
+        <div class="frow"><label class="flabel">Name (मराठी)</label><input class="finput" id="e-hi"></div>
+        <div class="frow"><label class="flabel">Category</label><input class="finput" id="e-cat"></div>
+        <div class="frow"><label class="flabel">Weight</label><input class="finput" id="e-wt"></div>
+        <div class="frow"><label class="flabel">Price ₹</label><input class="finput" id="e-price" type="number"></div>
+        <div class="frow"><label class="flabel">MRP ₹</label><input class="finput" id="e-mrp" type="number"></div>
+        <div class="frow"><label class="flabel">Curcumin %</label><input class="finput" id="e-curc"></div>
+        <div class="frow"><label class="flabel">Badge</label><input class="finput" id="e-badge"></div>
+        <div class="frow span2"><label class="flabel">Description</label><textarea class="ftarea" id="e-desc"></textarea></div>
+        <div class="frow span2"><label class="flabel">Benefits (comma-separated)</label><input class="finput" id="e-ben"></div>
+        <div class="frow span2"><label class="flabel">Image URL</label><input class="finput" id="e-img"></div>
+        <div class="frow span2"><label class="fcheck"><input type="checkbox" id="e-stock"> In Stock</label></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeEdit()">Cancel</button>
+      <button class="btn btn-green" onclick="updateProduct()">💾 Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="atost" id="atost"></div>
+
+<script src="assets.js"></script>
+<script src="products.js"></script>
+<script>
+let editId=null;
+const TABS={dash:'Dashboard Overview',products:'Product Catalogue',add:'Add New Product',brand:'Brand & Contact',orders:'Order Log & Audit Trail',deploy:'Publish Website'};
+
+/* ── init ── */
+document.getElementById('sbLogo').src=LOGO_B64;
+const br=getBrand(); document.getElementById('sbName').textContent=br.name;
+loadBrandForm(); refreshDash(); refreshProdTable();
+
+/* ── tab switch ── */
+function tab(id,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.sb-a').forEach(a=>a.classList.remove('on'));
+  document.getElementById('tab-'+id).classList.add('on');
+  if(el) el.classList.add('on');
+  document.getElementById('tbTitle').textContent=TABS[id]||'';
+  if(id==='orders') renderOrdersTable();
+}
+
+/* ── dashboard ── */
+function refreshDash(){
+  const ps=getProducts(), ins=ps.filter(p=>p.stock).length, outs=ps.length-ins;
+  document.getElementById('statRow').innerHTML=`
+    <div class="stat"><div class="stat-val">${ps.length}</div><div class="stat-label">Total Products</div></div>
+    <div class="stat" style="border-left-color:var(--ok)"><div class="stat-val">${ins}</div><div class="stat-label">In Stock</div></div>
+    <div class="stat" style="border-left-color:var(--danger)"><div class="stat-val">${outs}</div><div class="stat-label">Out of Stock</div></div>
+    <div class="stat" style="border-left-color:var(--leaf2)"><div class="stat-val">₹${ps.length?Math.min(...ps.map(p=>p.price)):0}</div><div class="stat-label">Lowest Price</div></div>`;
+  document.getElementById('dashTbl').innerHTML=ps.map(p=>
+    `<tr><td class="td-name">${p.name}</td><td>${p.weight}</td><td class="td-price">₹${p.price}</td><td><span class="pill ${p.stock?'pill-ok':'pill-bad'}">${p.stock?'In Stock':'Out'}</span></td></tr>`
+  ).join('');
+}
+
+/* ── product table ── */
+function refreshProdTable(){
+  document.getElementById('prodTbl').innerHTML=getProducts().map(p=>`
+    <tr>
+      <td class="td-name">${p.name}</td>
+      <td>${p.weight}</td>
+      <td class="td-price">₹${p.price}</td>
+      <td style="color:#aaa;text-decoration:line-through;font-size:12px">₹${p.mrp}</td>
+      <td>${p.badge?`<span class="pill pill-gold">${p.badge}</span>`:'—'}</td>
+      <td><span class="pill ${p.stock?'pill-ok':'pill-bad'}">${p.stock?'In Stock':'Out'}</span></td>
+      <td style="display:flex;gap:6px">
+        <button class="btn btn-ghost btn-sm" onclick="openEdit('${p.id}')">✏️ Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="delProduct('${p.id}')">🗑</button>
+      </td>
+    </tr>`).join('');
+}
+
+/* ── add product ── */
+function saveProduct(){
+  const name=document.getElementById('f-name').value.trim();
+  if(!name){tost('❌ Name is required',true);return;}
+  const ps=getProducts();
+  ps.push({id:'p'+Date.now(),name,nameHi:v('f-hi'),category:v('f-cat')||'Organic Spice',weight:v('f-wt'),price:+v('f-price')||0,mrp:+v('f-mrp')||0,curcumin:v('f-curc'),badge:v('f-badge'),description:v('f-desc'),benefits:v('f-ben').split(',').map(s=>s.trim()).filter(Boolean),image:v('f-img')||null,stock:document.getElementById('f-stock').checked});
+  saveProducts(ps); refreshDash(); refreshProdTable(); resetForm();
+  tost('✅ Product added!'); tab('products',null);
+}
+function resetForm(){['f-name','f-hi','f-cat','f-wt','f-price','f-mrp','f-curc','f-badge','f-desc','f-ben','f-img'].forEach(id=>document.getElementById(id).value='');document.getElementById('f-stock').checked=true;}
+
+/* ── edit ── */
+function openEdit(id){
+  const p=getProducts().find(x=>x.id===id); if(!p) return;
+  editId=id;
+  sv('e-name',p.name);sv('e-hi',p.nameHi||'');sv('e-cat',p.category||'');sv('e-wt',p.weight||'');
+  sv('e-price',p.price);sv('e-mrp',p.mrp);sv('e-curc',p.curcumin||'');sv('e-badge',p.badge||'');
+  sv('e-desc',p.description||'');sv('e-ben',(p.benefits||[]).join(', '));sv('e-img',p.image||'');
+  document.getElementById('e-stock').checked=!!p.stock;
+  document.getElementById('editWrap').classList.add('on');
+}
+function closeEdit(){document.getElementById('editWrap').classList.remove('on');editId=null;}
+function updateProduct(){
+  const ps=getProducts(), i=ps.findIndex(x=>x.id===editId); if(i<0) return;
+  ps[i]={...ps[i],name:v('e-name'),nameHi:v('e-hi'),category:v('e-cat'),weight:v('e-wt'),price:+v('e-price'),mrp:+v('e-mrp'),curcumin:v('e-curc'),badge:v('e-badge'),description:v('e-desc'),benefits:v('e-ben').split(',').map(s=>s.trim()).filter(Boolean),image:v('e-img')||null,stock:document.getElementById('e-stock').checked};
+  saveProducts(ps);refreshProdTable();refreshDash();closeEdit();tost('✅ Updated!');
+}
+function delProduct(id){
+  if(!confirm('Delete this product?')) return;
+  saveProducts(getProducts().filter(p=>p.id!==id));refreshProdTable();refreshDash();tost('🗑 Deleted');
+}
+
+/* ── brand ── */
+function loadBrandForm(){
+  const b=getBrand();
+  sv('b-name',b.name);sv('b-hi',b.nameHi||'');sv('b-tag',b.tagline||'');sv('b-addr',b.address||'');
+  sv('b-fssai',b.fssai||'');sv('b-phone',b.phone||'');sv('b-wa',b.whatsapp||'');sv('b-upi',b.upi||'');sv('b-email',b.email||'');
+}
+function saveBrandData(){
+  saveBrand({name:v('b-name'),nameHi:v('b-hi'),tagline:v('b-tag'),address:v('b-addr'),fssai:v('b-fssai'),phone:v('b-phone'),whatsapp:v('b-wa'),upi:v('b-upi'),email:v('b-email')});
+  document.getElementById('sbName').textContent=v('b-name');
+  tost('✅ Brand settings saved! Refresh the store to see changes.');
+}
+function resetBrand(){localStorage.removeItem('sf_brand');loadBrandForm();tost('↺ Reset to defaults');}
+
+/* ── export / import ── */
+function exportJSON(){
+  const d={products:getProducts(),brand:getBrand()};
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'}));a.download='shivar-backup.json';a.click();
+  tost('📤 Backup downloaded!');
+}
+function importJSON(){
+  const inp=document.createElement('input');inp.type='file';inp.accept='.json';
+  inp.onchange=e=>{const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(d.products)saveProducts(d.products);if(d.brand){saveBrand(d.brand);loadBrandForm();}refreshDash();refreshProdTable();tost('✅ Data restored!');}catch(err){tost('❌ Invalid file',true);}};r.readAsText(e.target.files[0]);};
+  inp.click();
+}
+
+/* ── ORDERS LOG ── */
+function getOrders(){try{return JSON.parse(localStorage.getItem('sf_orders')||'[]');}catch(e){return[];}}
+function renderOrdersTable(){
+  const orders=getOrders();
+  const wrap=document.getElementById('ordersTable');
+  if(!orders.length){
+    wrap.innerHTML='<div style="text-align:center;padding:48px;color:var(--muted);background:#fff;border-radius:14px;border:1px solid #f0ebe0"><div style="font-size:44px;margin-bottom:12px">📭</div><div style="font-size:15px;font-weight:600">No orders yet</div><div style="font-size:13px;margin-top:6px">Orders placed on your website will appear here automatically.</div></div>';
+    return;
+  }
+  const totalRev=orders.reduce((s,o)=>s+(o.pricing?.grandTotal||0),0);
+  const totalGST=orders.reduce((s,o)=>s+(o.pricing?.gst||0),0);
+  const pending=orders.filter(o=>o.status==='Awaiting Verification').length;
+  wrap.innerHTML=`
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px">
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;border:1px solid #f0ebe0;box-shadow:0 2px 8px rgba(0,0,0,.04)"><div style="font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Total Orders</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ink)">${orders.length}</div></div>
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;border:1px solid #f0ebe0;box-shadow:0 2px 8px rgba(0,0,0,.04)"><div style="font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Total Revenue</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--gold)">₹${totalRev.toLocaleString('en-IN')}</div></div>
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;border:1px solid #f0ebe0;box-shadow:0 2px 8px rgba(0,0,0,.04)"><div style="font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">GST Collected</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--leaf)">₹${totalGST.toLocaleString('en-IN')}</div>${pending?`<div style="font-size:11px;color:#e88020;margin-top:4px">⏳ ${pending} awaiting verification</div>`:''}</div>
+    </div>
+    <div style="overflow-x:auto;border-radius:14px;border:1px solid #f0ebe0;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+    <table style="width:100%;border-collapse:collapse;background:#fff;font-size:13px">
+      <thead><tr style="background:var(--ink);color:#fff">
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">ORDER REF</th>
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">DATE</th>
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">CUSTOMER</th>
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">ITEMS</th>
+        <th style="padding:11px 14px;text-align:right;font-size:10px;letter-spacing:1.5px;font-weight:700">TOTAL</th>
+        <th style="padding:11px 14px;text-align:right;font-size:10px;letter-spacing:1.5px;font-weight:700">GST</th>
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">STATUS</th>
+        <th style="padding:11px 14px;text-align:center;font-size:10px;letter-spacing:1.5px;font-weight:700">ACTION</th>
+      </tr></thead>
+      <tbody>
+        ${orders.map((o,i)=>{
+          const statusColor=o.status==='Confirmed'?'#1e6b3a':o.status==='Awaiting Verification'?'#9a6500':'#555';
+          const statusBg=o.status==='Confirmed'?'#e8f5ec':o.status==='Awaiting Verification'?'#fff8ee':'#f5f5f5';
+          const items=(o.items||[]).map(it=>`${it.weight} ×${it.qty}`).join(', ');
+          return `<tr style="border-bottom:1px solid #f5f0e8;${i%2===0?'':'background:#fdfbf7'}">
+            <td style="padding:11px 14px;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--leaf)">${o.ref||'—'}</td>
+            <td style="padding:11px 14px;color:var(--muted)">${(o.dateLocal||o.date||'').slice(0,16)}</td>
+            <td style="padding:11px 14px"><div style="font-weight:600">${o.customer?.name||'—'}</div><div style="font-size:11px;color:var(--muted)">${o.customer?.phone||''}</div></td>
+            <td style="padding:11px 14px;color:var(--muted);max-width:160px">${items||'—'}</td>
+            <td style="padding:11px 14px;text-align:right;font-weight:700;font-family:'Cormorant Garamond',serif;font-size:16px">₹${o.pricing?.grandTotal||'—'}</td>
+            <td style="padding:11px 14px;text-align:right;color:var(--leaf)">₹${o.pricing?.gst||'—'}</td>
+            <td style="padding:11px 14px"><span style="background:${statusBg};color:${statusColor};padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700">${o.status||'—'}</span></td>
+            <td style="padding:11px 14px;text-align:center">
+              <button onclick="confirmOrder(${i})" style="background:#e8f5ec;border:none;color:var(--leaf);padding:5px 10px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;margin:2px" title="Mark confirmed">✓ Confirm</button>
+              <button onclick="viewOrder(${i})" style="background:#f5f0e8;border:none;color:var(--ink);padding:5px 10px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;margin:2px" title="View details">👁 View</button>
+            </td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table></div>`;
+}
+function confirmOrder(i){
+  const orders=getOrders();
+  orders[i].status='Confirmed';
+  localStorage.setItem('sf_orders',JSON.stringify(orders));
+  renderOrdersTable();
+  tost('✅ Order marked as Confirmed!');
+}
+function viewOrder(i){
+  const o=getOrders()[i];
+  const items=(o.items||[]).map(it=>`${it.name} ${it.weight} ×${it.qty} = ₹${it.total}`).join('\n');
+  alert(`ORDER: ${o.ref}\nDate: ${o.dateLocal||o.date}\nStatus: ${o.status}\n\nCUSTOMER:\n${o.customer?.name} · ${o.customer?.phone}\n${o.customer?.address}\n\nITEMS:\n${items}\n\nPRICING:\nProducts: ₹${o.pricing?.productTotal}\nGST (5%): ₹${o.pricing?.gst}\nShipping: ₹${o.pricing?.shipping} (${o.pricing?.shippingZone})\nGRAND TOTAL: ₹${o.pricing?.grandTotal}\n\nHSN Code: ${o.pricing?.hsnCode||'09103030'}\nPayment: ${o.payment?.method}\nScreenshot: ${o.payment?.screenshotUploaded?'Uploaded on website':'No'}`);
+}
+function exportOrdersCSV(){
+  const orders=getOrders();
+  if(!orders.length){tost('No orders to export',true);return;}
+  const rows=[['Order Ref','Date','Status','Customer Name','Phone','Address','PIN','Items','Product Total','GST 5%','HSN Code','Shipping Zone','Shipping','Grand Total','Payment Method','Screenshot']];
+  orders.forEach(o=>{
+    const items=(o.items||[]).map(it=>`${it.name} ${it.weight} x${it.qty}`).join(' | ');
+    rows.push([o.ref,o.dateLocal||o.date,o.status,o.customer?.name,o.customer?.phone,o.customer?.address,o.customer?.pincode,items,o.pricing?.productTotal,o.pricing?.gst,o.pricing?.hsnCode||'09103030',o.pricing?.shippingZone,o.pricing?.shipping,o.pricing?.grandTotal,o.payment?.method,o.payment?.screenshotUploaded?'Yes':'No']);
+  });
+  const csv=rows.map(r=>r.map(c=>`"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=`shivar-orders-${new Date().toISOString().slice(0,10)}.csv`;a.click();
+  tost('📊 CSV downloaded — ready for GST filing!');
+}
+function clearOrderLog(){
+  if(!confirm('Clear all orders from this browser? This cannot be undone.\n\nTip: Export CSV first!')) return;
+  localStorage.removeItem('sf_orders');
+  renderOrdersTable();
+  tost('🗑 Order log cleared');
+}
+
+/* ── helpers ── */
+function v(id){return document.getElementById(id).value;}
+function sv(id,val){document.getElementById(id).value=val;}
+function tost(msg,err=false){const t=document.getElementById('atost');t.textContent=msg;t.style.borderLeftColor=err?'var(--danger)':'var(--gold)';t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3200);}
+</script>
+</body>
+</html>
