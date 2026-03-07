@@ -137,6 +137,8 @@ tbody tr:last-child td{border-bottom:none}
     <div class="sb-sec">Products</div>
     <button class="sb-a" onclick="tab('products',this)"><span class="ico">📦</span>All Products</button>
     <button class="sb-a" onclick="tab('add',this)"><span class="ico">➕</span>Add Product</button>
+    <div class="sb-sec">Orders</div>
+    <button class="sb-a" onclick="tab('orders',this)"><span class="ico">🧾</span>Order Log</button>
     <div class="sb-sec">Store</div>
     <button class="sb-a" onclick="tab('brand',this)"><span class="ico">🏷️</span>Brand &amp; Contact</button>
     <button class="sb-a" onclick="tab('deploy',this)"><span class="ico">🚀</span>Publish Website</button>
@@ -234,6 +236,25 @@ tbody tr:last-child td{border-bottom:none}
       </div>
     </div>
 
+    <!-- ══ ORDERS ══ -->
+    <div class="tab" id="tab-orders">
+      <div class="notice notice-green">🧾 All orders placed on your website are logged here automatically. This is your audit trail for GST filing.</div>
+      <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;font-size:13px;color:var(--muted)">Orders are saved in this browser. Also connect Google Sheets for permanent cloud backup — see setup guide below.</div>
+        <button class="btn btn-gold" onclick="exportOrdersCSV()">⬇ Export CSV (GST Filing)</button>
+        <button class="btn btn-ghost" onclick="clearOrderLog()">🗑 Clear Log</button>
+      </div>
+      <div id="ordersTable"></div>
+      <div style="margin-top:28px;background:#f8f8f4;border:1.5px solid #e0d8c8;border-radius:14px;padding:20px 22px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px">📊 Connect Google Sheets for Permanent Storage</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px">Every order will automatically appear in a Google Sheet — perfect for monthly GST filing, CA submissions, and team access from any device.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="GOOGLE_SHEETS_SETUP.md" target="_blank" class="btn btn-gold">📖 View Setup Guide</a>
+          <div style="font-size:12px;color:var(--muted);align-self:center">Takes 10 minutes · 100% free · No coding needed</div>
+        </div>
+      </div>
+    </div>
+
     <!-- ══ DEPLOY ══ -->
     <div class="tab" id="tab-deploy">
       <div class="notice notice-green">🚀 Your website is ready! Follow the steps below to put it online for FREE in under 5 minutes.</div>
@@ -313,7 +334,7 @@ tbody tr:last-child td{border-bottom:none}
 <script src="products.js"></script>
 <script>
 let editId=null;
-const TABS={dash:'Dashboard Overview',products:'Product Catalogue',add:'Add New Product',brand:'Brand & Contact',deploy:'Publish Website'};
+const TABS={dash:'Dashboard Overview',products:'Product Catalogue',add:'Add New Product',brand:'Brand & Contact',orders:'Order Log & Audit Trail',deploy:'Publish Website'};
 
 /* ── init ── */
 document.getElementById('sbLogo').src=LOGO_B64;
@@ -327,6 +348,7 @@ function tab(id,el){
   document.getElementById('tab-'+id).classList.add('on');
   if(el) el.classList.add('on');
   document.getElementById('tbTitle').textContent=TABS[id]||'';
+  if(id==='orders') renderOrdersTable();
 }
 
 /* ── dashboard ── */
@@ -414,6 +436,89 @@ function importJSON(){
   const inp=document.createElement('input');inp.type='file';inp.accept='.json';
   inp.onchange=e=>{const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(d.products)saveProducts(d.products);if(d.brand){saveBrand(d.brand);loadBrandForm();}refreshDash();refreshProdTable();tost('✅ Data restored!');}catch(err){tost('❌ Invalid file',true);}};r.readAsText(e.target.files[0]);};
   inp.click();
+}
+
+/* ── ORDERS LOG ── */
+function getOrders(){try{return JSON.parse(localStorage.getItem('sf_orders')||'[]');}catch(e){return[];}}
+function renderOrdersTable(){
+  const orders=getOrders();
+  const wrap=document.getElementById('ordersTable');
+  if(!orders.length){
+    wrap.innerHTML='<div style="text-align:center;padding:48px;color:var(--muted);background:#fff;border-radius:14px;border:1px solid #f0ebe0"><div style="font-size:44px;margin-bottom:12px">📭</div><div style="font-size:15px;font-weight:600">No orders yet</div><div style="font-size:13px;margin-top:6px">Orders placed on your website will appear here automatically.</div></div>';
+    return;
+  }
+  const totalRev=orders.reduce((s,o)=>s+(o.pricing?.grandTotal||0),0);
+  const totalGST=orders.reduce((s,o)=>s+(o.pricing?.gst||0),0);
+  const pending=orders.filter(o=>o.status==='Awaiting Verification').length;
+  wrap.innerHTML=`
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px">
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;border:1px solid #f0ebe0;box-shadow:0 2px 8px rgba(0,0,0,.04)"><div style="font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Total Orders</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ink)">${orders.length}</div></div>
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;border:1px solid #f0ebe0;box-shadow:0 2px 8px rgba(0,0,0,.04)"><div style="font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Total Revenue</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--gold)">₹${totalRev.toLocaleString('en-IN')}</div></div>
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;border:1px solid #f0ebe0;box-shadow:0 2px 8px rgba(0,0,0,.04)"><div style="font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">GST Collected</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--leaf)">₹${totalGST.toLocaleString('en-IN')}</div>${pending?`<div style="font-size:11px;color:#e88020;margin-top:4px">⏳ ${pending} awaiting verification</div>`:''}</div>
+    </div>
+    <div style="overflow-x:auto;border-radius:14px;border:1px solid #f0ebe0;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+    <table style="width:100%;border-collapse:collapse;background:#fff;font-size:13px">
+      <thead><tr style="background:var(--ink);color:#fff">
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">ORDER REF</th>
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">DATE</th>
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">CUSTOMER</th>
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">ITEMS</th>
+        <th style="padding:11px 14px;text-align:right;font-size:10px;letter-spacing:1.5px;font-weight:700">TOTAL</th>
+        <th style="padding:11px 14px;text-align:right;font-size:10px;letter-spacing:1.5px;font-weight:700">GST</th>
+        <th style="padding:11px 14px;text-align:left;font-size:10px;letter-spacing:1.5px;font-weight:700">STATUS</th>
+        <th style="padding:11px 14px;text-align:center;font-size:10px;letter-spacing:1.5px;font-weight:700">ACTION</th>
+      </tr></thead>
+      <tbody>
+        ${orders.map((o,i)=>{
+          const statusColor=o.status==='Confirmed'?'#1e6b3a':o.status==='Awaiting Verification'?'#9a6500':'#555';
+          const statusBg=o.status==='Confirmed'?'#e8f5ec':o.status==='Awaiting Verification'?'#fff8ee':'#f5f5f5';
+          const items=(o.items||[]).map(it=>`${it.weight} ×${it.qty}`).join(', ');
+          return `<tr style="border-bottom:1px solid #f5f0e8;${i%2===0?'':'background:#fdfbf7'}">
+            <td style="padding:11px 14px;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--leaf)">${o.ref||'—'}</td>
+            <td style="padding:11px 14px;color:var(--muted)">${(o.dateLocal||o.date||'').slice(0,16)}</td>
+            <td style="padding:11px 14px"><div style="font-weight:600">${o.customer?.name||'—'}</div><div style="font-size:11px;color:var(--muted)">${o.customer?.phone||''}</div></td>
+            <td style="padding:11px 14px;color:var(--muted);max-width:160px">${items||'—'}</td>
+            <td style="padding:11px 14px;text-align:right;font-weight:700;font-family:'Cormorant Garamond',serif;font-size:16px">₹${o.pricing?.grandTotal||'—'}</td>
+            <td style="padding:11px 14px;text-align:right;color:var(--leaf)">₹${o.pricing?.gst||'—'}</td>
+            <td style="padding:11px 14px"><span style="background:${statusBg};color:${statusColor};padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700">${o.status||'—'}</span></td>
+            <td style="padding:11px 14px;text-align:center">
+              <button onclick="confirmOrder(${i})" style="background:#e8f5ec;border:none;color:var(--leaf);padding:5px 10px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;margin:2px" title="Mark confirmed">✓ Confirm</button>
+              <button onclick="viewOrder(${i})" style="background:#f5f0e8;border:none;color:var(--ink);padding:5px 10px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;margin:2px" title="View details">👁 View</button>
+            </td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table></div>`;
+}
+function confirmOrder(i){
+  const orders=getOrders();
+  orders[i].status='Confirmed';
+  localStorage.setItem('sf_orders',JSON.stringify(orders));
+  renderOrdersTable();
+  tost('✅ Order marked as Confirmed!');
+}
+function viewOrder(i){
+  const o=getOrders()[i];
+  const items=(o.items||[]).map(it=>`${it.name} ${it.weight} ×${it.qty} = ₹${it.total}`).join('\n');
+  alert(`ORDER: ${o.ref}\nDate: ${o.dateLocal||o.date}\nStatus: ${o.status}\n\nCUSTOMER:\n${o.customer?.name} · ${o.customer?.phone}\n${o.customer?.address}\n\nITEMS:\n${items}\n\nPRICING:\nProducts: ₹${o.pricing?.productTotal}\nGST (5%): ₹${o.pricing?.gst}\nShipping: ₹${o.pricing?.shipping} (${o.pricing?.shippingZone})\nGRAND TOTAL: ₹${o.pricing?.grandTotal}\n\nHSN Code: ${o.pricing?.hsnCode||'09103030'}\nPayment: ${o.payment?.method}\nScreenshot: ${o.payment?.screenshotUploaded?'Uploaded on website':'No'}`);
+}
+function exportOrdersCSV(){
+  const orders=getOrders();
+  if(!orders.length){tost('No orders to export',true);return;}
+  const rows=[['Order Ref','Date','Status','Customer Name','Phone','Address','PIN','Items','Product Total','GST 5%','HSN Code','Shipping Zone','Shipping','Grand Total','Payment Method','Screenshot']];
+  orders.forEach(o=>{
+    const items=(o.items||[]).map(it=>`${it.name} ${it.weight} x${it.qty}`).join(' | ');
+    rows.push([o.ref,o.dateLocal||o.date,o.status,o.customer?.name,o.customer?.phone,o.customer?.address,o.customer?.pincode,items,o.pricing?.productTotal,o.pricing?.gst,o.pricing?.hsnCode||'09103030',o.pricing?.shippingZone,o.pricing?.shipping,o.pricing?.grandTotal,o.payment?.method,o.payment?.screenshotUploaded?'Yes':'No']);
+  });
+  const csv=rows.map(r=>r.map(c=>`"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=`shivar-orders-${new Date().toISOString().slice(0,10)}.csv`;a.click();
+  tost('📊 CSV downloaded — ready for GST filing!');
+}
+function clearOrderLog(){
+  if(!confirm('Clear all orders from this browser? This cannot be undone.\n\nTip: Export CSV first!')) return;
+  localStorage.removeItem('sf_orders');
+  renderOrdersTable();
+  tost('🗑 Order log cleared');
 }
 
 /* ── helpers ── */

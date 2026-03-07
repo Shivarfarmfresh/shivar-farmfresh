@@ -418,6 +418,36 @@ footer{background:#04100a;padding:56px 40px 24px}
 .foot-bar{max-width:1100px;margin:0 auto;padding-top:18px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;font-size:11px;color:rgba(255,255,255,.2)}
 .fssai-pill{background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.25);padding:4px 11px;border-radius:7px;color:var(--gold)}
 
+/* ── SCREENSHOT UPLOAD ── */
+.upload-zone{border:2.5px dashed #c8d8c0;border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;transition:.3s;background:#f8fdf9;margin-top:13px;position:relative}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--leaf2);background:var(--leaf3)}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.uz-icon{font-size:36px;margin-bottom:8px;display:block}
+.uz-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.uz-sub{font-size:12px;color:var(--muted)}
+.uz-preview{width:100%;max-height:180px;object-fit:contain;border-radius:10px;margin-top:10px;display:none}
+.upload-zone.has-file{border-color:var(--leaf2);background:var(--leaf3)}
+/* pending state */
+.pending-box{text-align:center;padding:8px 0}
+.pending-icon{font-size:56px;margin-bottom:12px;display:block}
+.pending-h{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.pending-p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;max-width:360px;margin-left:auto;margin-right:auto}
+.pending-steps{background:var(--cream);border-radius:12px;padding:16px 18px;margin-bottom:14px;text-align:left}
+.ps-row{display:flex;gap:11px;align-items:flex-start;margin-bottom:11px;font-size:13px}
+.ps-row:last-child{margin-bottom:0}
+.ps-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.ps-done{background:var(--leaf2);color:#fff}
+.ps-wait{background:#e8e0d0;color:var(--muted)}
+.ps-active{background:var(--gold);color:#fff}
+.ps-text{color:var(--ink);line-height:1.5}
+.ps-text small{color:var(--muted);font-size:11px;display:block;margin-top:1px}
+.ref-pill{background:var(--ink);color:var(--gold2);border-radius:10px;padding:11px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.rp-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.rp-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:2px}
+.wa-confirm-btn{width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:13px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:8px;transition:.2s}
+.wa-confirm-btn:hover{opacity:.9}
+.done-btn{width:100%;background:none;border:1.5px solid #ddd;color:var(--muted);padding:10px;border-radius:10px;font-size:13px;cursor:pointer}
+
 /* ── TOAST ── */
 .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 22px;border-radius:40px;font-size:13px;font-weight:600;z-index:400;transition:.3s;border:1px solid rgba(194,135,12,.5);box-shadow:0 6px 24px rgba(0,0,0,.3);pointer-events:none;white-space:nowrap}
 .toast.up{transform:translateX(-50%) translateY(0)}
@@ -838,71 +868,65 @@ footer{background:#04100a;padding:56px 40px 24px}
         <div class="secure-row" style="margin-top:12px"><div class="sec-badge">🔒 Secure Checkout</div><div class="sec-badge">🚚 Pan India Delivery</div><div class="sec-badge">✅ 5% GST Included</div></div>
       </div>
 
-      <!-- STEP 2 — PAYMENT -->
+      <!-- STEP 2 — PAYMENT: Pay via UPI + upload screenshot -->
       <div id="ckS2" style="display:none">
         <div class="ck-sum" id="ckSum2"></div>
-        <div class="ck-sec">💳 Payment Method</div>
-        <div class="pay-grid">
-          <div class="pay-card sel" id="pc-upi" onclick="selPay('upi')"><input type="radio" name="pay" checked><div class="pay-icon">📱</div><div class="pay-name">UPI / QR</div><div class="pay-desc">GPay · PhonePe · Paytm</div></div>
-          <div class="pay-card" id="pc-card" onclick="selPay('card')"><input type="radio" name="pay"><div class="pay-icon">💳</div><div class="pay-name">Credit / Debit Card</div><div class="pay-desc">Visa · Mastercard · RuPay</div></div>
-          <div class="pay-card" id="pc-nb" onclick="selPay('nb')"><input type="radio" name="pay"><div class="pay-icon">🏦</div><div class="pay-name">Net Banking</div><div class="pay-desc">All major banks</div></div>
-        </div>
-        <!-- UPI -->
-        <div class="pay-panel show" id="pp-upi">
-          <div class="upi-box">
-            <img id="ckQr" src="" alt="QR">
-            <div class="upi-steps-list">
-              <div class="upi-step-row"><span>1️⃣</span><span>Open <strong>GPay, PhonePe</strong> or Paytm</span></div>
-              <div class="upi-step-row"><span>2️⃣</span><span>Scan QR or enter UPI ID below</span></div>
-              <div class="upi-step-row"><span>3️⃣</span><span>Pay exact amount &amp; screenshot</span></div>
-              <div class="upi-step-row"><span>4️⃣</span><span>Click <strong>Place Order</strong> — we confirm on WhatsApp</span></div>
-              <div class="upi-id-box"><div class="uid-l">UPI ID</div><div class="uid-v" id="ckUpiId">9511627623@ibl</div></div>
-            </div>
+        <div class="ck-sec">💳 Pay via UPI</div>
+        <div class="upi-box">
+          <img id="ckQr" src="" alt="QR">
+          <div class="upi-steps-list">
+            <div class="upi-step-row"><span>1️⃣</span><span>Open <strong>GPay, PhonePe</strong> or Paytm</span></div>
+            <div class="upi-step-row"><span>2️⃣</span><span>Scan QR or enter UPI ID below</span></div>
+            <div class="upi-step-row"><span>3️⃣</span><span>Pay the <strong>exact grand total</strong></span></div>
+            <div class="upi-step-row"><span>4️⃣</span><span>Upload your payment screenshot below</span></div>
+            <div class="upi-id-box"><div class="uid-l">UPI ID</div><div class="uid-v" id="ckUpiId">9511627623@ibl</div></div>
           </div>
         </div>
-        <!-- Card -->
-        <div class="pay-panel" id="pp-card">
-          <div class="card-box">
-            <div class="card-notice">🔒 <span>You'll receive a secure payment link on WhatsApp after placing the order.</span></div>
-            <div class="card-brands"><span class="card-brand visa">VISA</span><span class="card-brand mc">MC</span><span class="card-brand rupay">RuPay</span><span class="card-brand amex">Amex</span></div>
-            <div class="ck-field"><div class="ck-label">Name on Card <span class="ck-req">*</span></div><input class="ck-input" id="ck-cname" placeholder="As printed on your card"></div>
-            <div class="ck-field"><div class="ck-label">Card Number <span class="ck-req">*</span></div><input class="ck-input" id="ck-cnum" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" oninput="fmtCard(this)"></div>
-            <div class="ck-row">
-              <div class="ck-field"><div class="ck-label">Expiry (MM/YY) <span class="ck-req">*</span></div><input class="ck-input" id="ck-cexp" placeholder="MM/YY" maxlength="5" oninput="fmtExp(this)"></div>
-              <div class="ck-field"><div class="ck-label">CVV <span class="ck-req">*</span></div><input class="ck-input" id="ck-ccvv" placeholder="3 digits" maxlength="4" type="password"></div>
-            </div>
-            <div style="font-size:11px;color:#888;margin-top:6px">🔒 Card details are never stored on our servers</div>
-          </div>
+
+        <!-- Screenshot upload -->
+        <div class="ck-sec" style="margin-top:16px">📸 Upload Payment Screenshot</div>
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="screenshotFile" accept="image/*" onchange="onScreenshot(this)">
+          <span class="uz-icon" id="uzIcon">📷</span>
+          <div class="uz-title" id="uzTitle">Tap to upload your payment screenshot</div>
+          <div class="uz-sub" id="uzSub">JPG, PNG · Max 5MB · Required to confirm order</div>
+          <img class="uz-preview" id="uzPreview" alt="Screenshot preview">
         </div>
-        <!-- Net Banking -->
-        <div class="pay-panel" id="pp-nb">
-          <div class="nb-box">
-            <div class="nb-notice">🔒 <span>You'll receive a secure net banking link on WhatsApp after placing your order.</span></div>
-            <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Select Your Bank</div>
-            <div class="nb-grid">
-              <div class="nb-bank" onclick="selBank(this,'SBI')">🏦 SBI</div>
-              <div class="nb-bank" onclick="selBank(this,'HDFC')">🏦 HDFC</div>
-              <div class="nb-bank" onclick="selBank(this,'ICICI')">🏦 ICICI</div>
-              <div class="nb-bank" onclick="selBank(this,'Axis')">🏦 Axis</div>
-              <div class="nb-bank" onclick="selBank(this,'Kotak')">🏦 Kotak</div>
-              <div class="nb-bank" onclick="selBank(this,'Other')">🏦 Other</div>
-            </div>
-          </div>
+        <div class="ck-errmsg" id="e-screenshot" style="margin-top:6px">Please upload your payment screenshot before proceeding</div>
+
+        <div class="ck-nav" style="margin-top:16px">
+          <button class="ck-back" onclick="goStep1()">← Back</button>
+          <button class="ck-next" id="ckSubmitBtn" onclick="submitOrder()">Submit Order &amp; Screenshot ✓</button>
         </div>
-        <div class="ck-nav"><button class="ck-back" onclick="goStep1()">← Back</button><button class="ck-next" onclick="placeOrder()">Place Order ✓</button></div>
-        <div class="secure-row" style="margin-top:12px"><div class="sec-badge">🔒 256-bit SSL</div><div class="sec-badge">🛡️ Secure Payment</div><div class="sec-badge">↩️ Easy Returns</div></div>
+        <div class="secure-row" style="margin-top:12px">
+          <div class="sec-badge">🔒 Screenshot stays private</div>
+          <div class="sec-badge">✅ Order confirmed after verification</div>
+        </div>
       </div>
 
-      <!-- STEP 3 — SUCCESS -->
+      <!-- STEP 3 — PENDING VERIFICATION (Amazon style) -->
       <div id="ckS3" style="display:none">
-        <div class="ck-ok">
-          <span class="ck-ok-icon">🎉</span>
-          <h3>Order Placed Successfully!</h3>
-          <p id="ckOkMsg">Thank you! We'll confirm your order on WhatsApp shortly.</p>
-          <div class="ck-ref-box"><div class="ck-ref-lbl">Order Reference</div><div class="ck-ref-val" id="ckRef">SF-000000</div></div>
-          <div class="ck-ref-box"><div class="ck-ref-lbl">Delivering To</div><div style="font-size:13px;color:var(--ink);margin-top:3px;line-height:1.6" id="ckAddr"></div></div>
-          <button class="ck-wa-btn" id="ckWaBtn">💬 Open WhatsApp to Confirm</button>
-          <button class="ck-done-btn" onclick="finishOrder()">✓ Done — Continue Shopping</button>
+        <div class="pending-box">
+          <span class="pending-icon">🕐</span>
+          <div class="pending-h">Payment Under Review</div>
+          <p class="pending-p">Your order is registered. We are verifying your payment screenshot — usually done within <strong>15–30 minutes</strong>.</p>
+          <div class="ref-pill">
+            <div><div class="rp-label">Order Reference</div><div class="rp-val" id="ckRef">SF-000000</div></div>
+            <div style="font-size:20px">📋</div>
+          </div>
+          <div class="pending-steps">
+            <div class="ps-row"><div class="ps-dot ps-done">✓</div><div class="ps-text">Order placed &amp; details saved<small>Logged in our system</small></div></div>
+            <div class="ps-row"><div class="ps-dot ps-done">✓</div><div class="ps-text">Payment screenshot uploaded<small>Received by Shivar Farmfresh</small></div></div>
+            <div class="ps-row"><div class="ps-dot ps-active">⏳</div><div class="ps-text">Payment being verified<small>Ashwini will confirm within 30 min</small></div></div>
+            <div class="ps-row"><div class="ps-dot ps-wait">4</div><div class="ps-text" style="color:var(--muted)">Order confirmed &amp; dispatched<small>You'll receive WhatsApp confirmation</small></div></div>
+          </div>
+          <div style="background:#fff8ee;border:1.5px solid rgba(194,135,12,.25);border-radius:11px;padding:14px 16px;margin-bottom:14px;font-size:13px;line-height:1.7;text-align:left">
+            <strong>📱 What happens next:</strong><br>
+            Ashwini will verify your payment and send you a <strong>WhatsApp confirmation</strong> with your order details and expected delivery date. No action needed from you.
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:14px" id="ckAddr"></div>
+          <button class="wa-confirm-btn" id="ckWaBtn">💬 Send Details on WhatsApp (Optional)</button>
+          <button class="done-btn" onclick="finishOrder()">✓ Done — Continue Shopping</button>
         </div>
       </div>
 
@@ -954,7 +978,7 @@ function waLink(p,b){const m=`Hello Shivar Farmfresh! 🌿\n\nI'd like to order:
 const brand = getBrand();
 let products = getProds();
 let cart = JSON.parse(localStorage.getItem('sf_cart')||'[]');
-let payMethod = 'upi';
+let payMethod = 'upi'; // kept for reference
 let selBankVal = '';
 
 /* ════ INIT ════ */
@@ -1098,113 +1122,220 @@ function renderCart(){
 function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartDrawer').classList.add('open');}
 function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartDrawer').classList.remove('open');}
 
-/* ════ CHECKOUT ════ */
-function buildSum(id,pin){
-  const b=orderCalc(cart,products,pin||'');
-  const lines=cart.map(it=>{const p=products.find(x=>x.id===it.id);return p?`<div class="ck-sum-row"><span>${p.name} ${p.weight} ×${it.qty}</span><span>₹${p.price*it.qty}</span></div>`:''}).filter(Boolean).join('');
-  document.getElementById(id).innerHTML=`<div class="ck-sum-title">Order Summary</div>${lines}
+/* ════ GOOGLE SHEETS CONFIG ════
+   HOW TO SET UP (free, takes 10 min):
+   1. Go to script.google.com → New Project
+   2. Paste the Apps Script code from the SETUP GUIDE below
+   3. Deploy as Web App → Anyone → Copy the URL
+   4. Replace GOOGLE_SHEET_URL below with your URL
+   ════════════════════════════════ */
+const GOOGLE_SHEET_URL = ''; // ← paste your Google Apps Script URL here
+
+/* ════ CHECKOUT STATE ════ */
+let screenshotBase64 = null;
+let currentOrderRef = '';
+let currentOrderData = null;
+
+/* ════ SCREENSHOT HANDLER ════ */
+function onScreenshot(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { showToast('❌ File too large. Max 5MB.'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    screenshotBase64 = e.target.result;
+    const zone = document.getElementById('uploadZone');
+    const preview = document.getElementById('uzPreview');
+    const icon = document.getElementById('uzIcon');
+    const title = document.getElementById('uzTitle');
+    const sub = document.getElementById('uzSub');
+    preview.src = screenshotBase64;
+    preview.style.display = 'block';
+    zone.classList.add('has-file');
+    icon.textContent = '✅';
+    title.textContent = 'Screenshot uploaded!';
+    sub.textContent = file.name + ' · ' + (file.size/1024).toFixed(0) + ' KB';
+    document.getElementById('e-screenshot').classList.remove('show');
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ════ SAVE ORDER TO LOCAL STORAGE (admin panel audit log) ════ */
+function saveOrderLocally(order) {
+  try {
+    const orders = JSON.parse(localStorage.getItem('sf_orders') || '[]');
+    orders.unshift(order); // newest first
+    localStorage.setItem('sf_orders', JSON.stringify(orders.slice(0, 500))); // keep last 500
+  } catch(e) { console.warn('Could not save order locally', e); }
+}
+
+/* ════ SEND TO GOOGLE SHEETS ════ */
+async function sendToSheets(order) {
+  if (!GOOGLE_SHEET_URL) return; // not configured yet
+  try {
+    await fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    });
+  } catch(e) { console.warn('Sheets sync failed (non-critical)', e); }
+}
+
+/* ════ SUBMIT ORDER ════ */
+function submitOrder() {
+  if (!screenshotBase64) {
+    document.getElementById('e-screenshot').classList.add('show');
+    document.getElementById('uploadZone').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  const name  = document.getElementById('ck-name').value.trim();
+  const phone = document.getElementById('ck-phone').value.trim();
+  const line1 = document.getElementById('ck-line1').value.trim();
+  const line2 = document.getElementById('ck-line2').value.trim();
+  const city  = document.getElementById('ck-city').value.trim();
+  const state = document.getElementById('ck-state').value;
+  const pin   = document.getElementById('ck-pin').value.trim();
+  const note  = document.getElementById('ck-note').value.trim();
+  const addr  = [line1, line2, city, state + ' – ' + pin].filter(Boolean).join(', ');
+  const ref   = 'SF-' + Date.now().toString().slice(-6);
+  currentOrderRef = ref;
+  const b = orderCalc(cart, products, pin);
+  const lineItems = cart.map(it => {
+    const p = products.find(x => x.id === it.id);
+    return p ? { name: p.name, weight: p.weight, qty: it.qty, unitPrice: p.price, total: p.price * it.qty } : null;
+  }).filter(Boolean);
+
+  // Build full order record
+  const order = {
+    ref, date: new Date().toISOString(), dateLocal: new Date().toLocaleString('en-IN'),
+    status: 'Awaiting Verification',
+    customer: { name, phone, address: addr, pincode: pin, note },
+    items: lineItems,
+    pricing: { productTotal: b.prod, gst: b.gst, gstRate: '5%', hsnCode: '09103030', shipping: b.ship, shippingZone: b.r.label, grandTotal: b.grand },
+    payment: { method: 'UPI', upiId: brand.upi, screenshotUploaded: true },
+    screenshot: screenshotBase64
+  };
+  currentOrderData = order;
+
+  // Save locally for admin panel
+  saveOrderLocally(order);
+
+  // Send to Google Sheets (background, non-blocking)
+  sendToSheets({ ...order, screenshot: '[see WhatsApp]' });
+
+  // Build WhatsApp message
+  const itemLines = lineItems.map(it => `• ${it.name} ${it.weight} ×${it.qty} = ₹${it.total}`).join('\n');
+  const waMsg =
+    `🌿 *New Order — ${ref}*\n\n` +
+    `📦 *Items:*\n${itemLines}\n\n` +
+    `💰 Product Total: ₹${b.prod}\n` +
+    `🧾 GST (5% · HSN 09103030): ₹${b.gst}\n` +
+    `🚚 Shipping (${b.r.label} · ${b.r.days}): ₹${b.ship}\n` +
+    `✅ *Grand Total: ₹${b.grand}*\n` +
+    `💳 Payment: UPI (screenshot uploaded on website)\n\n` +
+    `📍 *Deliver to:*\n${name} · ${phone}\n${addr}\n` +
+    `${note ? '📝 ' + note + '\n' : ''}` +
+    `\nPlease verify payment screenshot and confirm order.`;
+
+  // Show pending screen
+  document.getElementById('ckS2').style.display = 'none';
+  document.getElementById('ckS3').style.display = 'block';
+  setStep(3);
+  document.getElementById('ckRef').textContent = ref;
+  document.getElementById('ckAddr').innerHTML =
+    `<strong>${name}</strong> · ${phone}<br>${addr}<br>` +
+    `<span style="color:var(--leaf2);font-weight:700">Grand Total: ₹${b.grand}</span>`;
+  document.getElementById('ckWaBtn').onclick = () =>
+    window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(waMsg)}`, '_blank');
+  document.getElementById('ckModal').scrollTop = 0;
+  showToast('✅ Order submitted! Awaiting payment verification.');
+}
+
+/* ════ CHECKOUT FLOW ════ */
+function buildSum(id, pin) {
+  const b = orderCalc(cart, products, pin || '');
+  const lines = cart.map(it => {
+    const p = products.find(x => x.id === it.id);
+    return p ? `<div class="ck-sum-row"><span>${p.name} ${p.weight} ×${it.qty}</span><span>₹${p.price * it.qty}</span></div>` : '';
+  }).filter(Boolean).join('');
+  document.getElementById(id).innerHTML = `<div class="ck-sum-title">Order Summary</div>${lines}
     <div class="ck-sum-row" style="margin-top:7px;padding-top:7px;border-top:1px dashed #d8d0c0"><span>Product Total</span><span>₹${b.prod}</span></div>
     <div class="ck-sum-row"><span>GST (5%)</span><span>₹${b.gst}</span></div>
-    <div class="ck-sum-row"><span>Shipping (${b.r.label})</span><span>${pin&&pin.length===6?'₹'+b.ship:'Enter PIN →'}</span></div>
-    <div class="ck-sum-row total"><span>Grand Total</span><span>${pin&&pin.length===6?'₹'+b.grand:'—'}</span></div>`;
+    <div class="ck-sum-row"><span>Shipping (${b.r.label})</span><span>${pin && pin.length === 6 ? '₹' + b.ship : 'Enter PIN →'}</span></div>
+    <div class="ck-sum-row total"><span>Grand Total</span><span>${pin && pin.length === 6 ? '₹' + b.grand : '—'}</span></div>`;
 }
-function onPinInput(val){
-  const box=document.getElementById('ckShipBox');
-  if(val.length!==6){box.style.display='none';return;}
-  const b=orderCalc(cart,products,val);
-  document.getElementById('shipZoneLabel').textContent=`🚚 ${b.r.label} — ${b.r.days}`;
-  document.getElementById('shipGrid').innerHTML=`<div class="ship-box"><div class="ship-box-label">Product + GST</div><div class="ship-box-val">₹${b.prod} + ₹${b.gst}</div></div><div class="ship-box"><div class="ship-box-label">Shipping (${Math.ceil(b.grams/500)} slab)</div><div class="ship-box-val">₹${b.ship}</div></div>`;
-  document.getElementById('shipGrand').textContent='₹'+b.grand;
-  document.getElementById('shipNote').textContent='✦ Courier: Delhivery / DTDC / Shree Maruti · GST @ 5% HSN 09103030';
-  box.style.display='block';
-  buildSum('ckSum1',val);
+function onPinInput(val) {
+  const box = document.getElementById('ckShipBox');
+  if (val.length !== 6) { box.style.display = 'none'; return; }
+  const b = orderCalc(cart, products, val);
+  document.getElementById('shipZoneLabel').textContent = `🚚 ${b.r.label} — ${b.r.days}`;
+  document.getElementById('shipGrid').innerHTML =
+    `<div class="ship-box"><div class="ship-box-label">Product + GST</div><div class="ship-box-val">₹${b.prod} + ₹${b.gst}</div></div>` +
+    `<div class="ship-box"><div class="ship-box-label">Shipping (${Math.ceil(b.grams / 500)} slab)</div><div class="ship-box-val">₹${b.ship}</div></div>`;
+  document.getElementById('shipGrand').textContent = '₹' + b.grand;
+  document.getElementById('shipNote').textContent = '✦ Courier: Delhivery / DTDC / Shree Maruti · GST @ 5% HSN 09103030';
+  box.style.display = 'block';
+  buildSum('ckSum1', val);
 }
-function startCheckout(){
-  if(!cart.length){showToast('🛒 Your cart is empty!');return;}
+function startCheckout() {
+  if (!cart.length) { showToast('🛒 Your cart is empty!'); return; }
   closeCart();
-  buildSum('ckSum1','');
-  document.getElementById('ckShipBox').style.display='none';
-  ['ckS1','ckS2','ckS3'].forEach((id,i)=>document.getElementById(id).style.display=i===0?'block':'none');
+  screenshotBase64 = null;
+  // reset upload zone
+  const zone = document.getElementById('uploadZone');
+  if (zone) {
+    zone.classList.remove('has-file');
+    document.getElementById('uzIcon').textContent = '📷';
+    document.getElementById('uzTitle').textContent = 'Tap to upload your payment screenshot';
+    document.getElementById('uzSub').textContent = 'JPG, PNG · Max 5MB · Required to confirm order';
+    document.getElementById('uzPreview').style.display = 'none';
+    document.getElementById('screenshotFile').value = '';
+  }
+  buildSum('ckSum1', '');
+  document.getElementById('ckShipBox').style.display = 'none';
+  ['ckS1', 'ckS2', 'ckS3'].forEach((id, i) => document.getElementById(id).style.display = i === 0 ? 'block' : 'none');
   setStep(1);
   document.getElementById('ckOverlay').classList.add('open');
-  document.getElementById('ckModal').scrollTop=0;
+  document.getElementById('ckModal').scrollTop = 0;
 }
-function closeCheckout(){document.getElementById('ckOverlay').classList.remove('open');}
-function setStep(n){
-  const lbls=['','Step 1 of 3','Step 2 of 3','Step 3 of 3'];
-  const titles=['','Delivery Address','Payment Method','Order Confirmed!'];
-  const ws=['','33%','66%','100%'];
-  document.getElementById('ckStepLbl').textContent=lbls[n];
-  document.getElementById('ckTitle').textContent=titles[n];
-  document.getElementById('ckBar').style.width=ws[n];
+function closeCheckout() { document.getElementById('ckOverlay').classList.remove('open'); }
+function setStep(n) {
+  const lbls = ['', 'Step 1 of 3', 'Step 2 of 3', 'Step 3 of 3'];
+  const titles = ['', 'Delivery Address', 'Pay & Upload Screenshot', 'Awaiting Verification'];
+  const ws = ['', '33%', '66%', '100%'];
+  document.getElementById('ckStepLbl').textContent = lbls[n];
+  document.getElementById('ckTitle').textContent = titles[n];
+  document.getElementById('ckBar').style.width = ws[n];
 }
-function validate(id,errId,test){
-  const el=document.getElementById(id),err=document.getElementById(errId);
-  const ok=test(el.value.trim());
-  el.classList.toggle('err',!ok);err.classList.toggle('show',!ok);return ok;
+function validate(id, errId, test) {
+  const el = document.getElementById(id), err = document.getElementById(errId);
+  const ok = test(el.value.trim());
+  el.classList.toggle('err', !ok); err.classList.toggle('show', !ok); return ok;
 }
-function goStep2(){
-  let ok=true;
-  ok=validate('ck-name','e-name',v=>v.length>=2)&&ok;
-  ok=validate('ck-phone','e-phone',v=>/^\d{10}$/.test(v))&&ok;
-  ok=validate('ck-line1','e-line1',v=>v.length>=5)&&ok;
-  ok=validate('ck-city','e-city',v=>v.length>=2)&&ok;
-  ok=validate('ck-state','e-state',v=>v!=='')&&ok;
-  ok=validate('ck-pin','e-pin',v=>/^\d{6}$/.test(v))&&ok;
-  if(!ok){const f=document.querySelector('#ckS1 .ck-input.err,.ck-select.err');if(f)f.scrollIntoView({behavior:'smooth',block:'center'});return;}
-  document.getElementById('ckS1').style.display='none';
-  document.getElementById('ckS2').style.display='block';
-  buildSum('ckSum2',document.getElementById('ck-pin').value.trim());
-  document.getElementById('ckUpiId').textContent=brand.upi;
-  setStep(2);document.getElementById('ckModal').scrollTop=0;
+function goStep2() {
+  let ok = true;
+  ok = validate('ck-name', 'e-name', v => v.length >= 2) && ok;
+  ok = validate('ck-phone', 'e-phone', v => /^\d{10}$/.test(v)) && ok;
+  ok = validate('ck-line1', 'e-line1', v => v.length >= 5) && ok;
+  ok = validate('ck-city', 'e-city', v => v.length >= 2) && ok;
+  ok = validate('ck-state', 'e-state', v => v !== '') && ok;
+  ok = validate('ck-pin', 'e-pin', v => /^\d{6}$/.test(v)) && ok;
+  if (!ok) { const f = document.querySelector('#ckS1 .ck-input.err,.ck-select.err'); if (f) f.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  document.getElementById('ckS1').style.display = 'none';
+  document.getElementById('ckS2').style.display = 'block';
+  buildSum('ckSum2', document.getElementById('ck-pin').value.trim());
+  document.getElementById('ckUpiId').textContent = brand.upi;
+  setStep(2); document.getElementById('ckModal').scrollTop = 0;
 }
-function goStep1(){
-  document.getElementById('ckS2').style.display='none';
-  document.getElementById('ckS1').style.display='block';
-  setStep(1);document.getElementById('ckModal').scrollTop=0;
+function goStep1() {
+  document.getElementById('ckS2').style.display = 'none';
+  document.getElementById('ckS1').style.display = 'block';
+  setStep(1); document.getElementById('ckModal').scrollTop = 0;
 }
-function selPay(m){
-  payMethod=m;
-  ['upi','card','nb'].forEach(x=>{
-    document.getElementById('pc-'+x).classList.toggle('sel',x===m);
-    document.getElementById('pp-'+x).classList.toggle('show',x===m);
-  });
-  buildSum('ckSum2',document.getElementById('ck-pin').value.trim());
-}
-function selBank(el,bank){document.querySelectorAll('.nb-bank').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');selBankVal=bank;}
-function fmtCard(el){let v=el.value.replace(/\D/g,'').slice(0,16);el.value=v.match(/.{1,4}/g)?.join(' ')||v;}
-function fmtExp(el){let v=el.value.replace(/\D/g,'').slice(0,4);if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2);el.value=v;}
-function placeOrder(){
-  if(payMethod==='card'){
-    const ok=document.getElementById('ck-cname').value.trim()&&document.getElementById('ck-cnum').value.replace(/\s/g,'').length>=15&&document.getElementById('ck-cexp').value.length>=4&&document.getElementById('ck-ccvv').value.length>=3;
-    if(!ok){showToast('❌ Please fill in all card details');return;}
-  }
-  if(payMethod==='nb'&&!selBankVal){showToast('❌ Please select your bank');return;}
-  const name=document.getElementById('ck-name').value.trim();
-  const phone=document.getElementById('ck-phone').value.trim();
-  const line1=document.getElementById('ck-line1').value.trim();
-  const line2=document.getElementById('ck-line2').value.trim();
-  const city=document.getElementById('ck-city').value.trim();
-  const state=document.getElementById('ck-state').value;
-  const pin=document.getElementById('ck-pin').value.trim();
-  const note=document.getElementById('ck-note').value.trim();
-  const addr=[line1,line2,city,state+' – '+pin].filter(Boolean).join(', ');
-  const ref='SF-'+Date.now().toString().slice(-6);
-  const b=orderCalc(cart,products,pin);
-  const lines=cart.map(it=>{const p=products.find(x=>x.id===it.id);return p?`• ${p.name} ${p.weight} ×${it.qty} = ₹${p.price*it.qty}`:''}).filter(Boolean);
-  const plbl={upi:'UPI/QR Code',card:'Credit/Debit Card',nb:`Net Banking (${selBankVal})`}[payMethod];
-  const msg=`Hello Shivar Farmfresh! 🌿\n\n*New Order — Ref: ${ref}*\n\n📦 *Items:*\n${lines.join('\n')}\n\n💰 Product Total: ₹${b.prod}\n🧾 GST (5%): ₹${b.gst}\n🚚 Shipping (${b.r.label}): ₹${b.ship}\n✅ *Grand Total: ₹${b.grand}*\n💳 Payment: ${plbl}\n\n📍 *Deliver to:*\n${name} · ${phone}\n${addr}\n${note?'📝 Note: '+note:''}\n\nPlease confirm. Thank you!`;
-  document.getElementById('ckS2').style.display='none';
-  document.getElementById('ckS3').style.display='block';
-  setStep(3);
-  const msgs={upi:'Please complete UPI payment and send the screenshot on WhatsApp to confirm.',card:'You will receive a secure card payment link on WhatsApp shortly.',nb:`You will receive a net banking link for ${selBankVal} on WhatsApp shortly.`};
-  document.getElementById('ckRef').textContent=ref;
-  document.getElementById('ckOkMsg').textContent=msgs[payMethod];
-  document.getElementById('ckAddr').innerHTML=`<strong>${name}</strong> · ${phone}<br>${addr}<br><span style="color:var(--leaf2);font-weight:700">Grand Total: ₹${b.grand} (Products ₹${b.prod} + GST ₹${b.gst} + Shipping ₹${b.ship})</span>`;
-  document.getElementById('ckWaBtn').onclick=()=>window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(msg)}`,'_blank');
-  document.getElementById('ckModal').scrollTop=0;
-}
-function finishOrder(){closeCheckout();clearCart();showToast("🎉 Order placed! We'll confirm on WhatsApp soon.");}
+function fmtCard(el) { let v = el.value.replace(/\D/g, '').slice(0, 16); el.value = v.match(/.{1,4}/g)?.join(' ') || v; }
+function fmtExp(el) { let v = el.value.replace(/\D/g, '').slice(0, 4); if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2); el.value = v; }
+function finishOrder() { closeCheckout(); clearCart(); showToast("✅ Thank you! We'll confirm on WhatsApp soon."); }
 
 /* ════ SMOOTH SCROLL ════ */
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}));
