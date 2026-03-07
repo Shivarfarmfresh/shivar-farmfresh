@@ -1054,6 +1054,8 @@ function orderCalc(cartArr,prods,pin){
   const {ship,z,r}=shipping(grams,pin);
   return {prod,gst,ship,grand:prod+gst+ship,z,r,grams};
 }
+/* clear stale data from old versions */
+(function(){try{const v=localStorage.getItem('sf_version');if(v!=='v5'){localStorage.removeItem('sf_products');localStorage.removeItem('sf_brand');localStorage.removeItem('sf_cart');localStorage.setItem('sf_version','v5');}}catch(e){}})();
 function getProds(){try{const s=localStorage.getItem('sf_products');return s?JSON.parse(s):DEFAULT_PRODUCTS;}catch(e){return DEFAULT_PRODUCTS;}}
 function getBrand(){try{const s=localStorage.getItem('sf_brand');return s?{...DEFAULT_BRAND,...JSON.parse(s)}:DEFAULT_BRAND;}catch(e){return DEFAULT_BRAND;}}
 function pctOff(mrp,p){return Math.round(((mrp-p)/mrp)*100);}
