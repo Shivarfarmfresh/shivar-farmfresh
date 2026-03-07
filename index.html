@@ -868,39 +868,112 @@ footer{background:#04100a;padding:56px 40px 24px}
         <div class="secure-row" style="margin-top:12px"><div class="sec-badge">🔒 Secure Checkout</div><div class="sec-badge">🚚 Pan India Delivery</div><div class="sec-badge">✅ 5% GST Included</div></div>
       </div>
 
-      <!-- STEP 2 — PAYMENT: Pay via UPI + upload screenshot -->
+      <!-- STEP 2 — PAYMENT -->
       <div id="ckS2" style="display:none">
         <div class="ck-sum" id="ckSum2"></div>
-        <div class="ck-sec">💳 Pay via UPI</div>
-        <div class="upi-box">
-          <img id="ckQr" src="" alt="QR">
-          <div class="upi-steps-list">
-            <div class="upi-step-row"><span>1️⃣</span><span>Open <strong>GPay, PhonePe</strong> or Paytm</span></div>
-            <div class="upi-step-row"><span>2️⃣</span><span>Scan QR or enter UPI ID below</span></div>
-            <div class="upi-step-row"><span>3️⃣</span><span>Pay the <strong>exact grand total</strong></span></div>
-            <div class="upi-step-row"><span>4️⃣</span><span>Upload your payment screenshot below</span></div>
-            <div class="upi-id-box"><div class="uid-l">UPI ID</div><div class="uid-v" id="ckUpiId">9511627623@ibl</div></div>
+
+        <!-- Grand total amount box -->
+        <div style="background:var(--ink);border-radius:13px;padding:14px 18px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:3px">Grand Total to Pay</div>
+            <div id="upiPayAmount" style="font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--gold2)">₹—</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:3px">Incl. GST + Shipping</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.5)" id="ckTotalBreakdown">—</div>
           </div>
         </div>
 
-        <!-- Screenshot upload -->
-        <div class="ck-sec" style="margin-top:16px">📸 Upload Payment Screenshot</div>
-        <div class="upload-zone" id="uploadZone">
-          <input type="file" id="screenshotFile" accept="image/*" onchange="onScreenshot(this)">
-          <span class="uz-icon" id="uzIcon">📷</span>
-          <div class="uz-title" id="uzTitle">Tap to upload your payment screenshot</div>
-          <div class="uz-sub" id="uzSub">JPG, PNG · Max 5MB · Required to confirm order</div>
-          <img class="uz-preview" id="uzPreview" alt="Screenshot preview">
+        <!-- Payment method selector -->
+        <div class="ck-sec">💳 Choose Payment Method</div>
+        <div class="pay-grid">
+          <div class="pay-card sel" id="pc-upi" onclick="selPay('upi')">
+            <input type="radio" name="pay" checked>
+            <div class="pay-icon">📱</div>
+            <div class="pay-name">UPI / QR</div>
+            <div class="pay-desc">GPay · PhonePe · Paytm</div>
+          </div>
+          <div class="pay-card" id="pc-card" onclick="selPay('card')">
+            <input type="radio" name="pay">
+            <div class="pay-icon">💳</div>
+            <div class="pay-name">Credit / Debit Card</div>
+            <div class="pay-desc">Visa · Mastercard · RuPay</div>
+          </div>
+          <div class="pay-card" id="pc-nb" onclick="selPay('nb')">
+            <input type="radio" name="pay">
+            <div class="pay-icon">🏦</div>
+            <div class="pay-name">Net Banking</div>
+            <div class="pay-desc">All major banks</div>
+          </div>
         </div>
-        <div class="ck-errmsg" id="e-screenshot" style="margin-top:6px">Please upload your payment screenshot before proceeding</div>
+
+        <!-- UPI PANEL -->
+        <div class="pay-panel show" id="pp-upi">
+          <div class="ck-sec" style="margin-top:14px">📱 Scan &amp; Pay</div>
+          <div class="upi-box">
+            <img id="ckQr" src="" alt="QR">
+            <div class="upi-steps-list">
+              <div class="upi-step-row"><span>1️⃣</span><span>Open <strong>GPay, PhonePe</strong> or Paytm</span></div>
+              <div class="upi-step-row"><span>2️⃣</span><span>Scan QR or type UPI ID below</span></div>
+              <div class="upi-step-row"><span>3️⃣</span><span>Pay the <strong>exact amount</strong> shown above</span></div>
+              <div class="upi-step-row"><span>4️⃣</span><span>Screenshot the success screen &amp; upload below</span></div>
+              <div class="upi-id-box"><div class="uid-l">UPI ID</div><div class="uid-v" id="ckUpiId">9511627623@ibl</div></div>
+            </div>
+          </div>
+          <div class="ck-sec" style="margin-top:14px">📸 Upload Payment Screenshot</div>
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" id="screenshotFile" accept="image/*" onchange="onScreenshot(this)">
+            <span class="uz-icon" id="uzIcon">📷</span>
+            <div class="uz-title" id="uzTitle">Tap to upload your payment screenshot</div>
+            <div class="uz-sub" id="uzSub">JPG, PNG · Max 5MB · Required to confirm order</div>
+            <img class="uz-preview" id="uzPreview" alt="Screenshot preview">
+          </div>
+          <div class="ck-errmsg" id="e-screenshot" style="margin-top:6px">Please upload your payment screenshot before proceeding</div>
+        </div>
+
+        <!-- CARD PANEL -->
+        <div class="pay-panel" id="pp-card">
+          <div style="background:#f8f9ff;border:1.5px solid #dde4f5;border-radius:13px;padding:16px;margin-top:13px">
+            <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#4455aa;margin-bottom:13px;line-height:1.6">🔒 <span>After placing your order, Ashwini will send you a <strong>secure card payment link on WhatsApp</strong> within 15 minutes. Your card details are never stored.</span></div>
+            <div style="display:flex;gap:7px;margin-bottom:13px;flex-wrap:wrap">
+              <span style="background:#fff;border:1px solid #ddd;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;color:#1a1f71">VISA</span>
+              <span style="background:#fff;border:1px solid #ddd;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;color:#eb001b">Mastercard</span>
+              <span style="background:#fff;border:1px solid #ddd;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;color:#097a44">RuPay</span>
+              <span style="background:#fff;border:1px solid #ddd;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;color:#007bc1">Amex</span>
+            </div>
+            <div class="ck-field"><div class="ck-label">Name on Card <span class="ck-req">*</span></div><input class="ck-input" id="ck-cname" placeholder="As printed on your card"></div>
+            <div class="ck-field"><div class="ck-label">Card Number <span class="ck-req">*</span></div><input class="ck-input" id="ck-cnum" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" oninput="fmtCard(this)"></div>
+            <div class="ck-row">
+              <div class="ck-field"><div class="ck-label">Expiry (MM/YY) <span class="ck-req">*</span></div><input class="ck-input" id="ck-cexp" placeholder="MM/YY" maxlength="5" oninput="fmtExp(this)"></div>
+              <div class="ck-field"><div class="ck-label">CVV <span class="ck-req">*</span></div><input class="ck-input" id="ck-ccvv" placeholder="3 digits" maxlength="4" type="password"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NET BANKING PANEL -->
+        <div class="pay-panel" id="pp-nb">
+          <div style="background:#f8f9ff;border:1.5px solid #dde4f5;border-radius:13px;padding:16px;margin-top:13px">
+            <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#4455aa;margin-bottom:13px;line-height:1.6">🔒 <span>After placing your order, Ashwini will send you a <strong>secure net banking payment link on WhatsApp</strong> within 15 minutes.</span></div>
+            <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Select Your Bank</div>
+            <div class="nb-grid">
+              <div class="nb-bank" onclick="selBank(this,'SBI')">🏦 SBI</div>
+              <div class="nb-bank" onclick="selBank(this,'HDFC')">🏦 HDFC</div>
+              <div class="nb-bank" onclick="selBank(this,'ICICI')">🏦 ICICI</div>
+              <div class="nb-bank" onclick="selBank(this,'Axis')">🏦 Axis</div>
+              <div class="nb-bank" onclick="selBank(this,'Kotak')">🏦 Kotak</div>
+              <div class="nb-bank" onclick="selBank(this,'Other')">🏦 Other</div>
+            </div>
+          </div>
+        </div>
 
         <div class="ck-nav" style="margin-top:16px">
           <button class="ck-back" onclick="goStep1()">← Back</button>
-          <button class="ck-next" id="ckSubmitBtn" onclick="submitOrder()">Submit Order &amp; Screenshot ✓</button>
+          <button class="ck-next" id="ckSubmitBtn" onclick="submitOrder()">Place Order ✓</button>
         </div>
         <div class="secure-row" style="margin-top:12px">
-          <div class="sec-badge">🔒 Screenshot stays private</div>
-          <div class="sec-badge">✅ Order confirmed after verification</div>
+          <div class="sec-badge">🔒 Secure Checkout</div>
+          <div class="sec-badge">✅ GST Invoice Included</div>
+          <div class="sec-badge">🚚 Pan India Delivery</div>
         </div>
       </div>
 
@@ -908,25 +981,37 @@ footer{background:#04100a;padding:56px 40px 24px}
       <div id="ckS3" style="display:none">
         <div class="pending-box">
           <span class="pending-icon">🕐</span>
-          <div class="pending-h">Payment Under Review</div>
-          <p class="pending-p">Your order is registered. We are verifying your payment screenshot — usually done within <strong>15–30 minutes</strong>.</p>
+          <div class="pending-h">Almost Done!</div>
+          <p class="pending-p">Your order is saved. <strong>One last step</strong> — tap the WhatsApp button below to send your payment screenshot to us so we can verify and confirm your order.</p>
+
+          <!-- Order ref + amount prominently -->
           <div class="ref-pill">
             <div><div class="rp-label">Order Reference</div><div class="rp-val" id="ckRef">SF-000000</div></div>
-            <div style="font-size:20px">📋</div>
+            <div style="text-align:right"><div class="rp-label">Amount Paid</div><div class="rp-val" id="ckAmtPaid">₹—</div></div>
           </div>
+
+          <!-- Delivery address -->
+          <div style="background:var(--cream);border-radius:10px;padding:12px 14px;margin-bottom:14px;text-align:left;font-size:13px;line-height:1.7" id="ckAddr"></div>
+
+          <!-- Status tracker -->
           <div class="pending-steps">
-            <div class="ps-row"><div class="ps-dot ps-done">✓</div><div class="ps-text">Order placed &amp; details saved<small>Logged in our system</small></div></div>
-            <div class="ps-row"><div class="ps-dot ps-done">✓</div><div class="ps-text">Payment screenshot uploaded<small>Received by Shivar Farmfresh</small></div></div>
-            <div class="ps-row"><div class="ps-dot ps-active">⏳</div><div class="ps-text">Payment being verified<small>Ashwini will confirm within 30 min</small></div></div>
-            <div class="ps-row"><div class="ps-dot ps-wait">4</div><div class="ps-text" style="color:var(--muted)">Order confirmed &amp; dispatched<small>You'll receive WhatsApp confirmation</small></div></div>
+            <div class="ps-row"><div class="ps-dot ps-done">✓</div><div class="ps-text">Order details saved<small>Logged in admin panel</small></div></div>
+            <div class="ps-row"><div class="ps-dot ps-done">✓</div><div class="ps-text">Payment screenshot uploaded<small>Ready to send</small></div></div>
+            <div class="ps-row"><div class="ps-dot ps-active">⏳</div><div class="ps-text"><strong>Send screenshot on WhatsApp — required</strong><small>Tap the green button below to complete your order</small></div></div>
+            <div class="ps-row"><div class="ps-dot ps-wait">4</div><div class="ps-text" style="color:var(--muted)">Ashwini confirms &amp; dispatches<small>Within 30 minutes during business hours</small></div></div>
           </div>
-          <div style="background:#fff8ee;border:1.5px solid rgba(194,135,12,.25);border-radius:11px;padding:14px 16px;margin-bottom:14px;font-size:13px;line-height:1.7;text-align:left">
-            <strong>📱 What happens next:</strong><br>
-            Ashwini will verify your payment and send you a <strong>WhatsApp confirmation</strong> with your order details and expected delivery date. No action needed from you.
+
+          <!-- MANDATORY WhatsApp button — this IS how you get notified -->
+          <div style="background:#e8f7f0;border:2px solid #25d366;border-radius:12px;padding:13px 15px;margin-bottom:12px;font-size:12px;color:#0a4a25;line-height:1.6">
+            <strong>📱 Your order is NOT complete until you tap below.</strong><br>
+            This opens WhatsApp with your full order + screenshot pre-attached for Ashwini to verify.
           </div>
-          <div style="font-size:12px;color:var(--muted);margin-bottom:14px" id="ckAddr"></div>
-          <button class="wa-confirm-btn" id="ckWaBtn">💬 Send Details on WhatsApp (Optional)</button>
-          <button class="done-btn" onclick="finishOrder()">✓ Done — Continue Shopping</button>
+          <button class="wa-confirm-btn" id="ckWaBtn" style="font-size:15px;padding:15px">
+            💬 Send Screenshot to Ashwini on WhatsApp →
+          </button>
+          <button class="done-btn" onclick="finishOrder()" style="margin-top:6px">
+            Already sent — Done ✓
+          </button>
         </div>
       </div>
 
@@ -978,8 +1063,27 @@ function waLink(p,b){const m=`Hello Shivar Farmfresh! 🌿\n\nI'd like to order:
 const brand = getBrand();
 let products = getProds();
 let cart = JSON.parse(localStorage.getItem('sf_cart')||'[]');
-let payMethod = 'upi'; // kept for reference
+/* ════ PAYMENT METHOD SELECTION ════ */
+let payMethod = 'upi';
 let selBankVal = '';
+
+function selPay(m) {
+  payMethod = m;
+  ['upi','card','nb'].forEach(x => {
+    document.getElementById('pc-' + x).classList.toggle('sel', x === m);
+    document.getElementById('pp-' + x).classList.toggle('show', x === m);
+  });
+  // update button label
+  const btn = document.getElementById('ckSubmitBtn');
+  btn.textContent = m === 'upi' ? 'Place Order ✓' : 'Place Order & Get Payment Link ✓';
+}
+function selBank(el, bank) {
+  document.querySelectorAll('.nb-bank').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  selBankVal = bank;
+}
+
+
 
 /* ════ INIT ════ */
 function init(){
@@ -1184,11 +1288,23 @@ async function sendToSheets(order) {
 
 /* ════ SUBMIT ORDER ════ */
 function submitOrder() {
-  if (!screenshotBase64) {
+  // Validate card fields if card selected
+  if (payMethod === 'card') {
+    const ok = document.getElementById('ck-cname').value.trim() &&
+               document.getElementById('ck-cnum').value.replace(/\s/g,'').length >= 15 &&
+               document.getElementById('ck-cexp').value.length >= 4 &&
+               document.getElementById('ck-ccvv').value.length >= 3;
+    if (!ok) { showToast('❌ Please fill in all card details'); return; }
+  }
+  if (payMethod === 'nb' && !selBankVal) { showToast('❌ Please select your bank'); return; }
+
+  // UPI requires screenshot
+  if (payMethod === 'upi' && !screenshotBase64) {
     document.getElementById('e-screenshot').classList.add('show');
     document.getElementById('uploadZone').scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
+
   const name  = document.getElementById('ck-name').value.trim();
   const phone = document.getElementById('ck-phone').value.trim();
   const line1 = document.getElementById('ck-line1').value.trim();
@@ -1205,51 +1321,109 @@ function submitOrder() {
     const p = products.find(x => x.id === it.id);
     return p ? { name: p.name, weight: p.weight, qty: it.qty, unitPrice: p.price, total: p.price * it.qty } : null;
   }).filter(Boolean);
+  const itemLines = lineItems.map(it => `• ${it.name} ${it.weight} ×${it.qty} = ₹${it.total}`).join('\n');
+  const plbl = { upi: 'UPI / QR Code', card: `Credit/Debit Card`, nb: `Net Banking (${selBankVal})` }[payMethod];
 
-  // Build full order record
+  // Build order record
   const order = {
     ref, date: new Date().toISOString(), dateLocal: new Date().toLocaleString('en-IN'),
-    status: 'Awaiting Verification',
+    status: payMethod === 'upi' ? 'Awaiting Verification' : 'Awaiting Payment',
     customer: { name, phone, address: addr, pincode: pin, note },
     items: lineItems,
     pricing: { productTotal: b.prod, gst: b.gst, gstRate: '5%', hsnCode: '09103030', shipping: b.ship, shippingZone: b.r.label, grandTotal: b.grand },
-    payment: { method: 'UPI', upiId: brand.upi, screenshotUploaded: true },
-    screenshot: screenshotBase64
+    payment: { method: plbl, screenshotUploaded: payMethod === 'upi' }
   };
-  currentOrderData = order;
-
-  // Save locally for admin panel
   saveOrderLocally(order);
+  sendToSheets({ ...order, screenshot: payMethod === 'upi' ? '[see WhatsApp]' : 'N/A' });
 
-  // Send to Google Sheets (background, non-blocking)
-  sendToSheets({ ...order, screenshot: '[see WhatsApp]' });
+  // WhatsApp message varies by payment method
+  const waMsg = payMethod === 'upi'
+    ? `🌿 *NEW ORDER — ${ref}*\n` +
+      `📅 ${new Date().toLocaleString('en-IN')}\n\n` +
+      `📦 *Items:*\n${itemLines}\n\n` +
+      `💰 Products: ₹${b.prod}\n` +
+      `🧾 GST (5% · HSN 09103030): ₹${b.gst}\n` +
+      `🚚 Shipping (${b.r.label} · ${b.r.days}): ₹${b.ship}\n` +
+      `✅ *Grand Total: ₹${b.grand}*\n\n` +
+      `💳 *Payment: UPI* to ${brand.upi}\n` +
+      `📸 Screenshot attached below\n\n` +
+      `📍 *Deliver to:*\n${name} · ${phone}\n${addr}\n` +
+      `${note ? '📝 ' + note + '\n' : ''}` +
+      `\n_Please verify payment and confirm order._`
+    : `🌿 *NEW ORDER — ${ref}*\n` +
+      `📅 ${new Date().toLocaleString('en-IN')}\n\n` +
+      `📦 *Items:*\n${itemLines}\n\n` +
+      `💰 Products: ₹${b.prod}\n` +
+      `🧾 GST (5% · HSN 09103030): ₹${b.gst}\n` +
+      `🚚 Shipping (${b.r.label} · ${b.r.days}): ₹${b.ship}\n` +
+      `✅ *Grand Total: ₹${b.grand}*\n\n` +
+      `💳 *Payment: ${plbl}*\n` +
+      `⏳ Customer awaiting payment link from you\n\n` +
+      `📍 *Deliver to:*\n${name} · ${phone}\n${addr}\n` +
+      `${note ? '📝 ' + note + '\n' : ''}` +
+      `\n_Please send payment link on this WhatsApp._`;
 
-  // Build WhatsApp message
-  const itemLines = lineItems.map(it => `• ${it.name} ${it.weight} ×${it.qty} = ₹${it.total}`).join('\n');
-  const waMsg =
-    `🌿 *New Order — ${ref}*\n\n` +
-    `📦 *Items:*\n${itemLines}\n\n` +
-    `💰 Product Total: ₹${b.prod}\n` +
-    `🧾 GST (5% · HSN 09103030): ₹${b.gst}\n` +
-    `🚚 Shipping (${b.r.label} · ${b.r.days}): ₹${b.ship}\n` +
-    `✅ *Grand Total: ₹${b.grand}*\n` +
-    `💳 Payment: UPI (screenshot uploaded on website)\n\n` +
-    `📍 *Deliver to:*\n${name} · ${phone}\n${addr}\n` +
-    `${note ? '📝 ' + note + '\n' : ''}` +
-    `\nPlease verify payment screenshot and confirm order.`;
-
-  // Show pending screen
+  // Show step 3
   document.getElementById('ckS2').style.display = 'none';
   document.getElementById('ckS3').style.display = 'block';
   setStep(3);
   document.getElementById('ckRef').textContent = ref;
+  document.getElementById('ckAmtPaid').textContent = '₹' + b.grand;
   document.getElementById('ckAddr').innerHTML =
-    `<strong>${name}</strong> · ${phone}<br>${addr}<br>` +
-    `<span style="color:var(--leaf2);font-weight:700">Grand Total: ₹${b.grand}</span>`;
+    `<strong>${name}</strong> · 📱 ${phone}<br>` +
+    `📍 ${addr}<br>` +
+    `<span style="color:var(--leaf2);font-weight:700;margin-top:4px;display:block">` +
+    `Grand Total: ₹${b.grand} &nbsp;|&nbsp; GST: ₹${b.gst} &nbsp;|&nbsp; Shipping: ₹${b.ship}</span>`;
+
+  // Update step 3 text for non-UPI
+  if (payMethod !== 'upi') {
+    document.querySelector('.pending-h').textContent = 'Order Placed!';
+    document.querySelector('.pending-p').innerHTML =
+      `Your order is saved. Tap WhatsApp below — <strong>Ashwini will send you a ${payMethod === 'card' ? 'card payment link' : 'net banking link'} within 15 minutes.</strong>`;
+    document.getElementById('ckWaBtn').textContent = `💬 Send Order to Ashwini on WhatsApp →`;
+  } else {
+    document.querySelector('.pending-h').textContent = 'Almost Done!';
+    document.querySelector('.pending-p').innerHTML =
+      `Your order is saved. <strong>One last step</strong> — tap the WhatsApp button below to send your payment screenshot so we can verify and confirm.`;
+    document.getElementById('ckWaBtn').textContent = `💬 Send Screenshot to Ashwini on WhatsApp →`;
+  }
+
   document.getElementById('ckWaBtn').onclick = () =>
     window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(waMsg)}`, '_blank');
   document.getElementById('ckModal').scrollTop = 0;
-  showToast('✅ Order submitted! Awaiting payment verification.');
+  showToast(payMethod === 'upi' ? '✅ Order saved! Tap WhatsApp to complete.' : '✅ Order placed! Tap WhatsApp for payment link.');
+}
+  document.getElementById('ckS2').style.display = 'none';
+  document.getElementById('ckS3').style.display = 'block';
+  setStep(3);
+  document.getElementById('ckRef').textContent = ref;
+  document.getElementById('ckAmtPaid').textContent = '₹' + b.grand;
+  document.getElementById('ckAddr').innerHTML =
+    `<strong>${name}</strong> · 📱 ${phone}<br>` +
+    `📍 ${addr}<br>` +
+    `<span style="color:var(--leaf2);font-weight:700;margin-top:4px;display:block">` +
+    `Grand Total: ₹${b.grand} &nbsp;|&nbsp; GST: ₹${b.gst} &nbsp;|&nbsp; Shipping: ₹${b.ship}</span>`;
+
+  // WhatsApp message — clear and complete for Ashwini to verify
+  const waMsg =
+    `🌿 *NEW ORDER — ${ref}*\n` +
+    `📅 ${new Date().toLocaleString('en-IN')}\n\n` +
+    `📦 *Items:*\n${itemLines}\n\n` +
+    `💰 Products: ₹${b.prod}\n` +
+    `🧾 GST (5% · HSN 09103030): ₹${b.gst}\n` +
+    `🚚 Shipping (${b.r.label} · ${b.r.days}): ₹${b.ship}\n` +
+    `✅ *Grand Total: ₹${b.grand}*\n\n` +
+    `📍 *Deliver to:*\n${name} · ${phone}\n${addr}\n` +
+    `${note ? '📝 ' + note + '\n' : ''}` +
+    `\n💳 *Payment:* UPI to ${brand.upi}\n` +
+    `📸 *Screenshot:* Customer will attach below\n\n` +
+    `_Please verify payment and reply with confirmation + expected delivery date._`;
+
+  document.getElementById('ckWaBtn').onclick = () => {
+    window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(waMsg)}`, '_blank');
+  };
+  document.getElementById('ckModal').scrollTop = 0;
+  showToast('✅ Order saved! Now tap the WhatsApp button to complete.');
 }
 
 /* ════ CHECKOUT FLOW ════ */
@@ -1282,6 +1456,7 @@ function startCheckout() {
   if (!cart.length) { showToast('🛒 Your cart is empty!'); return; }
   closeCart();
   screenshotBase64 = null;
+  payMethod = 'upi'; selBankVal = '';
   // reset upload zone
   const zone = document.getElementById('uploadZone');
   if (zone) {
@@ -1324,8 +1499,15 @@ function goStep2() {
   if (!ok) { const f = document.querySelector('#ckS1 .ck-input.err,.ck-select.err'); if (f) f.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
   document.getElementById('ckS1').style.display = 'none';
   document.getElementById('ckS2').style.display = 'block';
-  buildSum('ckSum2', document.getElementById('ck-pin').value.trim());
+  const pin2 = document.getElementById('ck-pin').value.trim();
+  buildSum('ckSum2', pin2);
+  const b2 = orderCalc(cart, products, pin2);
+  document.getElementById('upiPayAmount').textContent = '₹' + b2.grand;
+  document.getElementById('ckTotalBreakdown').textContent = `₹${b2.prod} + GST ₹${b2.gst} + Ship ₹${b2.ship}`;
   document.getElementById('ckUpiId').textContent = brand.upi;
+  // reset to UPI selected
+  payMethod = 'upi'; selBankVal = '';
+  selPay('upi');
   setStep(2); document.getElementById('ckModal').scrollTop = 0;
 }
 function goStep1() {
