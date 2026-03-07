@@ -3,592 +3,788 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Shivar Farmfresh — Premium Organic Turmeric from Wai-Satara. 3–5% Curcumin — up to 3× higher than market brands. Buy direct from farm.">
-<title>Shivar Farmfresh — Pure Sahyadri Turmeric</title>
+<title>Shivar Farmfresh — Pure Organic Turmeric from Sahyadri</title>
+<meta name="description" content="Ashwini Ghanwat's farm-direct organic turmeric from Wai-Satara. 3–5% curcumin — up to 3× higher than market brands. FSSAI certified. Zero adulteration.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+Devanagari:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* ── TOKENS ── */
-:root{
-  --ink:#0f1c12;--ink2:#2a3d2e;--muted:#6b7c6e;
-  --gold:#c2870c;--gold2:#e8b84b;--gold3:#fff3c4;
-  --leaf:#1e5c32;--leaf2:#2d7a4f;--leaf3:#e6f4ec;
-  --cream:#fdf9ef;--white:#fff;
-  --r:14px;--rL:22px;
-  --sh:0 2px 16px rgba(0,0,0,.07);
-  --shL:0 8px 40px rgba(0,0,0,.12);
-}
+/* ══════════════════════════════════════════
+   SHIVAR FARMFRESH · FINAL COMPLETE WEBSITE
+   Palette: Forest · Turmeric Gold · Cream
+   Fonts: Playfair Display + DM Sans
+══════════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0a1a0d; --forest:#0f2914; --leaf:#1e6b3a; --leaf2:#2d8a4f; --leaf3:#e8f5ec;
+  --gold:#c2870c; --gold2:#e0a020; --saffron:#f5a623;
+  --cream:#fdf8ef; --silk:#f5edd8; --muted:#7a7060; --white:#fff;
+  --r:14px; --rL:20px; --sh:0 4px 24px rgba(0,0,0,.08);
+}
 html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-img{display:block}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+a{text-decoration:none}
+
+/* ── SCROLL PROGRESS ── */
+#scrollBar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--leaf2),var(--gold2));z-index:1000;width:0;transition:width .1s;pointer-events:none}
 
 /* ── NAV ── */
-.nav{position:sticky;top:0;z-index:90;background:rgba(15,28,18,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(194,135,12,.3)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;gap:24px}
-.nav-logo-img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex-shrink:0}
-.nav-brand{flex:1}
-.nav-brand-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:#fff;letter-spacing:.5px;line-height:1}
-.nav-brand-sub{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-top:1px}
-.nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{color:rgba(255,255,255,.6);font-size:12px;font-weight:600;letter-spacing:.5px;padding:6px 10px;border-radius:8px;transition:.2s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
-.nav-wa{background:linear-gradient(135deg,#25d366,#128c7e)!important;color:#fff!important;padding:7px 14px!important;border-radius:20px!important}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;transition:.4s}
+nav.scrolled{background:rgba(10,26,13,.96);backdrop-filter:blur(20px);padding:11px 40px;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(194,135,12,.5);flex-shrink:0}
+.nav-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff}
+.nav-sub{font-size:9px;color:rgba(255,255,255,.35);letter-spacing:3px;text-transform:uppercase;display:block}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.65);font-size:12px;font-weight:500;padding:7px 13px;border-radius:20px;transition:.2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-shop{background:linear-gradient(135deg,var(--gold),#9a6500)!important;color:#fff!important;font-weight:700!important}
 .nav-cart{background:var(--gold);border:none;color:var(--ink);padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;letter-spacing:.5px;transition:.2s}
 .nav-cart:hover{background:var(--gold2)}
 .cart-badge{background:var(--ink);color:var(--gold2);border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center}
 
-/* ── HERO ── */
-.hero{background:linear-gradient(150deg,#071209 0%,#0d2216 40%,#163620 100%);min-height:92vh;display:flex;align-items:center;padding:60px 24px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 75% 50%,rgba(194,135,12,.13),transparent);pointer-events:none}
-/* organic blob shape top-right */
-.hero::after{content:'';position:absolute;width:600px;height:600px;right:-180px;top:-180px;border-radius:50%;background:radial-gradient(circle,rgba(30,92,50,.5),transparent 70%);pointer-events:none}
-.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;width:100%}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.35);border-radius:20px;padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold2);text-transform:uppercase;margin-bottom:22px}
-.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,80px);font-weight:700;color:#fff;line-height:1.0;margin-bottom:14px}
-.hero-h1 em{color:var(--gold2);font-style:italic}
-.hero-devi{font-family:'Noto Sans Devanagari',sans-serif;font-size:18px;color:rgba(255,255,255,.38);margin-bottom:22px;letter-spacing:1px}
-.hero-p{font-size:16px;line-height:1.8;color:rgba(255,255,255,.6);max-width:500px;margin-bottom:36px}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
-.btn-hero-primary{background:linear-gradient(135deg,var(--gold),#9a6500);color:#fff;padding:14px 30px;border-radius:50px;font-size:14px;font-weight:700;letter-spacing:.5px;cursor:pointer;border:none;box-shadow:0 6px 24px rgba(194,135,12,.35);transition:.3s}
-.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(194,135,12,.45)}
-.btn-hero-outline{background:transparent;color:#fff;padding:14px 28px;border-radius:50px;font-size:14px;font-weight:600;border:1.5px solid rgba(255,255,255,.3);letter-spacing:.5px;cursor:pointer;transition:.3s}
-.btn-hero-outline:hover{border-color:var(--gold2);color:var(--gold2)}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:32px;border-top:1px solid rgba(255,255,255,.08)}
-.hstat-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--gold2);line-height:1}
-.hstat-label{font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-top:4px}
-/* hero card */
-.hero-card{background:rgba(255,255,255,.04);border:1px solid rgba(194,135,12,.25);border-radius:24px;padding:36px 28px;text-align:center;backdrop-filter:blur(10px);position:relative;animation:float 5s ease-in-out infinite alternate}
-@keyframes float{0%{transform:translateY(0)}100%{transform:translateY(-14px)}}
-.hcard-icon{font-size:72px;margin-bottom:14px;filter:drop-shadow(0 6px 18px rgba(194,135,12,.35))}
-.hcard-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;font-weight:700;margin-bottom:6px}
-.hcard-origin{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:18px}
-.hcard-tag{display:inline-block;background:rgba(194,135,12,.18);border:1px solid rgba(194,135,12,.5);color:var(--gold2);font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px}
-.hcard-cert{margin-top:18px;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:1px}
+/* ── HERO SLIDESHOW ── */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.slide.active{opacity:1}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,26,13,.82) 0%,rgba(10,26,13,.5) 60%,rgba(194,135,12,.12) 100%)}
+.s1{background:linear-gradient(135deg,#071a0a,#1a4a1a 50%,#c2870c)}
+.s2{background:linear-gradient(160deg,#0a2010,#2d6b20 50%,#e8a020)}
+.s3{background:linear-gradient(120deg,#061008,#163a14 45%,#f5a623)}
+.s4{background:linear-gradient(150deg,#0d1f0e,#1e5520 55%,#c27a00)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:880px;padding:0 24px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.4);border-radius:30px;padding:6px 18px;font-size:10px;font-weight:600;letter-spacing:4px;color:var(--gold2);text-transform:uppercase;margin-bottom:26px;animation:fadeUp .8s .2s both}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(42px,7vw,86px);font-weight:900;color:#fff;line-height:1.05;margin-bottom:10px;animation:fadeUp .8s .35s both}
+.hero-h1 em{font-style:italic;color:var(--gold2)}
+.hero-hi{font-family:'Noto Sans Devanagari',sans-serif;font-size:clamp(13px,1.8vw,18px);color:rgba(255,255,255,.38);letter-spacing:2px;margin-bottom:20px;animation:fadeUp .8s .45s both}
+.hero-sub{font-size:clamp(14px,1.7vw,17px);color:rgba(255,255,255,.72);line-height:1.75;max-width:600px;margin:0 auto 36px;animation:fadeUp .8s .55s both}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .65s both}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#9a6500);color:#fff;padding:14px 32px;border-radius:50px;font-size:14px;font-weight:700;letter-spacing:.5px;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(194,135,12,.4);transition:.3s;display:inline-block}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(194,135,12,.5)}
+.btn-ghost{background:transparent;color:#fff;padding:13px 30px;border-radius:50px;font-size:14px;font-weight:600;border:1.5px solid rgba(255,255,255,.35);letter-spacing:.5px;cursor:pointer;transition:.3s;display:inline-block}
+.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2);transform:translateY(-2px)}
+.hero-dots{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);z-index:4;display:flex;gap:8px}
+.hdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.3s}
+.hdot.on{background:var(--gold2);width:22px;border-radius:3px}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(10,26,13,.75);backdrop-filter:blur(12px);border-top:1px solid rgba(194,135,12,.2)}
+.hstats-inner{max-width:1100px;margin:0 auto;display:flex;padding:18px 40px}
+.hstat{flex:1;text-align:center;padding:0 16px;border-right:1px solid rgba(255,255,255,.07)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--gold2)}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.38);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
 
-/* ── TRUST BAR ── */
-.trust{background:var(--gold);padding:0}
-.trust-inner{max-width:1200px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
-.trust-item{display:flex;align-items:center;gap:8px;padding:12px 24px;font-size:12px;font-weight:700;color:var(--ink);white-space:nowrap;border-right:1px solid rgba(0,0,0,.1)}
-.trust-item:last-child{border-right:none}
-.trust-item span{font-size:15px}
+/* ── TICKER ── */
+.ticker{background:var(--gold);padding:9px 0;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;animation:tick 28s linear infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tick-item{padding:0 28px;font-size:12px;font-weight:700;color:var(--ink);display:inline-flex;align-items:center;gap:10px}
+.tick-dot{width:4px;height:4px;border-radius:50%;background:var(--ink);opacity:.35}
 
-/* ── SECTION SHELL ── */
-.section{padding:80px 24px}
-.section-inner{max-width:1200px;margin:0 auto}
-.sect-head{text-align:center;margin-bottom:52px}
-.sect-eye{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:10px}
-.sect-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,50px);font-weight:700;color:var(--ink);line-height:1.15}
-.sect-sub{font-size:15px;color:var(--muted);margin-top:10px;max-width:540px;margin-left:auto;margin-right:auto}
+/* ── WOMEN'S DAY BANNER ── */
+.wday{background:linear-gradient(135deg,#4a0d35,#8c1a55,#c2870c);padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+.wday::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,255,255,.06),transparent 70%)}
+.wday-inner{position:relative;max-width:740px;margin:0 auto}
+.wday-icon{font-size:44px;margin-bottom:14px;display:block;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.wday-label{font-size:10px;letter-spacing:4px;color:rgba(255,255,255,.55);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.wday-h{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,46px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px}
+.wday-h span{color:#ffd700}
+.wday-p{font-size:14px;color:rgba(255,255,255,.78);line-height:1.8;max-width:580px;margin:0 auto}
 
-/* ── FILTER TABS ── */
-.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+/* ── SECTION SHARED ── */
+.section{padding:90px 40px}
+.s-inner{max-width:1100px;margin:0 auto}
+.s-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;text-align:center;margin-bottom:12px}
+.s-eye.gold{color:var(--gold2)}
+.s-eye.green{color:var(--leaf2)}
+.s-eye.red{color:#e03030}
+.s-h{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,50px);font-weight:900;line-height:1.2;text-align:center;margin-bottom:14px}
+.s-sub{font-size:14px;color:var(--muted);text-align:center;max-width:580px;margin:0 auto 56px;line-height:1.8}
+.s-h.light{color:#fff}
+.s-sub.light{color:rgba(255,255,255,.4)}
+
+/* ── FOUNDER SECTION ── */
+.founder{background:var(--forest);padding:90px 40px}
+.founder-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:center;max-width:1100px;margin:0 auto}
+.founder-frame{aspect-ratio:3/4;border-radius:24px;background:linear-gradient(160deg,#1a4a1a,#2d8a4f);display:flex;align-items:center;justify-content:center;font-size:100px;position:relative;overflow:hidden}
+.founder-frame img{width:100%;height:100%;object-fit:cover;border-radius:24px}
+.founder-badge{position:absolute;bottom:-16px;right:-16px;background:var(--gold);color:var(--ink);border-radius:14px;padding:14px 18px;box-shadow:0 6px 24px rgba(194,135,12,.4)}
+.fb-d{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;opacity:.65}
+.fb-t{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1.3;margin-top:2px}
+.f-eye{font-size:10px;letter-spacing:4px;color:var(--gold2);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.f-h{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,48px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:20px}
+.f-h em{color:var(--gold2);font-style:italic}
+.f-quote{font-size:15px;line-height:1.9;color:rgba(255,255,255,.7);border-left:3px solid var(--gold);padding-left:18px;font-style:italic;margin-bottom:22px}
+.f-body{font-size:13px;line-height:1.9;color:rgba(255,255,255,.45);margin-bottom:24px}
+.f-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff}
+.f-title{font-size:11px;color:var(--gold2);letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+.f-deva{font-family:'Noto Sans Devanagari',sans-serif;font-size:12px;color:rgba(255,255,255,.28);margin-top:2px}
+
+/* ── MISSION CARDS ── */
+.mcards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.mcard{background:#fff;border-radius:var(--rL);padding:34px 26px;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.04);transition:.4s;position:relative;overflow:hidden}
+.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--leaf2),var(--gold))}
+.mcard:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.12)}
+.mcard-icon{font-size:32px;margin-bottom:16px}
+.mcard-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.mcard-text{font-size:13px;color:var(--muted);line-height:1.8}
+
+/* ── JOURNEY TIMELINE ── */
+.journey-bg{background:var(--forest);padding:90px 40px}
+.timeline{margin-top:52px;max-width:760px;margin-left:auto;margin-right:auto}
+.tl{display:flex;gap:28px;margin-bottom:48px;align-items:flex-start}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.tl-dot{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--saffron));display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 0 5px rgba(194,135,12,.15)}
+.tl-line{width:2px;flex:1;min-height:40px;background:linear-gradient(to bottom,rgba(194,135,12,.35),transparent);margin-top:6px}
+.tl:last-child .tl-line{display:none}
+.tl-year{font-size:10px;letter-spacing:2.5px;color:var(--gold2);text-transform:uppercase;font-weight:700;margin-bottom:5px}
+.tl-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.tl-text{font-size:13px;color:rgba(255,255,255,.48);line-height:1.8}
+.tl-tag{display:inline-block;background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.35);color:var(--gold2);font-size:10px;font-weight:700;padding:3px 11px;border-radius:8px;letter-spacing:.8px;margin-top:9px}
+
+/* ── ABOUT / VALUES ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.about-pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px}
+.a-pill{background:#fff;border:1.5px solid rgba(30,107,58,.2);border-radius:20px;padding:7px 16px;font-size:12px;font-weight:600;color:var(--leaf)}
+.a-body{font-size:13px;line-height:1.9;color:var(--muted);margin-bottom:24px}
+.a-vision{background:linear-gradient(135deg,var(--forest),#163a14);border-radius:18px;padding:28px;color:#fff;margin-bottom:24px}
+.av-label{font-size:9px;letter-spacing:2.5px;color:var(--gold2);text-transform:uppercase;margin-bottom:10px}
+.av-text{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;line-height:1.65;color:rgba(255,255,255,.85)}
+.val-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.val-card{background:#fff;border-radius:var(--r);padding:22px;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.04);transition:.3s}
+.val-card:hover{transform:translateY(-3px)}
+.val-icon{font-size:28px;margin-bottom:10px;display:block}
+.val-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.val-text{font-size:12px;color:var(--muted);line-height:1.7}
+.val-globe{background:linear-gradient(135deg,var(--gold),var(--saffron));border-radius:var(--r);padding:20px;grid-column:span 2}
+.vg-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;opacity:.6;margin-bottom:6px}
+.vg-text{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);line-height:1.4}
+
+/* ── INSTAGRAM ── */
+.ig-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+.ig-brand{display:flex;align-items:center;gap:14px}
+.ig-avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);padding:3px;flex-shrink:0}
+.ig-avatar-i{width:100%;height:100%;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:24px}
+.ig-handle{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink)}
+.ig-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.btn-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:.2s}
+.btn-ig:hover{opacity:.85;transform:translateY(-2px)}
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;border-radius:14px;overflow:hidden;margin-bottom:20px}
+.ig-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:36px;cursor:pointer;transition:.4s;position:relative;overflow:hidden}
+.ig-cell:hover{transform:scale(1.04)}
+.ic1{background:linear-gradient(135deg,#1a4a10,#2d8a40)}
+.ic2{background:linear-gradient(135deg,#c2870c,#f5a623)}
+.ic3{background:linear-gradient(135deg,#0a2010,#1e6b3a)}
+.ic4{background:linear-gradient(135deg,#9a6500,#c2870c)}
+.ic5{background:linear-gradient(135deg,#2d6b20,#7cb950)}
+.ic6{background:linear-gradient(135deg,#f5a623,#e07010)}
+.ic7{background:linear-gradient(135deg,#163a14,#2d8a4f)}
+.ic8{background:linear-gradient(135deg,#c27a00,#f0b030)}
+.ig-howto{background:#fff8ee;border:1.5px solid rgba(194,135,12,.22);border-radius:var(--r);padding:22px 26px}
+.ig-howto-title{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.ig-step{display:flex;gap:11px;font-size:13px;color:var(--muted);margin-bottom:8px;align-items:flex-start}
+.ig-step-n{width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* ── YOUTUBE ── */
+.yt-bg{background:var(--forest)}
+.yt-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+.yt-player{border-radius:18px;overflow:hidden;aspect-ratio:16/9;background:#000;position:relative;cursor:pointer}
+.yt-player iframe{width:100%;height:100%;border:none;display:block}
+.yt-thumb{width:100%;height:100%;background:linear-gradient(135deg,#0a0a0a,#1a1a1a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.yt-play{width:68px;height:68px;background:#ff0000;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s;box-shadow:0 0 0 10px rgba(255,0,0,.15)}
+.yt-play:hover{transform:scale(1.1)}
+.yt-play::after{content:'▶';font-size:22px;color:#fff;margin-left:4px}
+.yt-thumb p{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.yt-info h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:12px}
+.yt-info p{font-size:13px;color:rgba(255,255,255,.48);line-height:1.8;margin-bottom:22px}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;background:#ff0000;color:#fff;padding:11px 22px;border-radius:11px;font-size:14px;font-weight:700;transition:.2s;border:none;cursor:pointer}
+.btn-yt:hover{background:#cc0000;transform:translateY(-2px)}
+.yt-howto{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:20px 24px;margin-top:18px}
+.yt-howto-title{font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:12px}
+.yt-step{font-size:12px;color:rgba(255,255,255,.38);margin-bottom:7px;display:flex;gap:9px}
+.yt-step code{background:rgba(255,255,255,.08);padding:1px 7px;border-radius:4px;font-size:11px;color:rgba(255,255,255,.55)}
+
+/* ── SHOP ── */
+.filter-row{display:flex;gap:8px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
 .ftab{padding:8px 20px;border-radius:20px;border:1.5px solid #ddd;background:#fff;color:var(--muted);font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.5px;transition:.2s}
 .ftab:hover{border-color:var(--gold);color:var(--ink)}
-.ftab.active{background:var(--ink);border-color:var(--ink);color:#fff}
-
-/* ── PRODUCT GRID ── */
-.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
-.prod-card{background:#fff;border-radius:var(--rL);overflow:hidden;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.05);transition:.3s;display:flex;flex-direction:column;position:relative}
-.prod-card:hover{transform:translateY(-6px);box-shadow:var(--shL)}
-.pc-badge{position:absolute;top:14px;left:14px;z-index:2;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
-.badge-gold{background:var(--gold);color:#fff}
-.badge-green{background:var(--leaf);color:#fff}
-.badge-leaf{background:var(--leaf3);color:var(--leaf)}
-.pc-img{height:190px;background:linear-gradient(145deg,var(--ink) 0%,var(--ink2) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.pc-img-emoji{font-size:68px;filter:drop-shadow(0 4px 14px rgba(194,135,12,.4));position:relative;z-index:1}
-.pc-img-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(194,135,12,.18),transparent 65%)}
+.ftab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pc{background:#fff;border-radius:var(--rL);overflow:hidden;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.05);transition:.3s;display:flex;flex-direction:column;position:relative}
+.pc:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.12)}
+.pc-badge{position:absolute;top:12px;left:12px;z-index:2;padding:4px 11px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase}
+.bg-gold{background:var(--gold);color:#fff}
+.bg-green{background:var(--leaf2);color:#fff}
+.bg-leaf{background:var(--leaf3);color:var(--leaf)}
+.pc-img{height:170px;background:linear-gradient(135deg,#f0ead8,var(--cream));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .pc-img img{width:100%;height:100%;object-fit:cover}
-.pc-curc{position:absolute;bottom:10px;right:10px;background:var(--gold);color:#fff;font-size:9px;font-weight:800;padding:3px 10px;border-radius:10px;letter-spacing:.5px}
-.pc-body{padding:20px;flex:1;display:flex;flex-direction:column}
-.pc-cat{font-size:9px;letter-spacing:3px;color:var(--leaf2);text-transform:uppercase;font-weight:700;margin-bottom:5px}
-.pc-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
-.pc-wt{font-size:12px;color:var(--muted);margin-bottom:10px}
-.pc-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:12px;flex:1}
-.pc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
-.pc-pill{background:var(--leaf3);color:var(--leaf);font-size:10px;font-weight:600;padding:3px 9px;border-radius:8px}
-.pc-price-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.pc-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--ink)}
-.pc-mrp{font-size:13px;color:#bbb;text-decoration:line-through}
-.pc-pct{background:#fff0d4;color:#9a6500;font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px}
+.pc-img-emoji{font-size:64px}
+.pc-img-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 70%,rgba(194,135,12,.15),transparent 70%)}
+.pc-curc{position:absolute;bottom:8px;right:8px;background:var(--gold);color:#fff;font-size:9px;font-weight:800;padding:3px 9px;border-radius:9px;letter-spacing:.5px}
+.pc-body{padding:18px;flex:1;display:flex;flex-direction:column;gap:8px}
+.pc-cat{font-size:9px;font-weight:700;color:var(--leaf2);letter-spacing:2px;text-transform:uppercase}
+.pc-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink)}
+.pc-wt{font-size:11px;color:var(--muted)}
+.pc-desc{font-size:11px;color:var(--muted);line-height:1.6}
+.pc-pills{display:flex;flex-wrap:wrap;gap:5px}
+.pc-pill{background:var(--leaf3);color:var(--leaf);font-size:10px;font-weight:600;padding:3px 8px;border-radius:7px}
+.pc-price-row{display:flex;align-items:center;gap:8px;margin-top:auto}
+.pc-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold)}
+.pc-mrp{font-size:12px;color:#bbb;text-decoration:line-through}
+.pc-off{background:#fff0d4;color:#9a6500;font-size:10px;font-weight:700;padding:2px 7px;border-radius:7px}
 .pc-actions{display:grid;grid-template-columns:1fr auto;gap:8px}
-.btn-wa{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:11px 14px;border-radius:11px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:.2s;text-decoration:none;letter-spacing:.3px}
-.btn-wa:hover{opacity:.9;transform:translateY(-1px)}
-.btn-cart-add{background:var(--cream);border:2px solid var(--gold);color:var(--gold);padding:11px 13px;border-radius:11px;font-size:14px;cursor:pointer;transition:.2s;font-weight:700}
-.btn-cart-add:hover{background:var(--gold);color:#fff}
-.pc-oos{position:absolute;inset:0;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;letter-spacing:3px;color:#b00;text-transform:uppercase;backdrop-filter:blur(2px)}
-/* no products msg */
-.no-prods{text-align:center;padding:60px;color:var(--muted);font-size:15px;grid-column:1/-1}
-
-/* ── WHY US ── */
-.why{background:var(--ink);padding:80px 24px}
-.why .sect-h2{color:#fff}
-.why .sect-sub{color:rgba(255,255,255,.45)}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
-.why-card{background:rgba(255,255,255,.04);border:1px solid rgba(194,135,12,.18);border-radius:var(--rL);padding:28px;transition:.3s}
-.why-card:hover{background:rgba(194,135,12,.07);transform:translateY(-4px)}
-.wc-icon{font-size:36px;margin-bottom:14px}
-.wc-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
-.wc-text{font-size:12px;color:rgba(255,255,255,.45);line-height:1.75}
-
-/* ── HOW TO ORDER ── */
-.steps-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0;position:relative}
-.steps-row::before{content:'';position:absolute;top:26px;left:calc(50% - 300px);right:calc(50% - 300px);height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);z-index:0}
-.step{text-align:center;padding:20px;position:relative;z-index:1}
-.step-circle{width:52px;height:52px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;box-shadow:0 4px 16px rgba(194,135,12,.35)}
-.step-title{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:8px}
-.step-text{font-size:12px;color:var(--muted);line-height:1.7}
-
-/* ── UPI SECTION ── */
-.upi-section{background:var(--ink);padding:72px 24px}
-.upi-inner{max-width:860px;margin:0 auto;display:flex;gap:56px;align-items:center;flex-wrap:wrap;justify-content:center}
-.upi-section .sect-h2{color:#fff}
-.upi-section .sect-sub{color:rgba(255,255,255,.4)}
-.qr-box{flex-shrink:0;text-align:center}
-.qr-box img{width:150px;height:150px;background:#fff;border-radius:16px;padding:10px;border:2.5px solid var(--gold);box-shadow:0 0 32px rgba(194,135,12,.3)}
-.qr-label{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.3);margin-top:10px;text-transform:uppercase}
-.upi-steps{flex:1;min-width:260px}
-.upistep{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
-.usin{width:30px;height:30px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--ink);flex-shrink:0;margin-top:1px}
-.ustxt{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65}
-.ustxt strong{color:#fff}
-.upi-id-pill{background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.4);border-radius:12px;padding:14px 18px;margin-top:20px}
-.uid-label{font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:5px}
-.uid-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--gold2);letter-spacing:1px}
+.btn-wa{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:10px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:.2s}
+.btn-wa:hover{opacity:.9}
+.btn-cart{background:var(--cream);border:2px solid var(--gold);color:var(--gold);padding:10px 12px;border-radius:10px;font-size:14px;cursor:pointer;transition:.2s;font-weight:700}
+.btn-cart:hover{background:var(--gold);color:#fff}
+.pc-oos{position:absolute;inset:0;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);font-size:13px;border-radius:var(--rL)}
 
 /* ── CART DRAWER ── */
 .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:190;opacity:0;pointer-events:none;transition:opacity .3s}
 .cart-overlay.open{opacity:1;pointer-events:all}
 .cart-drawer{position:fixed;right:0;top:0;bottom:0;width:390px;max-width:100vw;background:#fff;z-index:200;transform:translateX(110%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-4px 0 40px rgba(0,0,0,.18)}
 .cart-drawer.open{transform:translateX(0)}
-.cdh{padding:20px 24px;background:var(--ink);display:flex;align-items:center;justify-content:space-between}
-.cdh-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff}
-.cdh-close{background:rgba(255,255,255,.1);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
-.cd-list{flex:1;overflow-y:auto;padding:16px}
-.cd-empty{text-align:center;padding:48px 20px;color:var(--muted)}
-.cd-empty-icon{font-size:48px;margin-bottom:14px}
-.ci{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #f0ebe0}
-.ci-icon{width:56px;height:56px;background:var(--cream);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.cdh{padding:18px 22px;background:var(--ink);display:flex;align-items:center;justify-content:space-between}
+.cdh-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff}
+.cdh-x{background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:15px}
+.cd-list{flex:1;overflow-y:auto;padding:14px}
+.cd-empty{text-align:center;padding:40px 16px;color:var(--muted)}
+.cd-empty-icon{font-size:44px;margin-bottom:12px}
+.ci{display:flex;gap:11px;align-items:flex-start;padding:13px 0;border-bottom:1px solid #f0ebe0}
+.ci-icon{width:52px;height:52px;background:var(--cream);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
 .ci-body{flex:1}
 .ci-name{font-weight:700;font-size:13px;color:var(--ink)}
 .ci-wt{font-size:11px;color:var(--muted);margin-top:1px}
-.ci-price{font-weight:700;font-size:15px;color:var(--gold);margin-top:4px}
-.ci-qty{display:flex;align-items:center;gap:8px;margin-top:8px}
-.ci-qty button{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--leaf2);background:none;color:var(--leaf2);font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
-.ci-qty-n{font-weight:700;font-size:14px;min-width:22px;text-align:center}
-.ci-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:17px;padding:4px;margin-left:auto}
+.ci-price{font-weight:700;font-size:14px;color:var(--gold);margin-top:3px}
+.ci-qty{display:flex;align-items:center;gap:7px;margin-top:7px}
+.ci-qty button{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--leaf2);background:none;color:var(--leaf2);font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ci-qty-n{font-weight:700;font-size:13px;min-width:20px;text-align:center}
+.ci-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:16px;margin-left:auto}
 .ci-del:hover{color:#e55}
-.cdf{padding:18px 24px;border-top:2px solid #f5ede0}
-.cdf-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.cdf-tl{font-weight:700;font-size:15px}
-.cdf-tv{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--gold)}
-.cdf-checkout{width:100%;background:linear-gradient(135deg,var(--leaf),var(--ink));color:#fff;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.5px;margin-bottom:8px;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.cdf{padding:16px 22px;border-top:2px solid #f5ede0}
+.cdf-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cdf-tl{font-weight:700;font-size:14px}
+.cdf-tv{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold)}
+.cdf-checkout{width:100%;background:linear-gradient(135deg,var(--leaf),var(--ink));color:#fff;border:none;padding:14px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.4px;margin-bottom:7px;transition:.2s;display:flex;align-items:center;justify-content:center;gap:7px}
 .cdf-checkout:hover{opacity:.9;transform:translateY(-1px)}
-.cdf-clear{width:100%;background:none;border:1px solid #ddd;color:var(--muted);padding:9px;border-radius:10px;cursor:pointer;font-size:12px}
+.cdf-clear{width:100%;background:none;border:1px solid #ddd;color:var(--muted);padding:8px;border-radius:10px;cursor:pointer;font-size:12px}
 
 /* ── CHECKOUT MODAL ── */
 .ck-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center}
 .ck-overlay.open{opacity:1;pointer-events:all}
-.ck-modal{background:#fff;border-radius:24px 24px 0 0;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);box-shadow:0 -8px 48px rgba(0,0,0,.25)}
+.ck-modal{background:#fff;border-radius:22px 22px 0 0;width:100%;max-width:580px;max-height:93vh;overflow-y:auto;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);box-shadow:0 -8px 48px rgba(0,0,0,.25)}
 .ck-overlay.open .ck-modal{transform:translateY(0)}
-.ck-head{padding:20px 24px 16px;border-bottom:1px solid #f0ebe0;position:sticky;top:0;background:#fff;z-index:2;display:flex;align-items:center;justify-content:space-between}
-.ck-head-left .ck-step-label{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3px}
-.ck-head-left .ck-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink)}
-.ck-close{background:#f5f5f5;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;color:var(--muted)}
-/* progress bar */
-.ck-progress{height:3px;background:#f0f0f0;position:relative}
-.ck-progress-bar{height:100%;background:linear-gradient(to right,var(--leaf2),var(--gold));transition:width .4s ease;border-radius:2px}
-.ck-body{padding:20px 24px 24px}
-
-/* order summary strip */
-.ck-summary{background:var(--cream);border-radius:12px;padding:14px 16px;margin-bottom:20px}
-.ck-summary-title{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:10px}
-.ck-summary-item{display:flex;justify-content:space-between;font-size:13px;color:var(--ink);margin-bottom:5px}
-.ck-summary-item:last-child{margin-bottom:0;padding-top:8px;border-top:1px dashed #ddd;font-weight:700;font-size:15px}
-.ck-summary-item:last-child span:last-child{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:20px}
-
-/* form fields */
-.ck-section-label{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--leaf);text-transform:uppercase;margin:18px 0 10px;display:flex;align-items:center;gap:8px}
-.ck-section-label::after{content:'';flex:1;height:1px;background:#f0ebe0}
-.ck-field{margin-bottom:14px}
-.ck-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.5px;margin-bottom:5px;display:flex;align-items:center;gap:4px}
-.ck-req{color:#e53;font-size:13px}
-.ck-input,.ck-select,.ck-textarea{width:100%;padding:11px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);transition:.2s;background:#fff}
-.ck-input:focus,.ck-select:focus,.ck-textarea:focus{outline:none;border-color:var(--leaf2);box-shadow:0 0 0 3px rgba(45,122,79,.1)}
-.ck-input.error,.ck-select.error,.ck-textarea.error{border-color:#e53;box-shadow:0 0 0 3px rgba(229,51,51,.1)}
-.ck-err-msg{font-size:11px;color:#e53;margin-top:4px;display:none}
-.ck-err-msg.show{display:block}
-.ck-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.ck-textarea{resize:none;height:72px}
-
-/* payment method cards */
-.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
-.pay-card{border:2px solid #e8e0d0;border-radius:12px;padding:14px 12px;cursor:pointer;transition:.2s;text-align:center;background:#fff;position:relative}
-.pay-card:hover{border-color:var(--leaf2);background:#f8fdf9}
-.pay-card.selected{border-color:var(--leaf2);background:var(--leaf3);box-shadow:0 0 0 1px var(--leaf2)}
-.pay-card input[type=radio]{position:absolute;opacity:0;pointer-events:none}
-.pay-icon{font-size:26px;margin-bottom:6px}
-.pay-name{font-size:12px;font-weight:700;color:var(--ink)}
-.pay-desc{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4}
-.pay-card.selected .pay-name{color:var(--leaf)}
-
-/* payment detail panels */
-.pay-detail{display:none;margin-top:16px;animation:fadeSlide .25s ease}
-.pay-detail.show{display:block}
-@keyframes fadeSlide{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-
-/* UPI panel */
-.upi-panel{background:var(--ink);border-radius:14px;padding:20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.upi-panel img{width:100px;height:100px;background:#fff;border-radius:10px;padding:6px;border:2px solid var(--gold);flex-shrink:0}
-.upi-panel-info .upi-step{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px;display:flex;gap:8px}
-.upi-panel-info .upi-step strong{color:#fff}
-.upi-id-box{background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.4);border-radius:8px;padding:10px 14px;margin-top:10px}
-.upi-id-box .uid-l{font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase}
-.upi-id-box .uid-v{font-size:16px;font-weight:700;color:var(--gold2);letter-spacing:1px;font-family:'Cormorant Garamond',serif}
-
-/* card panel */
-.card-panel{background:#f8f9ff;border:1px solid #dde4f5;border-radius:14px;padding:18px}
-.card-panel .cp-notice{font-size:12px;color:#5566aa;margin-bottom:14px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
-.card-icons{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.card-icon{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:700;color:#444}
-.card-icon.visa{color:#1a1f71}
-.card-icon.mc{color:#eb001b}
-.card-icon.rupay{color:#097a44}
-.card-icon.amex{color:#007bc1}
-
-/* netbanking panel */
-.nb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-.nb-bank{border:1.5px solid #e8e0d0;border-radius:10px;padding:10px 8px;text-align:center;cursor:pointer;font-size:11px;font-weight:700;color:#444;background:#fff;transition:.2s}
-.nb-bank:hover{border-color:var(--leaf2);color:var(--leaf);background:var(--leaf3)}
-.nb-bank.sel{border-color:var(--leaf2);background:var(--leaf3);color:var(--leaf)}
-.nb-more{font-size:12px;color:var(--leaf2);font-weight:600;cursor:pointer;margin-top:10px;display:block;text-align:center}
-
-/* wa panel */
-.wa-panel{background:linear-gradient(135deg,#e8fff1,#d4f7e4);border:1.5px solid #25d366;border-radius:14px;padding:18px}
-.wa-panel-inner{display:flex;gap:14px;align-items:flex-start}
-.wa-panel-icon{font-size:36px;flex-shrink:0}
-.wa-panel p{font-size:13px;color:#1a3a20;line-height:1.65}
-.wa-panel strong{color:#0a5c20}
-
-/* secure badges */
-.secure-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid #f0ebe0}
-.sec-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-weight:600}
-
-/* nav buttons */
-.ck-nav{display:flex;gap:10px;margin-top:20px}
-.ck-back{flex:0 0 auto;background:none;border:1.5px solid #ddd;color:var(--muted);padding:13px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s}
-.ck-back:hover{border-color:var(--ink);color:var(--ink)}
-.ck-next{flex:1;background:linear-gradient(135deg,var(--leaf),var(--ink));color:#fff;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.3px}
-.ck-next:hover{opacity:.9;transform:translateY(-1px)}
-.ck-next:disabled{opacity:.5;cursor:not-allowed;transform:none}
-
-/* success screen */
-.ck-success{text-align:center;padding:20px 10px 10px}
-.ck-success-icon{font-size:64px;margin-bottom:16px;animation:pop .4s cubic-bezier(.175,.885,.32,1.275)}
-@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-.ck-success h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ink);margin-bottom:8px}
-.ck-success p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
-.ck-order-ref{background:var(--cream);border-radius:12px;padding:14px 18px;margin-bottom:20px;text-align:left}
-.ck-order-ref .cor-label{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
-.ck-order-ref .cor-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--leaf);letter-spacing:2px}
-.ck-wa-btn{width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px}
-.ck-done-btn{width:100%;background:none;border:1.5px solid #ddd;color:var(--muted);padding:11px;border-radius:12px;font-size:14px;cursor:pointer}
-
-/* ── CHECKOUT MODAL ── */
-.ck-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center}
-.ck-overlay.open{opacity:1;pointer-events:all}
-.ck-modal{background:#fff;border-radius:24px 24px 0 0;width:100%;max-width:580px;max-height:93vh;overflow-y:auto;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);box-shadow:0 -8px 48px rgba(0,0,0,.25)}
-.ck-overlay.open .ck-modal{transform:translateY(0)}
-.ck-progress{height:3px;background:#f0f0f0}
-.ck-progress-bar{height:100%;background:linear-gradient(to right,var(--leaf2),var(--gold));transition:width .4s ease}
-.ck-head{padding:18px 22px 14px;border-bottom:1px solid #f0ebe0;position:sticky;top:0;background:#fff;z-index:2;display:flex;align-items:center;justify-content:space-between}
-.ck-step-label{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3px}
-.ck-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink)}
-.ck-close{background:#f5f5f5;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;color:var(--muted)}
-.ck-body{padding:18px 22px 24px}
-/* summary */
-.ck-summary{background:var(--cream);border-radius:12px;padding:14px 16px;margin-bottom:18px}
-.ck-summary-title{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:10px}
-.ck-sum-item{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;color:var(--ink)}
-.ck-sum-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;padding-top:8px;border-top:1px dashed #d8d0c0;margin-top:6px}
-.ck-sum-total span:last-child{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold)}
+.ck-prog{height:3px;background:#f0f0f0}
+.ck-prog-bar{height:100%;background:linear-gradient(to right,var(--leaf2),var(--gold));transition:width .4s}
+.ck-head{padding:16px 22px 13px;border-bottom:1px solid #f0ebe0;position:sticky;top:0;background:#fff;z-index:2;display:flex;align-items:center;justify-content:space-between}
+.ck-step-lbl{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:2px}
+.ck-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink)}
+.ck-x{background:#f5f5f5;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;color:var(--muted)}
+.ck-body{padding:16px 22px 22px}
+/* summary box */
+.ck-sum{background:var(--cream);border-radius:11px;padding:13px 15px;margin-bottom:16px}
+.ck-sum-title{font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:9px}
+.ck-sum-row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink);margin-bottom:4px}
+.ck-sum-row.total{font-weight:700;font-size:14px;padding-top:7px;border-top:1px dashed #d8d0c0;margin-top:5px}
+.ck-sum-row.total span:last-child{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold)}
+/* shipping estimate */
+#ckShipBox{display:none;background:#f0faf4;border:1.5px solid #b2e0c0;border-radius:11px;padding:13px 15px;margin-bottom:14px}
+.ship-zone-label{font-size:9px;letter-spacing:2px;color:var(--leaf2);text-transform:uppercase;font-weight:700;margin-bottom:9px}
+.ship-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;margin-bottom:10px}
+.ship-box{background:#fff;border-radius:8px;padding:9px 11px}
+.ship-box-label{font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.ship-box-val{font-weight:700;color:var(--ink)}
+.ship-grand{background:var(--ink);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
+.ship-grand-l{font-size:12px;color:rgba(255,255,255,.55)}
+.ship-grand-v{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold2)}
+.ship-note{font-size:10px;color:var(--muted);margin-top:7px}
 /* section label */
-.ck-section-label{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--leaf);text-transform:uppercase;margin:16px 0 10px;display:flex;align-items:center;gap:8px}
-.ck-section-label::after{content:'';flex:1;height:1px;background:#f0ebe0}
-/* fields */
-.ck-field{margin-bottom:13px}
+.ck-sec{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--leaf);text-transform:uppercase;margin:15px 0 9px;display:flex;align-items:center;gap:7px}
+.ck-sec::after{content:'';flex:1;height:1px;background:#f0ebe0}
+/* form */
+.ck-field{margin-bottom:12px}
 .ck-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.3px;margin-bottom:4px;display:flex;align-items:center;gap:3px}
-.ck-req{color:#e53;font-size:13px;line-height:1}
-.ck-input,.ck-select{width:100%;padding:11px 14px;border:1.5px solid #e0d8c8;border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);transition:.2s;background:#fff}
+.ck-req{color:#e53;font-size:12px}
+.ck-input,.ck-select{width:100%;padding:10px 13px;border:1.5px solid #e0d8c8;border-radius:9px;font-size:14px;font-family:inherit;color:var(--ink);background:#fff;transition:.2s}
 .ck-input:focus,.ck-select:focus{outline:none;border-color:var(--leaf2);box-shadow:0 0 0 3px rgba(45,122,79,.1)}
-.ck-input.error,.ck-select.error{border-color:#e53;box-shadow:0 0 0 3px rgba(229,51,51,.09)}
-.ck-err-msg{font-size:11px;color:#e53;margin-top:4px;display:none}
-.ck-err-msg.show{display:block}
-.ck-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ck-input.err,.ck-select.err{border-color:#e53}
+.ck-errmsg{font-size:11px;color:#e53;margin-top:3px;display:none}
+.ck-errmsg.show{display:block}
+.ck-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}
 /* payment cards */
-.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
-.pay-card{border:2px solid #e8e0d0;border-radius:12px;padding:14px 10px;cursor:pointer;transition:.2s;text-align:center;background:#fff;position:relative;user-select:none}
+.pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:4px}
+.pay-card{border:2px solid #e8e0d0;border-radius:11px;padding:13px 9px;cursor:pointer;transition:.2s;text-align:center;background:#fff;position:relative;user-select:none}
 .pay-card:hover{border-color:var(--leaf2);background:#f8fdf9}
-.pay-card.selected{border-color:var(--leaf2);background:var(--leaf3)}
+.pay-card.sel{border-color:var(--leaf2);background:var(--leaf3)}
 .pay-card input{position:absolute;opacity:0;pointer-events:none}
-.pay-icon{font-size:26px;margin-bottom:6px}
-.pay-name{font-size:12px;font-weight:700;color:var(--ink)}
-.pay-card.selected .pay-name{color:var(--leaf)}
+.pay-icon{font-size:24px;margin-bottom:5px}
+.pay-name{font-size:11px;font-weight:700;color:var(--ink)}
+.pay-card.sel .pay-name{color:var(--leaf)}
 .pay-desc{font-size:10px;color:var(--muted);margin-top:2px}
 /* payment panels */
-.pay-detail{display:none;margin-top:14px;animation:fadeUp .25s ease}
-.pay-detail.show{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.upi-panel{background:var(--ink);border-radius:14px;padding:18px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
-.upi-panel img{width:90px;height:90px;background:#fff;border-radius:8px;padding:5px;border:2px solid var(--gold);flex-shrink:0}
-.upi-panel-info{flex:1;min-width:180px}
-.upi-step{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px;display:flex;gap:7px;line-height:1.5}
-.upi-step strong{color:#fff}
-.upi-id-box{background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.4);border-radius:8px;padding:9px 13px;margin-top:10px}
-.uid-l{font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase}
-.uid-v{font-size:15px;font-weight:700;color:var(--gold2);font-family:'Cormorant Garamond',serif;letter-spacing:1px}
-.card-panel{background:#f8f9ff;border:1px solid #dde4f5;border-radius:14px;padding:16px}
-.card-panel .cp-notice{font-size:12px;color:#4455aa;margin-bottom:12px;display:flex;gap:7px;line-height:1.5}
-.card-icons{display:flex;gap:7px;margin-bottom:13px;flex-wrap:wrap}
-.card-icon{background:#fff;border:1px solid #ddd;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700}
-.card-icon.visa{color:#1a1f71}.card-icon.mc{color:#eb001b}.card-icon.rupay{color:#097a44}.card-icon.amex{color:#007bc1}
-.nb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
-.nb-bank{border:1.5px solid #e8e0d0;border-radius:9px;padding:10px 6px;text-align:center;cursor:pointer;font-size:11px;font-weight:700;color:#555;background:#fff;transition:.2s}
+.pay-panel{display:none;margin-top:13px;animation:fadeUp .25s ease}
+.pay-panel.show{display:block}
+/* UPI panel */
+.upi-box{background:var(--ink);border-radius:13px;padding:16px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.upi-box img{width:85px;height:85px;background:#fff;border-radius:8px;padding:5px;border:2px solid var(--gold);flex-shrink:0}
+.upi-steps-list{flex:1;min-width:160px}
+.upi-step-row{font-size:12px;color:rgba(255,255,255,.58);margin-bottom:5px;display:flex;gap:7px;line-height:1.5}
+.upi-step-row strong{color:#fff}
+.upi-id-box{background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.4);border-radius:8px;padding:8px 12px;margin-top:9px}
+.uid-l{font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.38);text-transform:uppercase}
+.uid-v{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold2);letter-spacing:1px}
+/* card panel */
+.card-box{background:#f8f9ff;border:1px solid #dde4f5;border-radius:13px;padding:15px}
+.card-notice{font-size:12px;color:#4455aa;margin-bottom:11px;display:flex;gap:7px;line-height:1.5}
+.card-brands{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap}
+.card-brand{background:#fff;border:1px solid #ddd;border-radius:5px;padding:3px 8px;font-size:11px;font-weight:700}
+.visa{color:#1a1f71}.mc{color:#eb001b}.rupay{color:#097a44}.amex{color:#007bc1}
+/* netbanking panel */
+.nb-box{background:#f8f9ff;border:1px solid #dde4f5;border-radius:13px;padding:15px}
+.nb-notice{font-size:12px;color:#4455aa;margin-bottom:11px;display:flex;gap:7px;line-height:1.5}
+.nb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:7px}
+.nb-bank{border:1.5px solid #e8e0d0;border-radius:9px;padding:9px 6px;text-align:center;cursor:pointer;font-size:11px;font-weight:700;color:#555;background:#fff;transition:.2s}
 .nb-bank:hover,.nb-bank.sel{border-color:var(--leaf2);background:var(--leaf3);color:var(--leaf)}
-.wa-panel{background:linear-gradient(135deg,#e8fff1,#d4f7e4);border:1.5px solid #25d366;border-radius:14px;padding:16px}
-.wa-panel-inner{display:flex;gap:12px;align-items:flex-start}
-.wa-panel p{font-size:13px;color:#1a3a20;line-height:1.65}
 /* secure */
-.secure-badges{display:flex;gap:12px;flex-wrap:wrap}
+.secure-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
 .sec-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-weight:600}
 /* nav buttons */
-.ck-nav{display:flex;gap:10px;margin-top:18px}
-.ck-back{background:none;border:1.5px solid #ddd;color:var(--muted);padding:12px 18px;border-radius:11px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
+.ck-nav{display:flex;gap:9px;margin-top:16px}
+.ck-back{background:none;border:1.5px solid #ddd;color:var(--muted);padding:11px 17px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
 .ck-back:hover{border-color:var(--ink);color:var(--ink)}
-.ck-next{flex:1;background:linear-gradient(135deg,var(--leaf),var(--ink));color:#fff;border:none;padding:13px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.3px}
+.ck-next{flex:1;background:linear-gradient(135deg,var(--leaf),var(--ink));color:#fff;border:none;padding:12px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.3px}
 .ck-next:hover{opacity:.9;transform:translateY(-1px)}
 /* success */
-.ck-success{text-align:center;padding:10px 6px}
-.ck-success-icon{font-size:60px;margin-bottom:14px;display:block;animation:pop .4s cubic-bezier(.175,.885,.32,1.275)}
+.ck-ok{text-align:center;padding:10px 6px}
+.ck-ok-icon{font-size:58px;margin-bottom:13px;display:block;animation:pop .4s cubic-bezier(.175,.885,.32,1.275)}
 @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-.ck-success h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ink);margin-bottom:8px}
-.ck-success p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
-.ck-order-ref{background:var(--cream);border-radius:11px;padding:13px 16px;margin-bottom:10px;text-align:left}
-.cor-label{font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
-.cor-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--leaf);letter-spacing:2px}
-.ck-wa-btn{width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;margin-top:16px}
-.ck-done-btn{width:100%;background:none;border:1.5px solid #ddd;color:var(--muted);padding:11px;border-radius:11px;font-size:13px;cursor:pointer}
+.ck-ok h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.ck-ok p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.ck-ref-box{background:var(--cream);border-radius:10px;padding:12px 15px;margin-bottom:8px;text-align:left}
+.ck-ref-lbl{font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:3px}
+.ck-ref-val{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--leaf);letter-spacing:2px}
+.ck-wa-btn{width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;padding:13px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin:14px 0 8px}
+.ck-done-btn{width:100%;background:none;border:1.5px solid #ddd;color:var(--muted);padding:10px;border-radius:10px;font-size:13px;cursor:pointer}
+
+/* ── HOW TO ORDER ── */
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.steps-row::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:1px;background:linear-gradient(to right,var(--leaf3),var(--gold),var(--leaf3));z-index:0}
+.step-card{text-align:center;position:relative;z-index:1}
+.step-circle{width:64px;height:64px;background:linear-gradient(135deg,var(--leaf2),var(--leaf));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#fff;box-shadow:0 4px 16px rgba(30,107,58,.3)}
+.step-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.step-text{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* ── UPI SECTION ── */
+.upi-sec{background:var(--ink);padding:72px 40px}
+.upi-inner{max-width:860px;margin:0 auto;display:flex;gap:52px;align-items:center;flex-wrap:wrap;justify-content:center}
+.qr-box img{width:140px;height:140px;background:#fff;border-radius:14px;padding:9px;border:2.5px solid var(--gold);box-shadow:0 0 28px rgba(194,135,12,.3)}
+.upi-steps-wrap{flex:1;min-width:240px}
+.ustep{display:flex;gap:13px;align-items:flex-start;margin-bottom:16px}
+.usin{width:28px;height:28px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:var(--ink);flex-shrink:0;margin-top:1px}
+.ustxt{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6}
+.ustxt strong{color:#fff}
+.upi-id-pill{background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.4);border-radius:11px;padding:13px 17px;margin-top:18px}
+.uid-label{font-size:8px;letter-spacing:2.5px;color:rgba(255,255,255,.32);text-transform:uppercase;margin-bottom:4px}
+.uid-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold2);letter-spacing:1px}
+
+/* ── TRUST BAR ── */
+.trust{background:var(--silk);padding:18px 40px;overflow:hidden}
+.trust-inner{display:flex;gap:0;white-space:nowrap;overflow-x:auto;justify-content:center;-webkit-overflow-scrolling:touch}
+.trust-inner::-webkit-scrollbar{display:none}
+.trust-item{display:flex;align-items:center;gap:8px;padding:10px 22px;font-size:12px;font-weight:700;color:var(--ink);border-right:1px solid rgba(0,0,0,.08);flex-shrink:0}
+.trust-item:last-child{border-right:none}
+
+/* ── WHY US ── */
+.why-bg{background:var(--forest);padding:90px 40px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:20px}
+.why-card{background:rgba(255,255,255,.04);border:1px solid rgba(194,135,12,.18);border-radius:var(--rL);padding:26px;transition:.3s}
+.why-card:hover{background:rgba(194,135,12,.07);border-color:rgba(194,135,12,.35);transform:translateY(-3px)}
+.wc-icon{font-size:30px;margin-bottom:12px}
+.wc-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:8px}
+.wc-text{font-size:12px;color:rgba(255,255,255,.45);line-height:1.8}
 
 /* ── FOOTER ── */
-footer{background:#060d08;padding:56px 24px 24px}
-.foot-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:40px}
-.fl-logo{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin-bottom:14px}
-.fl-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:3px}
-.fl-tag{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase;margin-bottom:14px}
-.fl-about{font-size:12px;color:rgba(255,255,255,.4);line-height:1.8}
-.foot-head{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:16px}
-.foot-links a{display:block;color:rgba(255,255,255,.45);font-size:13px;margin-bottom:9px;transition:.2s}
+footer{background:#04100a;padding:56px 40px 24px}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;margin-bottom:36px}
+.fl-logo{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin-bottom:12px}
+.fl-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:2px}
+.fl-tag{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.22);text-transform:uppercase;margin-bottom:12px;display:block}
+.fl-about{font-size:12px;color:rgba(255,255,255,.35);line-height:1.8}
+.foot-h{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.foot-links a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:8px;transition:.2s}
 .foot-links a:hover{color:var(--gold2)}
-.foot-contact-row{display:flex;gap:10px;margin-bottom:10px;font-size:12px;color:rgba(255,255,255,.45);line-height:1.5}
-.foot-bar{max-width:1200px;margin:0 auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.5px}
-.fssai-pill{background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.3);padding:5px 12px;border-radius:8px;color:var(--gold)}
+.foot-cr{display:flex;gap:9px;margin-bottom:8px;font-size:12px;color:rgba(255,255,255,.38)}
+.foot-bar{max-width:1100px;margin:0 auto;padding-top:18px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;font-size:11px;color:rgba(255,255,255,.2)}
+.fssai-pill{background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.25);padding:4px 11px;border-radius:7px;color:var(--gold)}
 
 /* ── TOAST ── */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:11px 22px;border-radius:40px;font-size:13px;font-weight:600;z-index:400;transition:.3s;border:1px solid rgba(194,135,12,.5);box-shadow:0 6px 24px rgba(0,0,0,.3);pointer-events:none;white-space:nowrap}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 22px;border-radius:40px;font-size:13px;font-weight:600;z-index:400;transition:.3s;border:1px solid rgba(194,135,12,.5);box-shadow:0 6px 24px rgba(0,0,0,.3);pointer-events:none;white-space:nowrap}
 .toast.up{transform:translateX(-50%) translateY(0)}
 
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;gap:40px}
-  .hero-card{max-width:360px;margin:0 auto}
-  .hero-stats{grid-template-columns:repeat(2,1fr)}
-  .foot-grid{grid-template-columns:1fr;gap:32px}
-  .nav-links a:not(.nav-wa){display:none}
+@media(max-width:960px){
+  nav{padding:13px 18px}
+  nav.scrolled{padding:10px 18px}
+  .nav-links a:not(.nav-shop):not(.nav-cart){display:none}
+  .hstats-inner{padding:14px 18px;flex-wrap:wrap}
+  .hstat{flex:0 0 50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.05);padding:7px 0}
+  .founder-grid,.about-grid{grid-template-columns:1fr;gap:44px}
+  .mcards,.why-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .pt-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr;gap:28px}
+  .steps-row{grid-template-columns:repeat(2,1fr)}
+  .steps-row::before{display:none}
+  .yt-grid{grid-template-columns:1fr}
+  .ig-grid{grid-template-columns:repeat(2,1fr)}
+  .val-grid{grid-template-columns:1fr}
+  .val-globe{grid-column:span 1}
   .cart-drawer{width:100vw}
+  .pay-grid{grid-template-columns:1fr 1fr 1fr}
 }
 @media(max-width:600px){
-  .trust-inner{justify-content:flex-start}
-  .steps-row::before{display:none}
+  .section{padding:60px 18px}
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .hero-eyebrow{font-size:8px;padding:5px 12px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <img class="nav-logo-img" id="navLogo" src="" alt="logo">
-    <div class="nav-brand">
-      <div class="nav-brand-name" id="navName">Shivar Farmfresh</div>
-      <div class="nav-brand-sub" id="navTag">Pure Sahyadri Gold</div>
+<div id="scrollBar"></div>
+<div class="toast" id="toast"></div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="mainNav">
+  <div class="nav-brand">
+    <img class="nav-logo" id="navLogo" src="" alt="Shivar Farmfresh">
+    <div>
+      <div class="nav-name">Shivar Farmfresh</div>
+      <span class="nav-sub">Pure Sahyadri Gold</span>
     </div>
-    <div class="nav-links">
-      <a href="#shop">Shop</a>
-      <a href="#why">Why Us</a>
-      <a href="#order">Order</a>
-      <a id="navWa" href="#" target="_blank" class="nav-wa">💬 WhatsApp</a>
-      <button class="nav-cart" onclick="openCart()">🛒 Cart <span class="cart-badge" id="cartBadge">0</span></button>
-    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#story">Story</a>
+    <a href="#journey">Journey</a>
+    <a href="#about">About</a>
+    <a href="#instagram">Instagram</a>
+    <a href="#youtube">YouTube</a>
+    <a href="#shop" class="nav-shop">🛒 Shop</a>
+    <button class="nav-cart" onclick="openCart()">🛒 Cart <span class="cart-badge" id="cartBadge">0</span></button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">✦ Premium Organic Spice ✦</div>
-      <h1 class="hero-h1">Pure <em>Sahyadri</em><br>Turmeric Gold</h1>
-      <p class="hero-devi" id="heroHi">सह्याद्रीतील शुद्ध हळद पावडर</p>
-      <p class="hero-p">Farm-to-door organic turmeric from Wai-Satara, Sahyadri. 3–5% curcumin content — up to 3× higher than standard market turmeric (1–2%). FSSAI certified. Zero chemicals, zero fillers.</p>
-      <div class="hero-btns">
-        <a href="#shop" class="btn-hero-primary">Shop Now →</a>
-        <a id="heroWa" href="#" class="btn-hero-outline" target="_blank">💬 WhatsApp Order</a>
-      </div>
-      <div class="hero-stats">
-        <div><div class="hstat-val">3–5%</div><div class="hstat-label">Curcumin</div></div>
-        <div><div class="hstat-val">100%</div><div class="hstat-label">Organic</div></div>
-        <div><div class="hstat-val">0</div><div class="hstat-label">Additives</div></div>
-        <div><div class="hstat-val">FSSAI</div><div class="hstat-label">Certified</div></div>
-      </div>
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home">
+  <div class="hero-slides">
+    <div class="slide s1 active"></div>
+    <div class="slide s2"></div>
+    <div class="slide s3"></div>
+    <div class="slide s4"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ International Women's Day · 8 March 2026 ✦</div>
+    <h1 class="hero-h1">From Our Farm<br>to <em>Every Family</em></h1>
+    <div class="hero-hi">शुद्ध सह्याद्री सोने · खेतों से सीधे आपके घर तक</div>
+    <p class="hero-sub">Ashwini Ghanwat's bold vision — pure, unadulterated turmeric grown in the mineral-rich Sahyadri hills of Wai-Satara, delivered direct to your door. No middlemen. No adulteration. Ever.</p>
+    <div class="hero-ctas">
+      <a href="#shop" class="btn-gold">🌿 Shop Turmeric</a>
+      <a href="#story" class="btn-ghost">Our Story →</a>
     </div>
-    <div class="hero-card">
-      <div class="hcard-icon">🌿</div>
-      <div class="hcard-name">Premium Turmeric</div>
-      <div class="hcard-origin">Wai · Satara · Sahyadri</div>
-      <div class="hcard-tag">★ 3–5% Curcumin</div>
-      <div class="hcard-cert" id="heroCert">FSSAI 21524039000444</div>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="hero-stats">
+    <div class="hstats-inner">
+      <div class="hstat"><div class="hstat-n">3–5%</div><div class="hstat-l">Curcumin vs 1–2% market avg</div></div>
+      <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">Farm Direct · Zero Middlemen</div></div>
+      <div class="hstat"><div class="hstat-n">0</div><div class="hstat-l">Additives · Preservatives · Fillers</div></div>
+      <div class="hstat"><div class="hstat-n">2030</div><div class="hstat-l">Global Reach Vision</div></div>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div class="trust">
-  <div class="trust-inner">
-    <div class="trust-item"><span>✅</span> FSSAI Certified</div>
-    <div class="trust-item"><span>🌿</span> 100% Organic</div>
-    <div class="trust-item"><span>🏔️</span> Sahyadri Origin</div>
-    <div class="trust-item"><span>🚚</span> Pan India Delivery</div>
-    <div class="trust-item"><span>🔒</span> Resealable Pack</div>
-    <div class="trust-item"><span>⚡</span> Same Day Dispatch</div>
-    <div class="trust-item"><span>🫙</span> Zero Fillers</div>
+<!-- ══════════ TICKER ══════════ -->
+<div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<!-- ══════════ WOMEN'S DAY ══════════ -->
+<div class="wday">
+  <div class="wday-inner">
+    <span class="wday-icon">🌸</span>
+    <div class="wday-label">International Women's Day · 8 March 2026</div>
+    <h2 class="wday-h">A Woman's Dream is<br><span>Changing What You Eat</span></h2>
+    <p class="wday-p">Today, Ashwini Ghanwat — a farmer's daughter from the Sahyadri hills — officially launches Shivar Farmfresh. Her mission: every Indian family deserves to know exactly what goes into their food. Pure. Traceable. Honest.</p>
   </div>
 </div>
 
-<!-- SHOP -->
-<section class="section" id="shop">
-  <div class="section-inner">
-    <div class="sect-head">
-      <div class="sect-eye">✦ Our Products ✦</div>
-      <h2 class="sect-h2">Choose Your Pack</h2>
-      <p class="sect-sub">All packs contain the same premium 3–5% curcumin turmeric — up to 3× higher than regular shelf brands. Bigger pack = better value per gram.</p>
-    </div>
-    <div class="filter-tabs" id="filterTabs"></div>
-    <div class="prod-grid" id="prodGrid"></div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="why" id="why">
-  <div class="section-inner">
-    <div class="sect-head">
-      <div class="sect-eye" style="color:var(--gold)">✦ Why Shivar Farmfresh ✦</div>
-      <h2 class="sect-h2">Not Just Turmeric — It's Science</h2>
-      <p class="sect-sub">Here is what separates our turmeric from every brand on a shelf</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card"><div class="wc-icon">🔬</div><div class="wc-title">3–5% Curcumin</div><div class="wc-text">Standard market turmeric contains only 1–2% curcumin. Our Sahyadri-grown turmeric delivers up to 3× more of the active healing compound per spoon.</div></div>
-      <div class="why-card"><div class="wc-icon">🏔️</div><div class="wc-title">Single Origin</div><div class="wc-text">Grown exclusively in mineral-rich Wai-Satara, Sahyadri. Traceable to the exact farm. No blending, no mixing with inferior batches.</div></div>
-      <div class="why-card"><div class="wc-icon">🌱</div><div class="wc-title">Zero Chemicals</div><div class="wc-text">No pesticides. No fillers. No preservatives. No artificial colour. The ingredient list is exactly one item: turmeric.</div></div>
-      <div class="why-card"><div class="wc-icon">✅</div><div class="wc-title">FSSAI Certified</div><div class="wc-text">Fully licensed, fully compliant. Processed at Yashoda Agro Food Processing Unit, Wai. Licence No. 21524039000444.</div></div>
-      <div class="why-card"><div class="wc-icon">🚚</div><div class="wc-title">Direct from Farm</div><div class="wc-text">No retail markup, no middlemen. Order today → packed fresh → shipped directly to your door across India.</div></div>
-      <div class="why-card"><div class="wc-icon">👨‍👩‍👧‍👦</div><div class="wc-title">Safe for All Ages</div><div class="wc-text">Children (3+), adults, pregnant women (in cooking), and seniors. Golden milk, curries, warm water — fits every routine.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW TO ORDER -->
-<section class="section" id="order">
-  <div class="section-inner">
-    <div class="sect-head">
-      <div class="sect-eye">✦ How It Works ✦</div>
-      <h2 class="sect-h2">Order in 3 Simple Steps</h2>
-      <p class="sect-sub">No app needed. Just WhatsApp or UPI scan — done.</p>
-    </div>
-    <div class="steps-row">
-      <div class="step"><div class="step-circle">1</div><div class="step-title">Pick Your Pack</div><div class="step-text">Choose the size that works — 100g trial pack to 1kg family pack. Click "Order via WhatsApp."</div></div>
-      <div class="step"><div class="step-circle">2</div><div class="step-title">Pay via UPI</div><div class="step-text">Scan the QR code with any UPI app — GPay, PhonePe, Paytm. Pay the exact amount.</div></div>
-      <div class="step"><div class="step-circle">3</div><div class="step-title">Share Address</div><div class="step-text">Send payment screenshot + delivery address on WhatsApp. We dispatch same day.</div></div>
-      <div class="step"><div class="step-circle">4</div><div class="step-title">Receive & Enjoy</div><div class="step-text">Pure Sahyadri turmeric at your door. Start your golden milk ritual today!</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- UPI SECTION -->
-<section class="upi-section">
-  <div class="section-inner">
-    <div class="sect-head">
-      <div class="sect-eye" style="color:var(--gold)">✦ Pay Instantly ✦</div>
-      <h2 class="sect-h2">Scan & Pay with Any UPI App</h2>
-      <p class="sect-sub">GPay · PhonePe · Paytm · Any UPI app works</p>
-    </div>
-    <div class="upi-inner">
-      <div class="qr-box">
-        <img id="qrImg" src="" alt="UPI QR">
-        <div class="qr-label">Scan to Pay</div>
+<!-- ══════════ FOUNDER STORY ══════════ -->
+<section id="story" class="founder">
+  <div class="founder-grid">
+    <div class="reveal">
+      <div class="founder-frame">
+        <!-- TO ADD PHOTO: replace next line with <img src="ashwini.jpg" alt="Ashwini Ghanwat"> -->
+        <span>👩‍🌾</span>
+        <div class="founder-badge">
+          <div class="fb-d">Launched · 8 March 2026</div>
+          <div class="fb-t">Women<br>Entrepreneur</div>
+        </div>
       </div>
-      <div class="upi-steps">
-        <div class="upistep"><div class="usin">1</div><div class="ustxt"><strong>Open</strong> any UPI app — GPay, PhonePe or Paytm</div></div>
-        <div class="upistep"><div class="usin">2</div><div class="ustxt"><strong>Scan</strong> the QR or enter UPI ID manually below</div></div>
-        <div class="upistep"><div class="usin">3</div><div class="ustxt"><strong>Pay</strong> exact product amount &amp; take a screenshot</div></div>
-        <div class="upistep"><div class="usin">4</div><div class="ustxt"><strong>WhatsApp</strong> the screenshot + address to <strong id="upiPhone">+91 99879 82611</strong></div></div>
-        <div class="upi-id-pill">
-          <div class="uid-label">UPI ID / Payment Address</div>
-          <div class="uid-val" id="upiId">9511627623@ibl</div>
+    </div>
+    <div class="reveal">
+      <div class="f-eye">✦ The Founder's Story ✦</div>
+      <h2 class="f-h">Meet <em>Ashwini</em><br>Ghanwat</h2>
+      <p class="f-quote">"Every family in India deserves immunity they can trust — not from a pill, but from the earth itself. I saw my own family's turmeric being pushed aside for adulterated, cheap powders. That broke my heart. That lit my fire."</p>
+      <p class="f-body">Growing up in Wai-Satara surrounded by the golden turmeric fields of the Sahyadri range, Ashwini watched generations of farmers lose their livelihood to a broken supply chain riddled with middlemen and adulteration. She made a decision: bring the farm directly to every family's kitchen table.<br><br>On International Women's Day, 8 March 2026, Ashwini officially launches Shivar Farmfresh — a bold, direct-from-farm brand with a dream to reach every household in India and eventually, the world.</p>
+      <div class="f-name">Ashwini Ghanwat</div>
+      <div class="f-title">Founder & CEO · Shivar Farmfresh</div>
+      <div class="f-deva">अश्विनी घणवट · संस्थापक, शिवार फार्मफ्रेश</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MISSION ══════════ -->
+<section class="section">
+  <div class="s-inner">
+    <div class="s-eye green reveal">✦ Why We Exist ✦</div>
+    <h2 class="s-h reveal">Three Unbreakable Promises</h2>
+    <p class="s-sub reveal">Every decision Ashwini makes comes back to these principles. No shortcuts. No compromises.</p>
+    <div class="mcards">
+      <div class="mcard reveal"><div class="mcard-icon">🛡️</div><div class="mcard-title">Zero Adulteration, Forever</div><div class="mcard-text">India loses ₹40,000 crore every year to food adulteration. Every Shivar batch is traceable to the exact farm plot in Wai-Satara. What you see on the label is the only thing in the packet.</div></div>
+      <div class="mcard reveal"><div class="mcard-icon">💪</div><div class="mcard-title">Immunity is a Right, Not a Luxury</div><div class="mcard-text">As climate change brings new viruses and health challenges, Ashwini believes nature's best defence — curcumin-rich turmeric — should be affordable and accessible to every family across India and the world.</div></div>
+      <div class="mcard reveal"><div class="mcard-icon">🌍</div><div class="mcard-title">Farmer First. Always.</div><div class="mcard-text">By removing every middleman, Shivar Farmfresh puts fair income directly in the hands of the Sahyadri farmers who grow the turmeric. When you buy from us, you fund a family — not a warehouse chain.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY ══════════ -->
+<section id="journey" class="journey-bg">
+  <div class="s-inner">
+    <div class="s-eye gold reveal">✦ The Road So Far ✦</div>
+    <h2 class="s-h light reveal">Ashwini's Journey</h2>
+    <p class="s-sub light reveal">From a turmeric field in Sahyadri to a pan-India brand. This is just the beginning.</p>
+    <div class="timeline">
+      <div class="tl reveal"><div class="tl-left"><div class="tl-dot">🌱</div><div class="tl-line"></div></div><div><div class="tl-year">The Beginning</div><div class="tl-title">Growing Up Among Turmeric Fields</div><div class="tl-text">Ashwini grows up in Wai-Satara, Sahyadri — one of Maharashtra's most mineral-rich agricultural belts. She watches her family grow high-curcumin turmeric but sell it at throwaway prices to middlemen who pocket the margin. The seed of an idea is planted.</div><div class="tl-tag">Wai-Satara, Maharashtra</div></div></div>
+      <div class="tl reveal"><div class="tl-left"><div class="tl-dot">😤</div><div class="tl-line"></div></div><div><div class="tl-year">The Realization</div><div class="tl-title">Adulteration Hits Home</div><div class="tl-text">After discovering that popular branded turmeric powders often contain artificial colour, starch, and sawdust, Ashwini makes a personal commitment: her family will never sell anything but pure, unadulterated turmeric. Ever.</div><div class="tl-tag">The Turning Point</div></div></div>
+      <div class="tl reveal"><div class="tl-left"><div class="tl-dot">💡</div><div class="tl-line"></div></div><div><div class="tl-year">The Vision</div><div class="tl-title">Immunity Becomes a Mission</div><div class="tl-text">As climate change brings new health threats and families everywhere search for trusted nutrition, Ashwini begins building the Shivar Farmfresh concept — farm-direct, FSSAI certified, zero compromise. The farm-to-door vision is born.</div><div class="tl-tag">Farm-to-Door Concept Born</div></div></div>
+      <div class="tl reveal"><div class="tl-left"><div class="tl-dot">🚀</div><div class="tl-line"></div></div><div><div class="tl-year">8 March 2026 · Launch Day</div><div class="tl-title">Shivar Farmfresh is Born</div><div class="tl-text">On International Women's Day, Ashwini Ghanwat officially launches Shivar Farmfresh. FSSAI certified. Direct-from-farm. Four pack sizes shipped pan-India. The mission: reach every Indian family with immunity they can trust.</div><div class="tl-tag">🎉 Officially Launched Today</div></div></div>
+      <div class="tl reveal"><div class="tl-left"><div class="tl-dot">🇮🇳</div><div class="tl-line"></div></div><div><div class="tl-year">2027 Vision</div><div class="tl-title">Pan-India Presence</div><div class="tl-text">Partnerships with organic stores, D2C marketplaces, and health platforms across every major Indian city. Goal: 10,000 families using Shivar Farmfresh turmeric daily. Subscription packs and a farmers' collective model feeding back into the Sahyadri community.</div><div class="tl-tag">Next Milestone</div></div></div>
+      <div class="tl reveal"><div class="tl-left"><div class="tl-dot">🌏</div></div><div><div class="tl-year">By 2030 · The Big Dream</div><div class="tl-title">Global Families. Immune. Unafraid.</div><div class="tl-text">Shivar Farmfresh in kitchens across the US, UK, UAE, Australia, and Southeast Asia. Not just a spice export — a global immunity movement. Every family, in every climate, armed with nature's most powerful anti-inflammatory. Grown in Sahyadri. Delivered to the world.</div><div class="tl-tag">🌍 Farm to Globe · 2030</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about" class="section">
+  <div class="s-inner">
+    <div class="about-grid">
+      <div>
+        <div class="s-eye green reveal">✦ Our Philosophy ✦</div>
+        <h2 class="s-h reveal" style="text-align:left">Why We Believe<br>in Pure Immunity</h2>
+        <div class="about-pills reveal">
+          <span class="a-pill">🌿 100% Organic</span>
+          <span class="a-pill">✅ FSSAI Certified</span>
+          <span class="a-pill">🏔️ Sahyadri Origin</span>
+          <span class="a-pill">🔬 3–5% Curcumin</span>
+          <span class="a-pill">🚜 Farmer Direct</span>
+        </div>
+        <p class="a-body reveal">Climate change is real. New viruses are coming. Our immune systems are fighting harder than ever. Ashwini Ghanwat believes the answer isn't in the pharmacy — it's in the farm. Turmeric has been India's natural immunity booster for thousands of years. But only if it's pure.<br><br>Shivar Farmfresh ensures that the 3–5% curcumin found naturally in Sahyadri-grown turmeric reaches your kitchen untouched — no synthetic dyes, no preservatives, no fillers.</p>
+        <div class="a-vision reveal">
+          <div class="av-label">Ashwini's Dream</div>
+          <div class="av-text">"I want every family in India — and eventually the world — to be immune to whatever tomorrow brings. Not because they took a pill, but because they cooked with pure food."</div>
+        </div>
+      </div>
+      <div class="val-grid reveal">
+        <div class="val-card"><span class="val-icon">🌡️</span><div class="val-title">Climate Resilience</div><div class="val-text">As seasons shift and weather extremes grow, a strong immune system is humanity's best defence. Curcumin is nature's answer.</div></div>
+        <div class="val-card"><span class="val-icon">🦠</span><div class="val-title">Virus-Ready Families</div><div class="val-text">The next pandemic won't wait. Daily turmeric isn't a trend — it's ancient wisdom backed by modern science and 500+ clinical studies.</div></div>
+        <div class="val-card"><span class="val-icon">🤝</span><div class="val-title">No Middleman Markup</div><div class="val-text">Every rupee you save goes back to the farmer who grew it. Transparent pricing. Fair trade at every step.</div></div>
+        <div class="val-card"><span class="val-icon">📦</span><div class="val-title">Traceable to the Plot</div><div class="val-text">We know which field your turmeric came from. The Wai-Satara farming belt, specific farms, specific harvests. Full transparency.</div></div>
+        <div class="val-globe"><div class="vg-label">🌍 2030 Global Vision</div><div class="vg-text">From Sahyadri farms to global households — making pure immunity a universal right, not a privilege.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ INSTAGRAM ══════════ -->
+<section id="instagram" class="section" style="background:var(--silk)">
+  <div class="s-inner">
+    <div class="ig-header reveal">
+      <div class="ig-brand">
+        <div class="ig-avatar"><div class="ig-avatar-i">🌿</div></div>
+        <div><div class="ig-handle">@shivarfarmfresh</div><div class="ig-sub">Follow us for farm updates, recipes & health tips</div></div>
+      </div>
+      <a href="https://instagram.com/shivarfarmfresh" target="_blank" class="btn-ig">📸 Follow on Instagram</a>
+    </div>
+    <div class="ig-grid reveal">
+      <div class="ig-cell ic1">🌿</div><div class="ig-cell ic2">🌾</div>
+      <div class="ig-cell ic3">🏔️</div><div class="ig-cell ic4">✨</div>
+      <div class="ig-cell ic5">🌱</div><div class="ig-cell ic6">🧡</div>
+      <div class="ig-cell ic7">🍵</div><div class="ig-cell ic8">💛</div>
+    </div>
+    <div class="ig-howto reveal">
+      <div class="ig-howto-title">📌 How to Connect Your Real Instagram Feed</div>
+      <div class="ig-step"><div class="ig-step-n">1</div><span>Create an Instagram Business account at instagram.com</span></div>
+      <div class="ig-step"><div class="ig-step-n">2</div><span>Go to <strong>elfsight.com</strong> (free) → create Instagram Feed widget → copy embed code</span></div>
+      <div class="ig-step"><div class="ig-step-n">3</div><span>In GitHub, open this file → find the <strong>ig-grid</strong> div → replace with your Elfsight embed code</span></div>
+      <div class="ig-step"><div class="ig-step-n">4</div><span>Your real posts will auto-update every time you post on Instagram</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ YOUTUBE ══════════ -->
+<section id="youtube" class="section yt-bg">
+  <div class="s-inner">
+    <div class="s-eye red reveal">▶ YouTube Channel</div>
+    <h2 class="s-h light reveal">Watch Our Story</h2>
+    <p class="s-sub light reveal">Farm tours, turmeric harvesting, golden milk recipes — subscribe for weekly content from the fields of Sahyadri.</p>
+    <div class="yt-grid">
+      <div class="reveal">
+        <!-- TO ADD VIDEO: replace yt-thumb div with: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+        <div class="yt-player">
+          <div class="yt-thumb">
+            <div class="yt-play"></div>
+            <p>Watch our latest video</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="yt-info">
+          <h3>From Sahyadri Fields to Your Kitchen</h3>
+          <p>Watch Ashwini walk you through the turmeric harvest, explain why Sahyadri-grown turmeric is special, and see exactly how your order is packed and dispatched fresh from the farm.</p>
+          <a href="https://youtube.com/@shivarfarmfresh" target="_blank" class="btn-yt">▶ Subscribe on YouTube</a>
+          <div class="yt-howto">
+            <div class="yt-howto-title">📌 How to Add Your YouTube Video</div>
+            <div class="yt-step"><span>1.</span><span>Upload video to YouTube → Share → Embed → copy <code>VIDEO_ID</code> from the URL</span></div>
+            <div class="yt-step"><span>2.</span><span>In GitHub, find the <code>yt-thumb</code> div → replace with <code>&lt;iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen&gt;&lt;/iframe&gt;</code></span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══════════ TRUST BAR ══════════ -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item">✅ FSSAI Certified</div>
+    <div class="trust-item">🌿 100% Organic</div>
+    <div class="trust-item">🏔️ Single Origin · Wai-Satara Sahyadri</div>
+    <div class="trust-item">🚚 Pan India Delivery</div>
+    <div class="trust-item">📦 Resealable Zip-Lock</div>
+    <div class="trust-item">⚡ Same Day Dispatch</div>
+    <div class="trust-item">🔬 3–5% Curcumin</div>
+    <div class="trust-item">🚫 Zero Fillers</div>
+  </div>
+</div>
+
+<!-- ══════════ SHOP ══════════ -->
+<section id="shop" class="section">
+  <div class="s-inner">
+    <div class="s-eye green reveal">✦ Our Products ✦</div>
+    <h2 class="s-h reveal">Choose Your Pack</h2>
+    <p class="s-sub reveal">All packs contain the same premium 3–5% curcumin turmeric — up to 3× higher than regular shelf brands. Bigger pack = better value per gram.</p>
+    <div class="filter-row" id="filterRow"></div>
+    <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ WHY US ══════════ -->
+<section class="why-bg">
+  <div class="s-inner">
+    <div class="s-eye gold reveal">✦ Why Shivar Farmfresh ✦</div>
+    <h2 class="s-h light reveal">Not Just Turmeric — It's Science</h2>
+    <p class="s-sub light reveal">Here is what separates our turmeric from every brand on a shelf</p>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="wc-icon">🔬</div><div class="wc-title">3–5% Curcumin</div><div class="wc-text">Standard market turmeric contains only 1–2% curcumin. Our Sahyadri-grown turmeric delivers up to 3× more of the active healing compound per spoon.</div></div>
+      <div class="why-card reveal"><div class="wc-icon">🏔️</div><div class="wc-title">Single Origin</div><div class="wc-text">Grown exclusively in mineral-rich Wai-Satara, Sahyadri. Traceable to the exact farm. No blending, no mixing with inferior batches.</div></div>
+      <div class="why-card reveal"><div class="wc-icon">🌱</div><div class="wc-title">Zero Chemicals</div><div class="wc-text">No pesticides. No fillers. No preservatives. No artificial colour. The ingredient list is exactly one item: turmeric.</div></div>
+      <div class="why-card reveal"><div class="wc-icon">✅</div><div class="wc-title">FSSAI Certified</div><div class="wc-text">Fully licensed, fully compliant. Processed at Yashoda Agro Food Processing Unit, Wai. Licence No. 21524039000444.</div></div>
+      <div class="why-card reveal"><div class="wc-icon">🚚</div><div class="wc-title">Direct from Farm</div><div class="wc-text">No retail markup, no middlemen. Order today → packed fresh → shipped directly to your door across India.</div></div>
+      <div class="why-card reveal"><div class="wc-icon">👨‍👩‍👧‍👦</div><div class="wc-title">Safe for All Ages</div><div class="wc-text">Children (3+), adults, pregnant women (in cooking), and seniors. Golden milk, curries, warm water — fits every routine.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW TO ORDER ══════════ -->
+<section class="section" id="order">
+  <div class="s-inner">
+    <div class="s-eye green reveal">✦ How It Works ✦</div>
+    <h2 class="s-h reveal">Order in 4 Simple Steps</h2>
+    <p class="s-sub reveal">From your cart to your door — fast, simple, and fully traceable.</p>
+    <div class="steps-row reveal">
+      <div class="step-card"><div class="step-circle">1</div><div class="step-title">Add to Cart</div><div class="step-text">Browse our products above and add your preferred pack size to the cart.</div></div>
+      <div class="step-card"><div class="step-circle">2</div><div class="step-title">Enter Address</div><div class="step-text">Fill in your delivery address and PIN code — we'll show exact shipping charges based on your location.</div></div>
+      <div class="step-card"><div class="step-circle">3</div><div class="step-title">Pay Securely</div><div class="step-text">Choose UPI, Credit/Debit Card, or Net Banking. All payments are secure and confirmed via WhatsApp.</div></div>
+      <div class="step-card"><div class="step-circle">4</div><div class="step-title">Delivered Fresh</div><div class="step-text">Packed fresh, shipped same day via Delhivery / DTDC / Shree Maruti and delivered to your door.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ UPI SECTION ══════════ -->
+<div class="upi-sec">
+  <div class="upi-inner">
+    <div class="qr-box reveal"><img id="qrImg" src="" alt="UPI QR"></div>
+    <div class="upi-steps-wrap reveal">
+      <div class="s-eye gold" style="text-align:left;margin-bottom:16px">💳 Pay via UPI</div>
+      <div class="ustep"><div class="usin">1</div><div class="ustxt">Open <strong>GPay, PhonePe</strong> or Paytm on your phone</div></div>
+      <div class="ustep"><div class="usin">2</div><div class="ustxt">Scan the QR code or type the UPI ID below</div></div>
+      <div class="ustep"><div class="usin">3</div><div class="ustxt">Pay the <strong>exact order amount</strong> and take a screenshot</div></div>
+      <div class="ustep"><div class="usin">4</div><div class="ustxt">WhatsApp us the screenshot at <strong id="upiPhone">+91 99879 82611</strong></div></div>
+      <div class="upi-id-pill">
+        <div class="uid-label">UPI ID</div>
+        <div class="uid-val" id="upiId">9511627623@ibl</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="foot-grid">
     <div>
       <img class="fl-logo" id="footLogo" src="" alt="logo">
-      <div class="fl-name" id="footName">Shivar Farmfresh</div>
-      <div class="fl-tag" id="footTag">Pure Sahyadri Gold</div>
-      <p class="fl-about">Farm-to-door premium organic turmeric from Wai-Satara, Sahyadri, Maharashtra. FSSAI certified. Direct from our family farm to yours since generations.</p>
+      <div class="fl-name">Shivar Farmfresh</div>
+      <span class="fl-tag">शिवार फार्मफ्रेश · Pure Sahyadri Gold</span>
+      <p class="fl-about">Farm-direct organic turmeric from Wai-Satara, Sahyadri, Maharashtra. Founded by Ashwini Ghanwat on International Women's Day 2026. FSSAI certified. Zero adulteration. Forever.</p>
     </div>
     <div>
-      <div class="foot-head">Quick Links</div>
+      <div class="foot-h">Navigate</div>
       <div class="foot-links">
-        <a href="#shop">Shop Products</a>
-        <a href="#why">Why Shivar Farmfresh</a>
+        <a href="#story">Our Story</a>
+        <a href="#journey">Journey</a>
+        <a href="#about">About Us</a>
+        <a href="#instagram">Instagram</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#shop">Shop</a>
         <a href="#order">How to Order</a>
-        <a href="#order">Track Order (WhatsApp)</a>
-
       </div>
     </div>
     <div>
-      <div class="foot-head">Contact Us</div>
-      <div class="foot-contact-row"><span>📱</span><span id="footPhone">+91 99879 82611</span></div>
-      <div class="foot-contact-row"><span>💳</span><span id="footUpi">UPI: 9511627623@ibl</span></div>
-      <div class="foot-contact-row"><span>📍</span><span id="footAddr">Wai-Satara, Sahyadri, Maharashtra</span></div>
+      <div class="foot-h">Contact Us</div>
+      <div class="foot-cr"><span>📱</span><span>+91 99879 82611</span></div>
+      <div class="foot-cr"><span>💬</span><span>WhatsApp Orders Welcome</span></div>
+      <div class="foot-cr"><span>💳</span><span>UPI: 9511627623@ibl</span></div>
+      <div class="foot-cr"><span>📍</span><span>Wai-Satara, Sahyadri, Maharashtra, India</span></div>
     </div>
   </div>
   <div class="foot-bar">
-    <span>© 2024 Shivar Farmfresh Pvt. Ltd. All rights reserved.</span>
-    <span class="fssai-pill" id="footFssai">FSSAI: 21524039000444</span>
+    <span>© 2026 Shivar Farmfresh · Founded by Ashwini Ghanwat · All rights reserved</span>
+    <span class="fssai-pill">FSSAI: 21524039000444</span>
   </div>
 </footer>
 
-<!-- CART DRAWER -->
+<!-- ══════════ CART DRAWER ══════════ -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 <div class="cart-drawer" id="cartDrawer">
   <div class="cdh">
     <div class="cdh-title">Your Cart 🛒</div>
-    <button class="cdh-close" onclick="closeCart()">✕</button>
+    <button class="cdh-x" onclick="closeCart()">✕</button>
   </div>
   <div class="cd-list" id="cdList"></div>
   <div class="cdf">
@@ -598,314 +794,248 @@ footer{background:#060d08;padding:56px 24px 24px}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     CHECKOUT MODAL — 3 steps: Address → Payment → Confirm
-     ══════════════════════════════════════════════ -->
+<!-- ══════════ CHECKOUT MODAL ══════════ -->
 <div class="ck-overlay" id="ckOverlay">
   <div class="ck-modal" id="ckModal">
-
-    <!-- Progress bar -->
-    <div class="ck-progress"><div class="ck-progress-bar" id="ckBar" style="width:33%"></div></div>
-
-    <!-- Header -->
+    <div class="ck-prog"><div class="ck-prog-bar" id="ckBar" style="width:33%"></div></div>
     <div class="ck-head">
-      <div class="ck-head-left">
-        <div class="ck-step-label" id="ckStepLabel">Step 1 of 3</div>
-        <div class="ck-title" id="ckTitle">Delivery Address</div>
-      </div>
-      <button class="ck-close" onclick="closeCheckout()">✕</button>
+      <div><div class="ck-step-lbl" id="ckStepLbl">Step 1 of 3</div><div class="ck-title" id="ckTitle">Delivery Address</div></div>
+      <button class="ck-x" onclick="closeCheckout()">✕</button>
     </div>
-
     <div class="ck-body">
 
-      <!-- ══ STEP 1 — ADDRESS ══ -->
-      <div id="ckStep1">
-        <!-- Order summary -->
-        <div class="ck-summary">
-          <div class="ck-summary-title">Order Summary</div>
-          <div id="ckSummaryItems"></div>
-        </div>
-
-        <div class="ck-section-label">📦 Delivery Details</div>
-
+      <!-- STEP 1 — ADDRESS -->
+      <div id="ckS1">
+        <div class="ck-sum" id="ckSum1"></div>
+        <div class="ck-sec">📦 Delivery Details</div>
         <div class="ck-row">
-          <div class="ck-field">
-            <div class="ck-label">Full Name <span class="ck-req">*</span></div>
-            <input class="ck-input" id="ck-name" placeholder="e.g. Rajesh Patil" autocomplete="name">
-            <div class="ck-err-msg" id="err-name">Please enter your full name</div>
-          </div>
-          <div class="ck-field">
-            <div class="ck-label">Mobile Number <span class="ck-req">*</span></div>
-            <input class="ck-input" id="ck-phone" placeholder="10-digit mobile" type="tel" maxlength="10" autocomplete="tel">
-            <div class="ck-err-msg" id="err-phone">Enter a valid 10-digit mobile number</div>
-          </div>
+          <div class="ck-field"><div class="ck-label">Full Name <span class="ck-req">*</span></div><input class="ck-input" id="ck-name" placeholder="e.g. Rajesh Patil" autocomplete="name"><div class="ck-errmsg" id="e-name">Please enter your name</div></div>
+          <div class="ck-field"><div class="ck-label">Mobile Number <span class="ck-req">*</span></div><input class="ck-input" id="ck-phone" placeholder="10-digit mobile" type="tel" maxlength="10"><div class="ck-errmsg" id="e-phone">Enter valid 10-digit mobile</div></div>
         </div>
-
-        <div class="ck-field">
-          <div class="ck-label">Flat / House No., Building, Street <span class="ck-req">*</span></div>
-          <input class="ck-input" id="ck-line1" placeholder="e.g. 12B, Samarth Nagar, MG Road" autocomplete="address-line1">
-          <div class="ck-err-msg" id="err-line1">Please enter your street address</div>
-        </div>
-
-        <div class="ck-field">
-          <div class="ck-label">Landmark / Area (optional)</div>
-          <input class="ck-input" id="ck-line2" placeholder="e.g. Near Bus Stand, Behind Temple" autocomplete="address-line2">
-        </div>
-
+        <div class="ck-field"><div class="ck-label">House / Flat No., Street <span class="ck-req">*</span></div><input class="ck-input" id="ck-line1" placeholder="e.g. 12B, Samarth Nagar, MG Road" autocomplete="address-line1"><div class="ck-errmsg" id="e-line1">Please enter your street address</div></div>
+        <div class="ck-field"><div class="ck-label">Landmark / Area (optional)</div><input class="ck-input" id="ck-line2" placeholder="e.g. Near Bus Stand" autocomplete="address-line2"></div>
         <div class="ck-row">
-          <div class="ck-field">
-            <div class="ck-label">City / Town <span class="ck-req">*</span></div>
-            <input class="ck-input" id="ck-city" placeholder="e.g. Pune" autocomplete="address-level2">
-            <div class="ck-err-msg" id="err-city">Please enter your city</div>
-          </div>
-          <div class="ck-field">
-            <div class="ck-label">State <span class="ck-req">*</span></div>
-            <select class="ck-select" id="ck-state" autocomplete="address-level1">
+          <div class="ck-field"><div class="ck-label">City / Town <span class="ck-req">*</span></div><input class="ck-input" id="ck-city" placeholder="e.g. Pune" autocomplete="address-level2"><div class="ck-errmsg" id="e-city">Please enter your city</div></div>
+          <div class="ck-field"><div class="ck-label">State <span class="ck-req">*</span></div>
+            <select class="ck-select" id="ck-state">
               <option value="">Select State</option>
-              <option>Maharashtra</option><option>Delhi</option><option>Karnataka</option>
-              <option>Tamil Nadu</option><option>Gujarat</option><option>Rajasthan</option>
-              <option>Uttar Pradesh</option><option>West Bengal</option><option>Telangana</option>
-              <option>Andhra Pradesh</option><option>Kerala</option><option>Madhya Pradesh</option>
-              <option>Bihar</option><option>Punjab</option><option>Haryana</option>
-              <option>Odisha</option><option>Assam</option><option>Jharkhand</option>
-              <option>Chhattisgarh</option><option>Uttarakhand</option><option>Himachal Pradesh</option>
-              <option>Goa</option><option>Tripura</option><option>Manipur</option>
-              <option>Meghalaya</option><option>Nagaland</option><option>Arunachal Pradesh</option>
-              <option>Mizoram</option><option>Sikkim</option><option>J&amp;K</option>
-              <option>Ladakh</option><option>Chandigarh</option><option>Puducherry</option>
-              <option>Andaman &amp; Nicobar</option><option>Lakshadweep</option><option>D&amp;NH</option>
+              <option>Maharashtra</option><option>Delhi</option><option>Karnataka</option><option>Tamil Nadu</option><option>Gujarat</option><option>Rajasthan</option><option>Uttar Pradesh</option><option>West Bengal</option><option>Telangana</option><option>Andhra Pradesh</option><option>Kerala</option><option>Madhya Pradesh</option><option>Bihar</option><option>Punjab</option><option>Haryana</option><option>Odisha</option><option>Assam</option><option>Jharkhand</option><option>Chhattisgarh</option><option>Uttarakhand</option><option>Himachal Pradesh</option><option>Goa</option><option>Tripura</option><option>Manipur</option><option>Meghalaya</option><option>Nagaland</option><option>Arunachal Pradesh</option><option>Mizoram</option><option>Sikkim</option><option>J&amp;K</option><option>Ladakh</option><option>Chandigarh</option><option>Puducherry</option><option>Andaman &amp; Nicobar</option><option>Lakshadweep</option>
             </select>
-            <div class="ck-err-msg" id="err-state">Please select your state</div>
+            <div class="ck-errmsg" id="e-state">Please select your state</div>
           </div>
         </div>
-
         <div class="ck-row">
-          <div class="ck-field">
-            <div class="ck-label">PIN Code <span class="ck-req">*</span></div>
-            <input class="ck-input" id="ck-pin" placeholder="6-digit PIN" type="tel" maxlength="6" autocomplete="postal-code" oninput="onPinInput(this.value)">
-            <div class="ck-err-msg" id="err-pin">Enter a valid 6-digit PIN code</div>
-          </div>
-          <div class="ck-field">
-            <div class="ck-label">Delivery Instructions (optional)</div>
-            <input class="ck-input" id="ck-note" placeholder="e.g. Call before delivery">
-          </div>
+          <div class="ck-field"><div class="ck-label">PIN Code <span class="ck-req">*</span></div><input class="ck-input" id="ck-pin" placeholder="6-digit PIN" type="tel" maxlength="6" oninput="onPinInput(this.value)"><div class="ck-errmsg" id="e-pin">Enter valid 6-digit PIN</div></div>
+          <div class="ck-field"><div class="ck-label">Delivery Instructions (optional)</div><input class="ck-input" id="ck-note" placeholder="e.g. Call before delivery"></div>
         </div>
-
-        <!-- LIVE SHIPPING ESTIMATE — appears as soon as PIN is 6 digits -->
-        <div id="ckShippingBox" style="display:none;background:#f0faf4;border:1.5px solid #b2e0c0;border-radius:12px;padding:14px 16px;margin-bottom:4px">
-          <div style="font-size:10px;letter-spacing:2px;color:var(--leaf2);text-transform:uppercase;font-weight:700;margin-bottom:10px">🚚 Estimated Delivery Charges (PIN-based)</div>
-          <div id="ckShippingBreakdown"></div>
+        <div id="ckShipBox">
+          <div class="ship-zone-label" id="shipZoneLabel">🚚 Estimated Delivery Charges</div>
+          <div class="ship-grid" id="shipGrid"></div>
+          <div class="ship-grand"><span class="ship-grand-l">Grand Total (incl. GST + Shipping)</span><span class="ship-grand-v" id="shipGrand">₹—</span></div>
+          <div class="ship-note" id="shipNote"></div>
         </div>
+        <div class="ck-nav"><button class="ck-next" onclick="goStep2()">Continue to Payment →</button></div>
+        <div class="secure-row" style="margin-top:12px"><div class="sec-badge">🔒 Secure Checkout</div><div class="sec-badge">🚚 Pan India Delivery</div><div class="sec-badge">✅ 5% GST Included</div></div>
+      </div>
 
-        <div class="ck-nav">
-          <button class="ck-next" onclick="goToStep2()">Continue to Payment →</button>
-        </div>
-        <div class="ck-secure">
-          <div class="secure-badges">
-            <div class="sec-badge">🔒 Secure Checkout</div>
-            <div class="sec-badge">🚚 Pan India Delivery</div>
-            <div class="sec-badge">✅ 5% GST Included</div>
-          </div>
-        </div>
-      </div><!-- /step1 -->
-
-      <!-- ══ STEP 2 — PAYMENT ══ -->
-      <div id="ckStep2" style="display:none">
-
-        <div class="ck-summary" id="ckSummary2"></div>
-
-        <div class="ck-section-label">💳 Choose Payment Method</div>
-
+      <!-- STEP 2 — PAYMENT -->
+      <div id="ckS2" style="display:none">
+        <div class="ck-sum" id="ckSum2"></div>
+        <div class="ck-sec">💳 Payment Method</div>
         <div class="pay-grid">
-          <!-- UPI -->
-          <div class="pay-card selected" id="pc-upi" onclick="selectPay('upi')">
-            <input type="radio" name="pay" value="upi" checked>
-            <div class="pay-icon">📱</div>
-            <div class="pay-name">UPI / QR Code</div>
-            <div class="pay-desc">GPay · PhonePe · Paytm</div>
-          </div>
-          <!-- Credit / Debit Card -->
-          <div class="pay-card" id="pc-card" onclick="selectPay('card')">
-            <input type="radio" name="pay" value="card">
-            <div class="pay-icon">💳</div>
-            <div class="pay-name">Credit / Debit Card</div>
-            <div class="pay-desc">Visa · Mastercard · RuPay</div>
-          </div>
-          <!-- Net Banking -->
-          <div class="pay-card" id="pc-nb" onclick="selectPay('nb')">
-            <input type="radio" name="pay" value="nb">
-            <div class="pay-icon">🏦</div>
-            <div class="pay-name">Net Banking</div>
-            <div class="pay-desc">All major banks</div>
-          </div>
-
+          <div class="pay-card sel" id="pc-upi" onclick="selPay('upi')"><input type="radio" name="pay" checked><div class="pay-icon">📱</div><div class="pay-name">UPI / QR</div><div class="pay-desc">GPay · PhonePe · Paytm</div></div>
+          <div class="pay-card" id="pc-card" onclick="selPay('card')"><input type="radio" name="pay"><div class="pay-icon">💳</div><div class="pay-name">Credit / Debit Card</div><div class="pay-desc">Visa · Mastercard · RuPay</div></div>
+          <div class="pay-card" id="pc-nb" onclick="selPay('nb')"><input type="radio" name="pay"><div class="pay-icon">🏦</div><div class="pay-name">Net Banking</div><div class="pay-desc">All major banks</div></div>
         </div>
-
-        <!-- UPI Panel -->
-        <div class="pay-detail show" id="pd-upi">
-          <div class="upi-panel">
-            <img id="ckQr" src="" alt="UPI QR">
-            <div class="upi-panel-info">
-              <div class="upi-step"><span>1️⃣</span><span>Open <strong>GPay, PhonePe</strong> or Paytm</span></div>
-              <div class="upi-step"><span>2️⃣</span><span>Scan QR or enter UPI ID below</span></div>
-              <div class="upi-step"><span>3️⃣</span><span>Pay exact amount & take screenshot</span></div>
-              <div class="upi-step"><span>4️⃣</span><span>Click <strong>"Place Order"</strong> — we'll confirm on WhatsApp</span></div>
-              <div class="upi-id-box">
-                <div class="uid-l">UPI ID</div>
-                <div class="uid-v" id="ckUpiId">9511627623@ibl</div>
-              </div>
+        <!-- UPI -->
+        <div class="pay-panel show" id="pp-upi">
+          <div class="upi-box">
+            <img id="ckQr" src="" alt="QR">
+            <div class="upi-steps-list">
+              <div class="upi-step-row"><span>1️⃣</span><span>Open <strong>GPay, PhonePe</strong> or Paytm</span></div>
+              <div class="upi-step-row"><span>2️⃣</span><span>Scan QR or enter UPI ID below</span></div>
+              <div class="upi-step-row"><span>3️⃣</span><span>Pay exact amount &amp; screenshot</span></div>
+              <div class="upi-step-row"><span>4️⃣</span><span>Click <strong>Place Order</strong> — we confirm on WhatsApp</span></div>
+              <div class="upi-id-box"><div class="uid-l">UPI ID</div><div class="uid-v" id="ckUpiId">9511627623@ibl</div></div>
             </div>
           </div>
         </div>
-
-        <!-- Card Panel -->
-        <div class="pay-detail" id="pd-card">
-          <div class="card-panel">
-            <div class="cp-notice">🔒 <span>Card payments are collected securely via <strong>WhatsApp order confirmation</strong>. After placing the order you'll receive a secure payment link from us.</span></div>
-            <div class="card-icons">
-              <span class="card-icon visa">VISA</span>
-              <span class="card-icon mc">MC</span>
-              <span class="card-icon rupay">RuPay</span>
-              <span class="card-icon amex">Amex</span>
-            </div>
-            <div class="ck-field">
-              <div class="ck-label">Name on Card <span class="ck-req">*</span></div>
-              <input class="ck-input" id="ck-cname" placeholder="As printed on your card">
-            </div>
-            <div class="ck-field">
-              <div class="ck-label">Card Number <span class="ck-req">*</span></div>
-              <input class="ck-input" id="ck-cnum" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" oninput="formatCard(this)">
-            </div>
+        <!-- Card -->
+        <div class="pay-panel" id="pp-card">
+          <div class="card-box">
+            <div class="card-notice">🔒 <span>You'll receive a secure payment link on WhatsApp after placing the order.</span></div>
+            <div class="card-brands"><span class="card-brand visa">VISA</span><span class="card-brand mc">MC</span><span class="card-brand rupay">RuPay</span><span class="card-brand amex">Amex</span></div>
+            <div class="ck-field"><div class="ck-label">Name on Card <span class="ck-req">*</span></div><input class="ck-input" id="ck-cname" placeholder="As printed on your card"></div>
+            <div class="ck-field"><div class="ck-label">Card Number <span class="ck-req">*</span></div><input class="ck-input" id="ck-cnum" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" oninput="fmtCard(this)"></div>
             <div class="ck-row">
-              <div class="ck-field">
-                <div class="ck-label">Expiry (MM/YY) <span class="ck-req">*</span></div>
-                <input class="ck-input" id="ck-cexp" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
-              </div>
-              <div class="ck-field">
-                <div class="ck-label">CVV <span class="ck-req">*</span></div>
-                <input class="ck-input" id="ck-ccvv" placeholder="3 digits" maxlength="4" type="password">
-              </div>
+              <div class="ck-field"><div class="ck-label">Expiry (MM/YY) <span class="ck-req">*</span></div><input class="ck-input" id="ck-cexp" placeholder="MM/YY" maxlength="5" oninput="fmtExp(this)"></div>
+              <div class="ck-field"><div class="ck-label">CVV <span class="ck-req">*</span></div><input class="ck-input" id="ck-ccvv" placeholder="3 digits" maxlength="4" type="password"></div>
             </div>
-            <div style="font-size:11px;color:#888;margin-top:8px;display:flex;gap:6px;align-items:center">🔒 Your card details are never stored on our servers</div>
+            <div style="font-size:11px;color:#888;margin-top:6px">🔒 Card details are never stored on our servers</div>
           </div>
         </div>
-
-        <!-- Net Banking Panel -->
-        <div class="pay-detail" id="pd-nb">
-          <div style="background:#f8f9ff;border:1px solid #dde4f5;border-radius:14px;padding:16px">
-            <div style="font-size:12px;color:#5566aa;margin-bottom:12px;display:flex;gap:8px">🔒 <span>You will receive a secure net banking link on WhatsApp after placing your order.</span></div>
-            <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Select Your Bank</div>
+        <!-- Net Banking -->
+        <div class="pay-panel" id="pp-nb">
+          <div class="nb-box">
+            <div class="nb-notice">🔒 <span>You'll receive a secure net banking link on WhatsApp after placing your order.</span></div>
+            <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Select Your Bank</div>
             <div class="nb-grid">
-              <div class="nb-bank" onclick="selectBank(this,'SBI')">🏦 SBI</div>
-              <div class="nb-bank" onclick="selectBank(this,'HDFC')">🏦 HDFC</div>
-              <div class="nb-bank" onclick="selectBank(this,'ICICI')">🏦 ICICI</div>
-              <div class="nb-bank" onclick="selectBank(this,'Axis')">🏦 Axis</div>
-              <div class="nb-bank" onclick="selectBank(this,'Kotak')">🏦 Kotak</div>
-              <div class="nb-bank" onclick="selectBank(this,'Other')">🏦 Other</div>
+              <div class="nb-bank" onclick="selBank(this,'SBI')">🏦 SBI</div>
+              <div class="nb-bank" onclick="selBank(this,'HDFC')">🏦 HDFC</div>
+              <div class="nb-bank" onclick="selBank(this,'ICICI')">🏦 ICICI</div>
+              <div class="nb-bank" onclick="selBank(this,'Axis')">🏦 Axis</div>
+              <div class="nb-bank" onclick="selBank(this,'Kotak')">🏦 Kotak</div>
+              <div class="nb-bank" onclick="selBank(this,'Other')">🏦 Other</div>
             </div>
           </div>
         </div>
+        <div class="ck-nav"><button class="ck-back" onclick="goStep1()">← Back</button><button class="ck-next" onclick="placeOrder()">Place Order ✓</button></div>
+        <div class="secure-row" style="margin-top:12px"><div class="sec-badge">🔒 256-bit SSL</div><div class="sec-badge">🛡️ Secure Payment</div><div class="sec-badge">↩️ Easy Returns</div></div>
+      </div>
 
-
-
-        <div class="ck-nav">
-          <button class="ck-back" onclick="goToStep1()">← Back</button>
-          <button class="ck-next" id="ckPlaceBtn" onclick="placeOrder()">Place Order ✓</button>
-        </div>
-        <div class="secure-badges" style="margin-top:14px">
-          <div class="sec-badge">🔒 256-bit SSL</div>
-          <div class="sec-badge">🛡️ Secure Payment</div>
-          <div class="sec-badge">↩️ Easy Returns</div>
-        </div>
-      </div><!-- /step2 -->
-
-      <!-- ══ STEP 3 — SUCCESS ══ -->
-      <div id="ckStep3" style="display:none">
-        <div class="ck-success">
-          <div class="ck-success-icon">🎉</div>
+      <!-- STEP 3 — SUCCESS -->
+      <div id="ckS3" style="display:none">
+        <div class="ck-ok">
+          <span class="ck-ok-icon">🎉</span>
           <h3>Order Placed Successfully!</h3>
-          <p id="ckSuccessMsg">Thank you for your order. We'll confirm your order and dispatch details on WhatsApp shortly.</p>
-          <div class="ck-order-ref">
-            <div class="cor-label">Your Order Reference</div>
-            <div class="cor-val" id="ckOrderRef">SF-000000</div>
-          </div>
-          <div class="ck-order-ref" style="margin-top:8px">
-            <div class="cor-label">Delivering To</div>
-            <div style="font-size:13px;color:var(--ink);margin-top:4px;line-height:1.6" id="ckDeliveryAddr"></div>
-          </div>
-          <button class="ck-wa-btn" id="ckWaConfirmBtn">💬 Open WhatsApp to Confirm</button>
+          <p id="ckOkMsg">Thank you! We'll confirm your order on WhatsApp shortly.</p>
+          <div class="ck-ref-box"><div class="ck-ref-lbl">Order Reference</div><div class="ck-ref-val" id="ckRef">SF-000000</div></div>
+          <div class="ck-ref-box"><div class="ck-ref-lbl">Delivering To</div><div style="font-size:13px;color:var(--ink);margin-top:3px;line-height:1.6" id="ckAddr"></div></div>
+          <button class="ck-wa-btn" id="ckWaBtn">💬 Open WhatsApp to Confirm</button>
           <button class="ck-done-btn" onclick="finishOrder()">✓ Done — Continue Shopping</button>
         </div>
-      </div><!-- /step3 -->
+      </div>
 
-    </div><!-- /ck-body -->
-  </div><!-- /ck-modal -->
-</div><!-- /ck-overlay -->
+    </div>
+  </div>
+</div>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
+<!-- ══════════════════════════════════════
+     SCRIPTS — All data inlined, no external JS deps
+══════════════════════════════════════ -->
 <script src="assets.js"></script>
-<script src="products.js"></script>
 <script>
-/* ════════════════════════════════
-   INIT
-════════════════════════════════ */
-const brand = getBrand();
-let products = getProducts();
-let cart = JSON.parse(localStorage.getItem('sf_cart')||'[]');
-let selectedPayMethod = 'upi';
-let selectedBank = '';
+/* ════ DATA ════ */
+const DEFAULT_PRODUCTS = [
+  {id:"p1",name:"Premium Turmeric Powder",category:"Turmeric",weight:"100g",weightGrams:100,price:120,mrp:150,stock:true,badge:"Trial Pack",curcumin:"3–5%",description:"Starter pack. Single-origin organic turmeric from Wai-Satara Sahyadri — 3–5% curcumin, nearly 2× higher than standard market turmeric (1–2%). Zero additives.",benefits:["Boosts Immunity","Anti-Inflammatory","Heart Health","Skin Glow"],image:null},
+  {id:"p2",name:"Premium Turmeric Powder",category:"Turmeric",weight:"200g",weightGrams:200,price:220,mrp:280,stock:true,badge:"Popular",curcumin:"3–5%",description:"Most popular choice. Farm-fresh single-origin turmeric with 3–5% curcumin — significantly higher than the 1–2% found on supermarket shelves. Resealable zip-lock.",benefits:["Boosts Immunity","Anti-Inflammatory","Heart Health","Skin Glow"],image:null},
+  {id:"p3",name:"Premium Turmeric Powder",category:"Turmeric",weight:"500g",weightGrams:500,price:480,mrp:600,stock:true,badge:"Best Value",curcumin:"3–5%",description:"Best value family pack. 3 months supply of premium Sahyadri turmeric with 3–5% curcumin — up to 3× more potent than standard brands. Resealable pack.",benefits:["Boosts Immunity","Anti-Inflammatory","Heart Health","Skin Glow"],image:null},
+  {id:"p4",name:"Premium Turmeric Powder",category:"Turmeric",weight:"1000g",weightGrams:1000,price:880,mrp:1100,stock:true,badge:"Family Pack",curcumin:"3–5%",description:"6-month family supply. Best price per gram. Premium Sahyadri turmeric — 3–5% curcumin, farm-direct, FSSAI certified, zero preservatives.",benefits:["Boosts Immunity","Anti-Inflammatory","Heart Health","Skin Glow"],image:null}
+];
+const DEFAULT_BRAND = {name:"Shivar Farmfresh",tagline:"Pure Sahyadri Gold",phone:"+91 99879 82611",whatsapp:"919987982611",upi:"9511627623@ibl",fssai:"21524039000444",address:"Wai-Satara, Sahyadri, Maharashtra, India"};
+const GST = 0.05;
+const COURIER = {local:{base:60,slab:25,label:"Maharashtra",days:"1–2 days"},metro:{base:90,slab:35,label:"Metro Cities",days:"2–3 days"},regional:{base:110,slab:45,label:"Rest of India",days:"3–5 days"},remote:{base:160,slab:70,label:"Remote Areas",days:"5–8 days"}};
 
+function zone(pin){
+  if(!pin||pin.length<3) return 'regional';
+  const p=parseInt(pin.slice(0,3));
+  if(p>=400&&p<=445) return 'local';
+  if([110,111,560,561,562,563,600,601,602,603,700,701,702,500,501,502,503].includes(p)) return 'metro';
+  if((p>=781&&p<=799)||(p>=180&&p<=194)||p===744||p===682) return 'remote';
+  return 'regional';
+}
+function shipping(grams,pin){
+  const z=zone(pin), r=COURIER[z];
+  return {ship:r.base+Math.max(0,Math.ceil(grams/500)-1)*r.slab, z, r};
+}
+function orderCalc(cartArr,prods,pin){
+  let prod=0,grams=0;
+  cartArr.forEach(it=>{const p=prods.find(x=>x.id===it.id);if(!p)return;prod+=p.price*it.qty;grams+=(p.weightGrams||500)*it.qty;});
+  const gst=Math.round(prod*GST);
+  const {ship,z,r}=shipping(grams,pin);
+  return {prod,gst,ship,grand:prod+gst+ship,z,r,grams};
+}
+function getProds(){try{const s=localStorage.getItem('sf_products');return s?JSON.parse(s):DEFAULT_PRODUCTS;}catch(e){return DEFAULT_PRODUCTS;}}
+function getBrand(){try{const s=localStorage.getItem('sf_brand');return s?{...DEFAULT_BRAND,...JSON.parse(s)}:DEFAULT_BRAND;}catch(e){return DEFAULT_BRAND;}}
+function pctOff(mrp,p){return Math.round(((mrp-p)/mrp)*100);}
+function waLink(p,b){const m=`Hello Shivar Farmfresh! 🌿\n\nI'd like to order:\n*${p.name} — ${p.weight}*\nPrice: ₹${p.price}\n\nPlease confirm availability & share delivery details.\n\nFSSAI: ${b.fssai}`;return `https://wa.me/${b.whatsapp}?text=${encodeURIComponent(m)}`;}
+
+/* ════ STATE ════ */
+const brand = getBrand();
+let products = getProds();
+let cart = JSON.parse(localStorage.getItem('sf_cart')||'[]');
+let payMethod = 'upi';
+let selBankVal = '';
+
+/* ════ INIT ════ */
 function init(){
   document.getElementById('navLogo').src = LOGO_B64;
   document.getElementById('footLogo').src = LOGO_B64;
   document.getElementById('qrImg').src = QR_B64;
   document.getElementById('ckQr').src = QR_B64;
-  document.getElementById('navName').textContent = brand.name;
-  document.getElementById('navTag').textContent = brand.tagline;
-  document.getElementById('footName').textContent = brand.name;
-  document.getElementById('footTag').textContent = brand.tagline.toUpperCase();
-  document.getElementById('footPhone').textContent = brand.phone;
-  document.getElementById('footUpi').textContent = 'UPI: '+brand.upi;
-  document.getElementById('footAddr').textContent = brand.address;
-  document.getElementById('footFssai').textContent = 'FSSAI: '+brand.fssai;
   document.getElementById('upiId').textContent = brand.upi;
-  document.getElementById('upiPhone').textContent = brand.phone;
   document.getElementById('ckUpiId').textContent = brand.upi;
-  document.getElementById('heroCert').textContent = 'FSSAI '+brand.fssai;
-  const waHref = 'https://wa.me/'+brand.whatsapp;
-  document.getElementById('navWa').href = waHref;
-  document.getElementById('heroWa').href = waHref;
+  document.getElementById('upiPhone').textContent = brand.phone;
+  buildTicker();
+  buildHeroDots();
   buildFilters();
-  renderProducts('all');
+  renderProds('all');
   renderCart();
+  revealAll();
 }
 
-/* ════════════════════════════════
-   PRODUCT FILTERS + RENDER
-════════════════════════════════ */
+/* ════ HERO SLIDESHOW ════ */
+const slides = document.querySelectorAll('.slide');
+let curSlide = 0;
+let slideInterval = setInterval(nextSlide, 4500);
+function nextSlide(){ goSlide((curSlide+1)%slides.length); }
+function goSlide(n){
+  slides[curSlide].classList.remove('active');
+  document.querySelectorAll('.hdot')[curSlide]?.classList.remove('on');
+  curSlide = n;
+  slides[curSlide].classList.add('active');
+  document.querySelectorAll('.hdot')[curSlide]?.classList.add('on');
+}
+function buildHeroDots(){
+  const wrap = document.getElementById('heroDots');
+  wrap.innerHTML = [...slides].map((_,i)=>`<div class="hdot${i===0?' on':''}" onclick="goSlide(${i});clearInterval(slideInterval)"></div>`).join('');
+}
+document.querySelector('.hero').addEventListener('mouseenter',()=>clearInterval(slideInterval));
+document.querySelector('.hero').addEventListener('mouseleave',()=>{slideInterval=setInterval(nextSlide,4500);});
+
+/* ════ TICKER ════ */
+function buildTicker(){
+  const items = ['🌿 Farm-Direct Organic Turmeric','✅ FSSAI Certified · Lic. 21524039000444','🔬 3–5% Curcumin — Up to 3× Higher Than Market','🚚 Pan India Delivery','💛 Founded by Ashwini Ghanwat · Women Entrepreneur','🌍 Wai-Satara, Sahyadri, Maharashtra','📦 Zero Additives · Zero Preservatives','🇮🇳 Small Scale to Global by 2030'];
+  const d = [...items,...items].map(t=>`<span class="tick-item">${t}<span class="tick-dot"></span></span>`).join('');
+  document.getElementById('tickerTrack').innerHTML = d;
+}
+
+/* ════ SCROLL PROGRESS + NAV ════ */
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('scrollBar').style.width=pct+'%';
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);
+  revealAll();
+});
+
+/* ════ SCROLL REVEAL ════ */
+function revealAll(){
+  document.querySelectorAll('.reveal:not(.vis)').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight*.88) el.classList.add('vis');
+  });
+}
+// stagger cards
+document.querySelectorAll('.mcard').forEach((el,i)=>el.style.transitionDelay=(i*.1)+'s');
+document.querySelectorAll('.tl').forEach((el,i)=>el.style.transitionDelay=(i*.08)+'s');
+document.querySelectorAll('.why-card').forEach((el,i)=>el.style.transitionDelay=(i*.07)+'s');
+
+/* ════ FILTERS + PRODUCTS ════ */
 function buildFilters(){
-  const cats = ['all', ...new Set(products.map(p=>p.category||'Other'))];
-  document.getElementById('filterTabs').innerHTML = cats.map(c=>
-    `<button class="ftab${c==='all'?' active':''}" onclick="filterProducts('${c}',this)">${c==='all'?'All Products':c}</button>`
-  ).join('');
+  const cats=['all',...new Set(products.map(p=>p.category||'Other'))];
+  document.getElementById('filterRow').innerHTML=cats.map(c=>`<button class="ftab${c==='all'?' on':''}" onclick="filterProds('${c}',this)">${c==='all'?'All Products':c}</button>`).join('');
 }
-function filterProducts(cat, el){
-  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
-  renderProducts(cat);
+function filterProds(cat,el){
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  renderProds(cat);
 }
-function renderProducts(cat){
-  const grid = document.getElementById('prodGrid');
-  const list = products.filter(p => cat==='all' || p.category===cat);
-  if(!list.length){ grid.innerHTML='<div class="no-prods">No products found.</div>'; return; }
-  grid.innerHTML = list.map(p=>{
-    const off = p.mrp>p.price ? pctOff(p.mrp,p.price) : 0;
-    let bc = 'badge-green';
-    if(p.badge==='Best Value'||p.badge==='Bestseller') bc='badge-gold';
-    else if(p.badge==='Trial Pack') bc='badge-leaf';
-    return `<div class="prod-card">
+function renderProds(cat){
+  const list=products.filter(p=>cat==='all'||p.category===cat);
+  if(!list.length){document.getElementById('prodGrid').innerHTML='<div style="text-align:center;padding:40px;color:var(--muted)">No products found.</div>';return;}
+  document.getElementById('prodGrid').innerHTML=list.map(p=>{
+    const off=p.mrp>p.price?pctOff(p.mrp,p.price):0;
+    const bc=p.badge==='Best Value'||p.badge==='Bestseller'?'bg-gold':p.badge==='Trial Pack'?'bg-leaf':'bg-green';
+    return `<div class="pc">
       ${p.badge?`<div class="pc-badge ${bc}">${p.badge}</div>`:''}
       <div class="pc-img">
         ${p.image?`<img src="${p.image}" alt="${p.name}">`:`<div class="pc-img-glow"></div><div class="pc-img-emoji">🌿</div>`}
@@ -916,14 +1046,14 @@ function renderProducts(cat){
         <div class="pc-name">${p.name}</div>
         <div class="pc-wt">${p.weight} · Resealable Zip-Lock</div>
         <div class="pc-desc">${p.description||''}</div>
-        ${p.benefits&&p.benefits.length?`<div class="pc-pills">${p.benefits.slice(0,4).map(b=>`<span class="pc-pill">${b}</span>`).join('')}</div>`:''}
+        ${p.benefits?.length?`<div class="pc-pills">${p.benefits.slice(0,4).map(b=>`<span class="pc-pill">${b}</span>`).join('')}</div>`:''}
         <div class="pc-price-row">
           <div class="pc-price">₹${p.price}</div>
-          ${p.mrp>p.price?`<div class="pc-mrp">₹${p.mrp}</div><div class="pc-pct">${off}% OFF</div>`:''}
+          ${p.mrp>p.price?`<div class="pc-mrp">₹${p.mrp}</div><div class="pc-off">${off}% OFF</div>`:''}
         </div>
         <div class="pc-actions">
-          <a class="btn-wa" href="${waURL(p,brand)}" target="_blank">💬 WhatsApp Order</a>
-          <button class="btn-cart-add" onclick="addToCart('${p.id}')" title="Add to cart">🛒</button>
+          <a class="btn-wa" href="${waLink(p,brand)}" target="_blank">💬 WhatsApp Order</a>
+          <button class="btn-cart" onclick="addToCart('${p.id}')" title="Add to cart">🛒</button>
         </div>
       </div>
       ${!p.stock?`<div class="pc-oos">Out of Stock</div>`:''}
@@ -931,291 +1061,156 @@ function renderProducts(cat){
   }).join('');
 }
 
-/* ════════════════════════════════
-   CART
-════════════════════════════════ */
-function saveCart(){ localStorage.setItem('sf_cart',JSON.stringify(cart)); }
-
+/* ════ CART ════ */
+function saveCart(){localStorage.setItem('sf_cart',JSON.stringify(cart));}
+function cartTotal(){return cart.reduce((s,it)=>{const p=products.find(x=>x.id===it.id);return s+(p?p.price*it.qty:0);},0);}
 function addToCart(id){
-  const p = products.find(x=>x.id===id);
+  const p=products.find(x=>x.id===id);
   if(!p||!p.stock) return;
-  const ex = cart.find(x=>x.id===id);
-  if(ex) ex.qty++;
-  else cart.push({id,qty:1});
-  saveCart(); renderCart();
-  toast(`✅ ${p.name} (${p.weight}) added to cart!`);
+  const ex=cart.find(x=>x.id===id);
+  if(ex) ex.qty++; else cart.push({id,qty:1});
+  saveCart();renderCart();
+  showToast(`✅ ${p.name} (${p.weight}) added!`);
 }
-function updateQty(id,delta){
-  const it = cart.find(x=>x.id===id);
+function updQty(id,d){
+  const it=cart.find(x=>x.id===id);
   if(!it) return;
-  it.qty = Math.max(0,it.qty+delta);
-  if(it.qty===0) cart = cart.filter(x=>x.id!==id);
-  saveCart(); renderCart();
+  it.qty=Math.max(0,it.qty+d);
+  if(it.qty===0) cart=cart.filter(x=>x.id!==id);
+  saveCart();renderCart();
 }
-function clearCart(){ cart=[]; saveCart(); renderCart(); }
-
-function cartTotal(){
-  return cart.reduce((s,it)=>{ const p=products.find(x=>x.id===it.id); return s+(p?p.price*it.qty:0); },0);
-}
-
+function clearCart(){cart=[];saveCart();renderCart();}
 function renderCart(){
-  const list = document.getElementById('cdList');
-  const badge = document.getElementById('cartBadge');
-  const total_el = document.getElementById('cdfTotal');
-  const qty = cart.reduce((s,x)=>s+x.qty,0);
-  badge.textContent = qty;
-  if(!cart.length){
-    list.innerHTML=`<div class="cd-empty"><div class="cd-empty-icon">🛒</div><p>Your cart is empty</p><p style="margin-top:8px;font-size:12px;color:#aaa">Add products above!</p></div>`;
-    total_el.textContent='₹0'; return;
-  }
+  const badge=document.getElementById('cartBadge');
+  const list=document.getElementById('cdList');
+  const tv=document.getElementById('cdfTotal');
+  const qty=cart.reduce((s,x)=>s+x.qty,0);
+  badge.textContent=qty;
+  if(!cart.length){list.innerHTML=`<div class="cd-empty"><div class="cd-empty-icon">🛒</div><p>Your cart is empty</p><p style="margin-top:7px;font-size:12px;color:#aaa">Add products above!</p></div>`;tv.textContent='₹0';return;}
   let total=0;
-  list.innerHTML = cart.map(item=>{
-    const p = products.find(x=>x.id===item.id); if(!p) return '';
-    const sub = p.price*item.qty; total+=sub;
-    return `<div class="ci">
-      <div class="ci-icon">🌿</div>
-      <div class="ci-body">
-        <div class="ci-name">${p.name}</div>
-        <div class="ci-wt">${p.weight}</div>
-        <div class="ci-price">₹${p.price} × ${item.qty} = ₹${sub}</div>
-        <div class="ci-qty">
-          <button onclick="updateQty('${p.id}',-1)">−</button>
-          <span class="ci-qty-n">${item.qty}</span>
-          <button onclick="updateQty('${p.id}',+1)">+</button>
-          <button class="ci-del" onclick="updateQty('${p.id}',-${item.qty})">✕</button>
-        </div>
-      </div>
-    </div>`;
+  list.innerHTML=cart.map(item=>{
+    const p=products.find(x=>x.id===item.id);if(!p)return'';
+    const sub=p.price*item.qty;total+=sub;
+    return `<div class="ci"><div class="ci-icon">🌿</div><div class="ci-body"><div class="ci-name">${p.name}</div><div class="ci-wt">${p.weight}</div><div class="ci-price">₹${p.price} × ${item.qty} = ₹${sub}</div><div class="ci-qty"><button onclick="updQty('${p.id}',-1)">−</button><span class="ci-qty-n">${item.qty}</span><button onclick="updQty('${p.id}',+1)">+</button><button class="ci-del" onclick="updQty('${p.id}',-${item.qty})">✕</button></div></div></div>`;
   }).join('');
-  total_el.textContent = '₹'+total;
+  tv.textContent='₹'+total;
 }
+function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartDrawer').classList.add('open');}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartDrawer').classList.remove('open');}
 
-function openCart(){ document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); }
-function closeCart(){ document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); }
-
-/* ════════════════════════════════
-   CHECKOUT MODAL
-════════════════════════════════ */
-function buildSummary(containerId, pin, isCOD) {
-  const breakdown = calcOrderTotal(cart, products, pin||'', isCOD||false);
-  const lines = cart.map(it => {
-    const p = products.find(x => x.id === it.id);
-    return p ? `<div class="ck-sum-item"><span>${p.name} ${p.weight} ×${it.qty}</span><span>₹${p.price * it.qty}</span></div>` : '';
-  }).filter(Boolean);
-  document.getElementById(containerId).innerHTML =
-    `<div class="ck-summary-title">Order Summary</div>
-     ${lines.join('')}
-     <div class="ck-sum-item" style="margin-top:8px;padding-top:8px;border-top:1px dashed #d8d0c0"><span>Product Total</span><span>₹${breakdown.productTotal}</span></div>
-     <div class="ck-sum-item"><span>GST (5% — HSN 09103030)</span><span>₹${breakdown.gst}</span></div>
-     <div class="ck-sum-item"><span>Shipping (${breakdown.rate ? breakdown.rate.label : '—'})</span><span>${pin&&pin.length===6 ? '₹'+breakdown.shipping : '—'}</span></div>
-     ${breakdown.cod ? `<div class="ck-sum-item"><span>COD Handling Fee</span><span>₹${breakdown.cod}</span></div>` : ''}
-     <div class="ck-sum-total"><span>Grand Total</span><span>${pin&&pin.length===6 ? '₹'+breakdown.grandTotal : 'Enter PIN →'}</span></div>`;
+/* ════ CHECKOUT ════ */
+function buildSum(id,pin){
+  const b=orderCalc(cart,products,pin||'');
+  const lines=cart.map(it=>{const p=products.find(x=>x.id===it.id);return p?`<div class="ck-sum-row"><span>${p.name} ${p.weight} ×${it.qty}</span><span>₹${p.price*it.qty}</span></div>`:''}).filter(Boolean).join('');
+  document.getElementById(id).innerHTML=`<div class="ck-sum-title">Order Summary</div>${lines}
+    <div class="ck-sum-row" style="margin-top:7px;padding-top:7px;border-top:1px dashed #d8d0c0"><span>Product Total</span><span>₹${b.prod}</span></div>
+    <div class="ck-sum-row"><span>GST (5%)</span><span>₹${b.gst}</span></div>
+    <div class="ck-sum-row"><span>Shipping (${b.r.label})</span><span>${pin&&pin.length===6?'₹'+b.ship:'Enter PIN →'}</span></div>
+    <div class="ck-sum-row total"><span>Grand Total</span><span>${pin&&pin.length===6?'₹'+b.grand:'—'}</span></div>`;
 }
-
-function onPinInput(val) {
-  const box = document.getElementById('ckShippingBox');
-  const bd  = document.getElementById('ckShippingBreakdown');
-  if (val.length !== 6) { box.style.display = 'none'; return; }
-  const b = calcOrderTotal(cart, products, val, false);
-  const zoneColors = { local:'#1a7a3a', metro:'#2255cc', regional:'#7a5500', remote:'#c0392b' };
-  const col = zoneColors[b.zone] || '#555';
-  bd.innerHTML = `
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-      <span style="background:${col};color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:1px">${b.rate.label.split('(')[0].trim()}</span>
-      <span style="font-size:12px;color:var(--muted)">📅 ${b.rate.days}</span>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px">
-      <div style="background:#fff;border-radius:8px;padding:10px 12px">
-        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Product + GST</div>
-        <div style="font-weight:700;color:var(--ink)">₹${b.productTotal} + ₹${b.gst}</div>
-      </div>
-      <div style="background:#fff;border-radius:8px;padding:10px 12px">
-        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Shipping (${Math.ceil(b.totalGrams/500)}×500g slabs)</div>
-        <div style="font-weight:700;color:var(--ink)">₹${b.shipping}</div>
-      </div>
-    </div>
-    <div style="margin-top:10px;background:var(--ink);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
-      <span style="color:rgba(255,255,255,.6);font-size:12px">Grand Total (incl. all taxes)</span>
-      <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold2)">₹${b.grandTotal}</span>
-    </div>
-    <div style="font-size:11px;color:var(--muted);margin-top:8px">✦ Courier: Delhivery / DTDC / Shree Maruti (auto-assigned by zone) &nbsp;·&nbsp; ✦ GST @ 5% HSN 09103030</div>`;
-  box.style.display = 'block';
-  // Also update cart drawer total to show estimate
-  document.getElementById('cdfTotal').textContent = '₹' + b.grandTotal + '*';
+function onPinInput(val){
+  const box=document.getElementById('ckShipBox');
+  if(val.length!==6){box.style.display='none';return;}
+  const b=orderCalc(cart,products,val);
+  document.getElementById('shipZoneLabel').textContent=`🚚 ${b.r.label} — ${b.r.days}`;
+  document.getElementById('shipGrid').innerHTML=`<div class="ship-box"><div class="ship-box-label">Product + GST</div><div class="ship-box-val">₹${b.prod} + ₹${b.gst}</div></div><div class="ship-box"><div class="ship-box-label">Shipping (${Math.ceil(b.grams/500)} slab)</div><div class="ship-box-val">₹${b.ship}</div></div>`;
+  document.getElementById('shipGrand').textContent='₹'+b.grand;
+  document.getElementById('shipNote').textContent='✦ Courier: Delhivery / DTDC / Shree Maruti · GST @ 5% HSN 09103030';
+  box.style.display='block';
+  buildSum('ckSum1',val);
 }
-
-function startCheckout() {
-  if (!cart.length) { toast('🛒 Your cart is empty!'); return; }
+function startCheckout(){
+  if(!cart.length){showToast('🛒 Your cart is empty!');return;}
   closeCart();
-  document.getElementById('cdfTotal').textContent = '₹' + cartTotal();
-  buildSummary('ckSummaryItems', '', false);
-  document.getElementById('ckStep1').style.display = 'block';
-  document.getElementById('ckStep2').style.display = 'none';
-  document.getElementById('ckStep3').style.display = 'none';
-  document.getElementById('ckShippingBox').style.display = 'none';
+  buildSum('ckSum1','');
+  document.getElementById('ckShipBox').style.display='none';
+  ['ckS1','ckS2','ckS3'].forEach((id,i)=>document.getElementById(id).style.display=i===0?'block':'none');
   setStep(1);
   document.getElementById('ckOverlay').classList.add('open');
-  document.getElementById('ckModal').scrollTop = 0;
+  document.getElementById('ckModal').scrollTop=0;
 }
-
-function closeCheckout() {
-  document.getElementById('ckOverlay').classList.remove('open');
+function closeCheckout(){document.getElementById('ckOverlay').classList.remove('open');}
+function setStep(n){
+  const lbls=['','Step 1 of 3','Step 2 of 3','Step 3 of 3'];
+  const titles=['','Delivery Address','Payment Method','Order Confirmed!'];
+  const ws=['','33%','66%','100%'];
+  document.getElementById('ckStepLbl').textContent=lbls[n];
+  document.getElementById('ckTitle').textContent=titles[n];
+  document.getElementById('ckBar').style.width=ws[n];
 }
-
-function setStep(n) {
-  const labels = ['', 'Step 1 of 3', 'Step 2 of 3', 'Step 3 of 3'];
-  const titles  = ['', 'Delivery Address', 'Payment Method', 'Order Confirmed!'];
-  const widths  = ['', '33%', '66%', '100%'];
-  document.getElementById('ckStepLabel').textContent = labels[n];
-  document.getElementById('ckTitle').textContent = titles[n];
-  document.getElementById('ckBar').style.width = widths[n];
+function validate(id,errId,test){
+  const el=document.getElementById(id),err=document.getElementById(errId);
+  const ok=test(el.value.trim());
+  el.classList.toggle('err',!ok);err.classList.toggle('show',!ok);return ok;
 }
-
-/* ── STEP 1 VALIDATION ── */
-function goToStep2() {
-  let valid = true;
-  function req(id, errId, test) {
-    const el = document.getElementById(id);
-    const err = document.getElementById(errId);
-    const ok = test(el.value.trim());
-    el.classList.toggle('error', !ok);
-    err.classList.toggle('show', !ok);
-    if (!ok) valid = false;
-  }
-  req('ck-name',  'err-name',  v => v.length >= 2);
-  req('ck-phone', 'err-phone', v => /^\d{10}$/.test(v));
-  req('ck-line1', 'err-line1', v => v.length >= 5);
-  req('ck-city',  'err-city',  v => v.length >= 2);
-  req('ck-state', 'err-state', v => v !== '');
-  req('ck-pin',   'err-pin',   v => /^\d{6}$/.test(v));
-  if (!valid) {
-    const firstErr = document.querySelector('#ckStep1 .ck-input.error, #ckStep1 .ck-select.error');
-    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
-  }
-  document.getElementById('ckStep1').style.display = 'none';
-  document.getElementById('ckStep2').style.display = 'block';
-  const pin = document.getElementById('ck-pin').value.trim();
-  buildSummary('ckSummary2', pin, false);
-  // Inject UPI ID
-  document.getElementById('ckUpiId').textContent = brand.upi;
-  setStep(2);
-  document.getElementById('ckModal').scrollTop = 0;
+function goStep2(){
+  let ok=true;
+  ok=validate('ck-name','e-name',v=>v.length>=2)&&ok;
+  ok=validate('ck-phone','e-phone',v=>/^\d{10}$/.test(v))&&ok;
+  ok=validate('ck-line1','e-line1',v=>v.length>=5)&&ok;
+  ok=validate('ck-city','e-city',v=>v.length>=2)&&ok;
+  ok=validate('ck-state','e-state',v=>v!=='')&&ok;
+  ok=validate('ck-pin','e-pin',v=>/^\d{6}$/.test(v))&&ok;
+  if(!ok){const f=document.querySelector('#ckS1 .ck-input.err,.ck-select.err');if(f)f.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  document.getElementById('ckS1').style.display='none';
+  document.getElementById('ckS2').style.display='block';
+  buildSum('ckSum2',document.getElementById('ck-pin').value.trim());
+  document.getElementById('ckUpiId').textContent=brand.upi;
+  setStep(2);document.getElementById('ckModal').scrollTop=0;
 }
-
-function goToStep1() {
-  document.getElementById('ckStep2').style.display = 'none';
-  document.getElementById('ckStep1').style.display = 'block';
-  setStep(1);
-  document.getElementById('ckModal').scrollTop = 0;
+function goStep1(){
+  document.getElementById('ckS2').style.display='none';
+  document.getElementById('ckS1').style.display='block';
+  setStep(1);document.getElementById('ckModal').scrollTop=0;
 }
-
-/* ── PAYMENT METHOD SELECT ── */
-function selectPay(method) {
-  selectedPayMethod = method;
-  ['upi', 'card', 'nb', 'wa'].forEach(m => {
-    document.getElementById('pc-' + m).classList.toggle('selected', m === method);
-    document.getElementById('pd-' + m).classList.toggle('show', m === method);
+function selPay(m){
+  payMethod=m;
+  ['upi','card','nb'].forEach(x=>{
+    document.getElementById('pc-'+x).classList.toggle('sel',x===m);
+    document.getElementById('pp-'+x).classList.toggle('show',x===m);
   });
-  // Rebuild step2 summary if PIN already filled
-  const pin = document.getElementById('ck-pin').value.trim();
-  if (pin.length === 6) buildSummary('ckSummary2', pin, false);
+  buildSum('ckSum2',document.getElementById('ck-pin').value.trim());
 }
-
-function selectBank(el, bank) {
-  document.querySelectorAll('.nb-bank').forEach(b => b.classList.remove('sel'));
-  el.classList.add('sel');
-  selectedBank = bank;
-}
-
-/* ── CARD INPUT FORMATTERS ── */
-function formatCard(el) {
-  let v = el.value.replace(/\D/g, '').slice(0, 16);
-  el.value = v.match(/.{1,4}/g)?.join(' ') || v;
-}
-function formatExpiry(el) {
-  let v = el.value.replace(/\D/g, '').slice(0, 4);
-  if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
-  el.value = v;
-}
-
-/* ── PLACE ORDER ── */
-function placeOrder() {
-  if (selectedPayMethod === 'card') {
-    const cname = document.getElementById('ck-cname').value.trim();
-    const cnum  = document.getElementById('ck-cnum').value.replace(/\s/g, '');
-    const cexp  = document.getElementById('ck-cexp').value.trim();
-    const ccvv  = document.getElementById('ck-ccvv').value.trim();
-    if (!cname || cnum.length < 15 || cexp.length < 4 || ccvv.length < 3) {
-      toast('❌ Please fill in all card details correctly'); return;
-    }
+function selBank(el,bank){document.querySelectorAll('.nb-bank').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');selBankVal=bank;}
+function fmtCard(el){let v=el.value.replace(/\D/g,'').slice(0,16);el.value=v.match(/.{1,4}/g)?.join(' ')||v;}
+function fmtExp(el){let v=el.value.replace(/\D/g,'').slice(0,4);if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2);el.value=v;}
+function placeOrder(){
+  if(payMethod==='card'){
+    const ok=document.getElementById('ck-cname').value.trim()&&document.getElementById('ck-cnum').value.replace(/\s/g,'').length>=15&&document.getElementById('ck-cexp').value.length>=4&&document.getElementById('ck-ccvv').value.length>=3;
+    if(!ok){showToast('❌ Please fill in all card details');return;}
   }
-  if (selectedPayMethod === 'nb' && !selectedBank) {
-    toast('❌ Please select your bank'); return;
-  }
-
-  const name  = document.getElementById('ck-name').value.trim();
-  const phone = document.getElementById('ck-phone').value.trim();
-  const line1 = document.getElementById('ck-line1').value.trim();
-  const line2 = document.getElementById('ck-line2').value.trim();
-  const city  = document.getElementById('ck-city').value.trim();
-  const state = document.getElementById('ck-state').value;
-  const pin   = document.getElementById('ck-pin').value.trim();
-  const note  = document.getElementById('ck-note').value.trim();
-  const addr  = [line1, line2, city, state + ' – ' + pin].filter(Boolean).join(', ');
-
-  const ref = 'SF-' + Date.now().toString().slice(-6);
-  const isCOD = false;
-  const b = calcOrderTotal(cart, products, pin, false);
-
-  const lines = cart.map(it => {
-    const p = products.find(x => x.id === it.id);
-    return p ? `• ${p.name} ${p.weight} ×${it.qty} = ₹${p.price * it.qty}` : '';
-  }).filter(Boolean);
-  const payLabel = { upi: 'UPI/QR Code', card: 'Credit/Debit Card', nb: `Net Banking (${selectedBank})` }[selectedPayMethod];
-
-  const waMsg =
-    `Hello Shivar Farmfresh! 🌿\n\n*New Order — Ref: ${ref}*\n\n` +
-    `📦 *Items:*\n${lines.join('\n')}\n\n` +
-    `💰 *Product Total: ₹${b.productTotal}*\n` +
-    `🧾 *GST (5%): ₹${b.gst}*\n` +
-    `🚚 *Shipping (${b.rate.label.split('(')[0].trim()}): ₹${b.shipping}*\n` +
-    `✅ *Grand Total: ₹${b.grandTotal}*\n` +
-    `💳 *Payment: ${payLabel}*\n\n` +
-    `📍 *Deliver to:*\n${name}\n${phone}\n${addr}\n` +
-    `${note ? '📝 Note: ' + note : ''}\n\nPlease confirm this order. Thank you!`;
-
-  document.getElementById('ckStep2').style.display = 'none';
-  document.getElementById('ckStep3').style.display = 'block';
+  if(payMethod==='nb'&&!selBankVal){showToast('❌ Please select your bank');return;}
+  const name=document.getElementById('ck-name').value.trim();
+  const phone=document.getElementById('ck-phone').value.trim();
+  const line1=document.getElementById('ck-line1').value.trim();
+  const line2=document.getElementById('ck-line2').value.trim();
+  const city=document.getElementById('ck-city').value.trim();
+  const state=document.getElementById('ck-state').value;
+  const pin=document.getElementById('ck-pin').value.trim();
+  const note=document.getElementById('ck-note').value.trim();
+  const addr=[line1,line2,city,state+' – '+pin].filter(Boolean).join(', ');
+  const ref='SF-'+Date.now().toString().slice(-6);
+  const b=orderCalc(cart,products,pin);
+  const lines=cart.map(it=>{const p=products.find(x=>x.id===it.id);return p?`• ${p.name} ${p.weight} ×${it.qty} = ₹${p.price*it.qty}`:''}).filter(Boolean);
+  const plbl={upi:'UPI/QR Code',card:'Credit/Debit Card',nb:`Net Banking (${selBankVal})`}[payMethod];
+  const msg=`Hello Shivar Farmfresh! 🌿\n\n*New Order — Ref: ${ref}*\n\n📦 *Items:*\n${lines.join('\n')}\n\n💰 Product Total: ₹${b.prod}\n🧾 GST (5%): ₹${b.gst}\n🚚 Shipping (${b.r.label}): ₹${b.ship}\n✅ *Grand Total: ₹${b.grand}*\n💳 Payment: ${plbl}\n\n📍 *Deliver to:*\n${name} · ${phone}\n${addr}\n${note?'📝 Note: '+note:''}\n\nPlease confirm. Thank you!`;
+  document.getElementById('ckS2').style.display='none';
+  document.getElementById('ckS3').style.display='block';
   setStep(3);
-
-  const payMsgs = {
-    upi:  'Please complete UPI payment and send the screenshot on WhatsApp to confirm your order.',
-    card: 'You will receive a secure card payment link on WhatsApp shortly.',
-    nb:   `You will receive a net banking payment link for ${selectedBank} on WhatsApp shortly.`
-  };
-
-  document.getElementById('ckOrderRef').textContent = ref;
-  document.getElementById('ckSuccessMsg').textContent = payMsgs[selectedPayMethod];
-  document.getElementById('ckDeliveryAddr').innerHTML =
-    `<strong>${name}</strong> · ${phone}<br>${addr}<br>` +
-    `<span style="color:var(--leaf2);font-weight:700;margin-top:4px;display:block">` +
-    `Grand Total: ₹${b.grandTotal} (Products ₹${b.productTotal} + GST ₹${b.gst} + Shipping ₹${b.shipping})</span>`;
-  document.getElementById('ckWaConfirmBtn').onclick = () =>
-    window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(waMsg)}`, '_blank');
-  document.getElementById('ckModal').scrollTop = 0;
+  const msgs={upi:'Please complete UPI payment and send the screenshot on WhatsApp to confirm.',card:'You will receive a secure card payment link on WhatsApp shortly.',nb:`You will receive a net banking link for ${selBankVal} on WhatsApp shortly.`};
+  document.getElementById('ckRef').textContent=ref;
+  document.getElementById('ckOkMsg').textContent=msgs[payMethod];
+  document.getElementById('ckAddr').innerHTML=`<strong>${name}</strong> · ${phone}<br>${addr}<br><span style="color:var(--leaf2);font-weight:700">Grand Total: ₹${b.grand} (Products ₹${b.prod} + GST ₹${b.gst} + Shipping ₹${b.ship})</span>`;
+  document.getElementById('ckWaBtn').onclick=()=>window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('ckModal').scrollTop=0;
 }
+function finishOrder(){closeCheckout();clearCart();showToast("🎉 Order placed! We'll confirm on WhatsApp soon.");}
 
-function finishOrder() {
-  closeCheckout();
-  clearCart();
-  toast('🎉 Order placed! We\'ll confirm on WhatsApp soon.');
-}
+/* ════ SMOOTH SCROLL ════ */
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}));
 
-/* ════════════════════════════════
-   TOAST
-════════════════════════════════ */
-function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('up'); setTimeout(()=>t.classList.remove('up'),3000); }
+/* ════ TOAST ════ */
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('up');setTimeout(()=>t.classList.remove('up'),3000);}
 
 init();
 </script>
