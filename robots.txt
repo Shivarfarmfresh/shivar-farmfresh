@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /admin/admin.html
+
+User-agent: Googlebot
+Disallow: /admin/
+
+# Shivar Farmfresh · shivarfarmfresh.github.io
