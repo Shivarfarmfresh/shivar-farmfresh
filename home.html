@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shivar Farmfresh — Pure from the Sahyadri</title>
+<meta name="description" content="Ashwini Ghanwat's mission: farm-direct organic turmeric from Wai-Satara to every Indian family. No middlemen. No adulteration. Pure immunity.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   SHIVAR FARMFRESH — DYNAMIC BRAND HOMEPAGE
+   Aesthetic: Organic Cinematic · Farm-to-soul
+   Palette: Deep forest · Turmeric gold · Cream silk
+═══════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0a1a0d;
+  --forest:#0f2914;
+  --leaf:#1e6b3a;
+  --leaf2:#2d8a4f;
+  --gold:#c2870c;
+  --gold2:#e0a020;
+  --saffron:#f5a623;
+  --cream:#fdf8ef;
+  --silk:#f5edd8;
+  --muted:#7a7060;
+  --white:#ffffff;
+  --rL:20px;
+  --sh:0 4px 24px rgba(0,0,0,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* ─── CUSTOM CURSOR ─── */
+.cursor{position:fixed;width:12px;height:12px;background:var(--gold2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;mix-blend-mode:multiply}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease}
+
+/* ─── SCROLL PROGRESS ─── */
+.scroll-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--leaf2),var(--gold2),var(--saffron));z-index:1000;width:0%;transition:width .1s}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+nav.scrolled{background:rgba(10,26,13,.95);backdrop-filter:blur(20px);padding:12px 40px;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(194,135,12,.5)}
+.nav-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:.5px}
+.nav-sub{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:3px;text-transform:uppercase;display:block;margin-top:-2px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.6);font-size:12px;font-weight:500;letter-spacing:.5px;padding:7px 14px;border-radius:20px;transition:.2s;text-decoration:none}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-shop{background:linear-gradient(135deg,var(--gold),#9a6500)!important;color:#fff!important;font-weight:700!important;padding:8px 20px!important;border-radius:20px!important}
+
+/* ─── CINEMATIC HERO ─── */
+.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+/* Full-bleed slideshow */
+.hero-slides{position:absolute;inset:0;z-index:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-size:cover;background-position:center}
+.slide.active{opacity:1}
+/* gradient overlay on slides */
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,26,13,.82) 0%,rgba(10,26,13,.5) 60%,rgba(194,135,12,.15) 100%)}
+/* Slide images — using beautiful CSS gradients as placeholders for real farm photos */
+.slide-1{background:linear-gradient(135deg,#071a0a 0%,#1a4a1a 40%,#c2870c 100%)}
+.slide-2{background:linear-gradient(160deg,#0a2010 0%,#2d6b20 50%,#e8a020 100%)}
+.slide-3{background:linear-gradient(120deg,#061008 0%,#163a14 45%,#f5a623 90%)}
+.slide-4{background:linear-gradient(150deg,#0d1f0e 0%,#1e5520 55%,#c27a00 100%)}
+/* Slide image overlays — turmeric field scenes described as gradients with texture */
+.slide-1::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");opacity:.4}
+/* hero content */
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 24px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.4);border-radius:30px;padding:6px 18px;font-size:10px;font-weight:600;letter-spacing:4px;color:var(--gold2);text-transform:uppercase;margin-bottom:28px;animation:fadeUp .8s .2s both}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(44px,7vw,88px);font-weight:900;color:#fff;line-height:1.05;margin-bottom:12px;animation:fadeUp .8s .35s both}
+.hero-h1 em{font-style:italic;color:var(--gold2)}
+.hero-tagline-hi{font-family:'Noto Sans Devanagari',sans-serif;font-size:clamp(14px,2vw,20px);color:rgba(255,255,255,.4);letter-spacing:2px;margin-bottom:22px;animation:fadeUp .8s .45s both}
+.hero-sub{font-size:clamp(14px,1.8vw,18px);color:rgba(255,255,255,.7);line-height:1.75;max-width:620px;margin:0 auto 40px;animation:fadeUp .8s .55s both}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .65s both}
+.btn-primary{background:linear-gradient(135deg,var(--gold),#9a6500);color:#fff;padding:15px 34px;border-radius:50px;font-size:14px;font-weight:700;letter-spacing:.5px;cursor:pointer;border:none;text-decoration:none;display:inline-block;box-shadow:0 6px 28px rgba(194,135,12,.4);transition:.3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(194,135,12,.5)}
+.btn-outline{background:transparent;color:#fff;padding:14px 32px;border-radius:50px;font-size:14px;font-weight:600;border:1.5px solid rgba(255,255,255,.35);letter-spacing:.5px;cursor:pointer;text-decoration:none;display:inline-block;transition:.3s}
+.btn-outline:hover{border-color:var(--gold2);color:var(--gold2);transform:translateY(-2px)}
+/* hero bottom strip */
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(10,26,13,.7);backdrop-filter:blur(12px);border-top:1px solid rgba(194,135,12,.2)}
+.hero-stats-inner{max-width:1100px;margin:0 auto;display:flex;padding:20px 40px;gap:0}
+.hstat{flex:1;text-align:center;padding:0 20px;border-right:1px solid rgba(255,255,255,.08)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--gold2)}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+/* slide dots */
+.hero-dots{position:absolute;bottom:95px;left:50%;transform:translateX(-50%);z-index:4;display:flex;gap:8px}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.3s}
+.hero-dot.active{background:var(--gold2);width:24px;border-radius:3px}
+/* scroll hint */
+.scroll-hint{position:absolute;bottom:115px;right:40px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:6px;animation:bounce 2s ease-in-out infinite}
+.scroll-hint span{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;writing-mode:vertical-rl}
+.scroll-hint-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent)}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ─── FOUNDER / STORY STRIP ─── */
+.founder-strip{background:var(--forest);padding:100px 40px;position:relative;overflow:hidden}
+.founder-strip::before{content:'';position:absolute;right:-200px;top:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(194,135,12,.12),transparent 70%)}
+.founder-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.founder-img-wrap{position:relative}
+.founder-img-frame{width:100%;aspect-ratio:3/4;border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(160deg,#1a4a1a,#2d8a4f)}
+/* placeholder for founder photo — beautiful frame with pattern */
+.founder-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:120px;background:linear-gradient(160deg,rgba(15,41,20,1),rgba(30,107,58,.8));position:relative}
+.founder-img-placeholder::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 40% 60%,rgba(194,135,12,.2),transparent 70%)}
+.founder-badge{position:absolute;bottom:-20px;right:-20px;background:var(--gold);color:var(--ink);border-radius:16px;padding:16px 22px;box-shadow:0 8px 32px rgba(194,135,12,.4)}
+.fb-date{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;opacity:.7}
+.fb-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;line-height:1.3;margin-top:2px}
+.founder-accent{position:absolute;top:-16px;left:-16px;width:80px;height:80px;border-radius:50%;background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.3)}
+/* founder text */
+.founder-eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold2);text-transform:uppercase;font-weight:700;margin-bottom:16px}
+.founder-h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:24px}
+.founder-h2 em{color:var(--gold2);font-style:italic}
+.founder-quote{font-size:16px;line-height:1.9;color:rgba(255,255,255,.65);margin-bottom:28px;border-left:3px solid var(--gold);padding-left:20px;font-style:italic}
+.founder-body{font-size:14px;line-height:1.9;color:rgba(255,255,255,.5);margin-bottom:32px}
+.founder-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff}
+.founder-title{font-size:12px;color:var(--gold2);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.founder-devanagari{font-family:'Noto Sans Devanagari',sans-serif;font-size:13px;color:rgba(255,255,255,.3);margin-top:2px}
+
+/* ─── WOMEN'S DAY BANNER ─── */
+.womens-banner{background:linear-gradient(135deg,#5a1040,#9c2060,#c2870c);padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+.womens-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,.1)'/%3E%3C/svg%3E")}
+.wb-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.wb-icon{font-size:48px;margin-bottom:16px;display:block;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.wb-date{font-size:11px;letter-spacing:4px;color:rgba(255,255,255,.6);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.wb-h{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:16px}
+.wb-h span{color:#ffd700}
+.wb-p{font-size:15px;color:rgba(255,255,255,.8);line-height:1.8;max-width:620px;margin:0 auto}
+
+/* ─── MISSION SECTION ─── */
+.mission{padding:100px 40px;background:var(--cream)}
+.mission-inner{max-width:1100px;margin:0 auto}
+.sect-eyebrow{font-size:10px;letter-spacing:4px;color:var(--leaf2);text-transform:uppercase;font-weight:700;margin-bottom:14px;text-align:center}
+.sect-h{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,52px);font-weight:900;color:var(--ink);text-align:center;line-height:1.2;margin-bottom:16px}
+.sect-sub{font-size:15px;color:var(--muted);text-align:center;max-width:640px;margin:0 auto 64px;line-height:1.8}
+.mission-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.mc{background:#fff;border-radius:24px;padding:36px 28px;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.04);transition:.4s;position:relative;overflow:hidden}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--leaf2),var(--gold))}
+.mc:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.12)}
+.mc-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--leaf3,#e8f5ec),var(--cream));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px}
+.mc-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.mc-text{font-size:13px;color:var(--muted);line-height:1.8}
+
+/* ─── JOURNEY TIMELINE ─── */
+.journey{padding:100px 40px;background:var(--forest);position:relative;overflow:hidden}
+.journey::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(194,135,12,.4),transparent);transform:translateX(-50%)}
+.journey-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+.journey .sect-h{color:#fff}
+.journey .sect-eyebrow{color:var(--gold2)}
+.journey .sect-sub{color:rgba(255,255,255,.4)}
+.timeline{margin-top:60px;display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:40px;align-items:flex-start;margin-bottom:60px;position:relative}
+.tl-item:nth-child(even){flex-direction:row-reverse}
+.tl-item:nth-child(even) .tl-content{text-align:right}
+.tl-dot-wrap{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0;z-index:2}
+.tl-dot{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--saffron));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 0 0 6px rgba(194,135,12,.15),0 0 0 12px rgba(194,135,12,.06);flex-shrink:0}
+.tl-line{width:1px;height:60px;background:linear-gradient(to bottom,rgba(194,135,12,.4),transparent)}
+.tl-item:last-child .tl-line{display:none}
+.tl-content{flex:1;padding-top:8px}
+.tl-year{font-size:10px;letter-spacing:3px;color:var(--gold2);text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.tl-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+.tl-text{font-size:13px;color:rgba(255,255,255,.5);line-height:1.8}
+.tl-tag{display:inline-block;background:rgba(194,135,12,.15);border:1px solid rgba(194,135,12,.35);color:var(--gold2);font-size:10px;font-weight:700;padding:4px 12px;border-radius:10px;letter-spacing:1px;margin-top:10px}
+
+/* ─── INSTAGRAM SECTION ─── */
+.instagram{padding:100px 40px;background:var(--cream)}
+.instagram-inner{max-width:1100px;margin:0 auto}
+.insta-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:20px}
+.insta-brand{display:flex;align-items:center;gap:16px}
+.insta-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);padding:3px}
+.insta-avatar-inner{width:100%;height:100%;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:28px}
+.insta-handle{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink)}
+.insta-followers{font-size:12px;color:var(--muted);margin-top:2px}
+.btn-insta{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:10px 24px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.5px;transition:.2s;border:none;cursor:pointer}
+.btn-insta:hover{opacity:.85;transform:translateY(-2px)}
+/* Instagram embed area */
+.insta-embed-box{background:#fff;border-radius:20px;padding:32px;box-shadow:var(--sh);text-align:center;border:1px solid rgba(0,0,0,.05);margin-bottom:28px}
+.insta-embed-placeholder{padding:40px;text-align:center}
+.insta-embed-placeholder .iep-icon{font-size:56px;margin-bottom:16px;display:block}
+.insta-embed-placeholder h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--ink);margin-bottom:10px}
+.insta-embed-placeholder p{font-size:13px;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto 20px}
+.insta-embed-placeholder code{background:#f5f0e8;padding:6px 14px;border-radius:8px;font-size:12px;color:var(--leaf);font-family:monospace;display:block;margin-top:12px;word-break:break-all}
+/* Mock Instagram grid */
+.insta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;border-radius:16px;overflow:hidden}
+.insta-cell{aspect-ratio:1;position:relative;overflow:hidden;cursor:pointer}
+.insta-cell-bg{width:100%;height:100%;transition:.4s;display:flex;align-items:center;justify-content:center;font-size:40px}
+.insta-cell:hover .insta-cell-bg{transform:scale(1.08)}
+.insta-cell-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:.3s;display:flex;align-items:center;justify-content:center;gap:14px}
+.insta-cell:hover .insta-cell-overlay{background:rgba(0,0,0,.45)}
+.insta-cell-overlay span{color:#fff;font-size:13px;font-weight:700;opacity:0;transition:.3s;display:flex;align-items:center;gap:4px}
+.insta-cell:hover .insta-cell-overlay span{opacity:1}
+/* gradient bgs for mock posts */
+.ic-1{background:linear-gradient(135deg,#1a4a10,#2d8a40)}
+.ic-2{background:linear-gradient(135deg,#c2870c,#f5a623)}
+.ic-3{background:linear-gradient(135deg,#0a2010,#1e6b3a)}
+.ic-4{background:linear-gradient(135deg,#9a6500,#c2870c)}
+.ic-5{background:linear-gradient(135deg,#2d6b20,#7cb950)}
+.ic-6{background:linear-gradient(135deg,#f5a623,#e07010)}
+.ic-7{background:linear-gradient(135deg,#163a14,#2d8a4f)}
+.ic-8{background:linear-gradient(135deg,#c27a00,#f0b030)}
+.insta-cta{text-align:center;margin-top:28px}
+.insta-cta p{font-size:13px;color:var(--muted);margin-bottom:12px}
+/* How to connect instructions */
+.connect-box{background:linear-gradient(135deg,#fff8ee,#fff);border:1.5px solid rgba(194,135,12,.25);border-radius:16px;padding:24px 28px;margin-top:20px}
+.connect-title{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.connect-steps{display:flex;flex-direction:column;gap:10px}
+.connect-step{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--muted)}
+.cs-num{width:24px;height:24px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* ─── YOUTUBE SECTION ─── */
+.youtube{padding:100px 40px;background:var(--forest)}
+.youtube-inner{max-width:1100px;margin:0 auto}
+.youtube .sect-h{color:#fff}
+.youtube .sect-eyebrow{color:#ff4444}
+.youtube .sect-sub{color:rgba(255,255,255,.4)}
+.yt-feature{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;margin-bottom:60px}
+.yt-embed-wrap{border-radius:20px;overflow:hidden;position:relative;background:#000;aspect-ratio:16/9}
+.yt-embed-wrap iframe{width:100%;height:100%;border:none}
+.yt-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#0a0a0a,#1a1a1a);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;cursor:pointer;position:relative;aspect-ratio:16/9;border-radius:20px}
+.yt-play{width:72px;height:72px;background:#ff0000;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s;box-shadow:0 0 0 12px rgba(255,0,0,.15)}
+.yt-play:hover{transform:scale(1.1);box-shadow:0 0 0 18px rgba(255,0,0,.1)}
+.yt-play::after{content:'▶';font-size:24px;color:#fff;margin-left:4px}
+.yt-placeholder p{font-size:13px;color:rgba(255,255,255,.4);letter-spacing:1px}
+.yt-info h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff;margin-bottom:14px}
+.yt-info p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:24px}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;background:#ff0000;color:#fff;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.btn-yt:hover{background:#cc0000;transform:translateY(-2px)}
+/* how to add video */
+.yt-howto{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px 28px;margin-top:20px}
+.yt-howto-title{font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:14px}
+.yt-step{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px;display:flex;gap:10px}
+.yt-step code{background:rgba(255,255,255,.08);padding:2px 8px;border-radius:4px;font-family:monospace;font-size:11px;color:rgba(255,255,255,.6)}
+
+/* ─── ABOUT / VISION SECTION ─── */
+.about{padding:100px 40px;background:var(--cream)}
+.about-inner{max-width:1100px;margin:0 auto}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text .sect-h{text-align:left}
+.about-text .sect-eyebrow{text-align:left}
+.about-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.about-pill{background:#fff;border:1.5px solid rgba(30,107,58,.2);border-radius:20px;padding:8px 18px;font-size:12px;font-weight:600;color:var(--leaf);display:flex;align-items:center;gap:6px}
+.about-body{font-size:14px;line-height:1.9;color:var(--muted);margin-bottom:28px}
+.about-vision{background:linear-gradient(135deg,var(--forest),#163a14);border-radius:20px;padding:32px;color:#fff;margin-bottom:32px}
+.av-label{font-size:10px;letter-spacing:3px;color:var(--gold2);text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.av-text{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;line-height:1.6;color:rgba(255,255,255,.85)}
+/* right side — values grid */
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.av-card{background:#fff;border-radius:16px;padding:24px;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.04);transition:.3s}
+.av-card:hover{transform:translateY(-4px)}
+.av-card-icon{font-size:32px;margin-bottom:12px;display:block}
+.av-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.av-card-text{font-size:12px;color:var(--muted);line-height:1.7}
+.about-globe{background:linear-gradient(135deg,var(--gold),var(--saffron));border-radius:16px;padding:24px;grid-column:span 2;color:var(--ink)}
+.ag-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;opacity:.6;margin-bottom:8px}
+.ag-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;line-height:1.4}
+
+/* ─── UPLOAD / MEDIA CTA ─── */
+.media-cta{padding:80px 40px;background:linear-gradient(135deg,#f5f0e4,var(--cream))}
+.media-cta-inner{max-width:900px;margin:0 auto;text-align:center}
+.media-cta .sect-h{margin-bottom:14px}
+.media-cta .sect-sub{margin-bottom:48px}
+.media-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mcard{background:#fff;border-radius:20px;padding:32px 24px;text-align:center;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.04);transition:.4s}
+.mcard:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.12)}
+.mcard-icon{font-size:40px;margin-bottom:16px;display:block}
+.mcard-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.mcard-text{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* ─── PRODUCT TEASER ─── */
+.prod-teaser{padding:100px 40px;background:var(--forest)}
+.prod-teaser-inner{max-width:1100px;margin:0 auto}
+.prod-teaser .sect-h{color:#fff}
+.prod-teaser .sect-eyebrow{color:var(--gold2)}
+.prod-teaser .sect-sub{color:rgba(255,255,255,.4)}
+.pt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:20px}
+.pt-card{background:rgba(255,255,255,.04);border:1px solid rgba(194,135,12,.2);border-radius:20px;padding:28px 20px;text-align:center;transition:.3s}
+.pt-card:hover{background:rgba(194,135,12,.08);border-color:rgba(194,135,12,.4);transform:translateY(-4px)}
+.pt-emoji{font-size:44px;margin-bottom:16px;display:block}
+.pt-weight{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold2);margin-bottom:6px}
+.pt-name{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px;letter-spacing:1px}
+.pt-price{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:16px}
+.pt-mrp{font-size:12px;color:rgba(255,255,255,.3);text-decoration:line-through;margin-bottom:4px}
+.pt-off{background:rgba(194,135,12,.2);color:var(--gold2);font-size:11px;font-weight:700;padding:3px 10px;border-radius:8px;display:inline-block;margin-bottom:16px}
+.pt-btn{width:100%;background:linear-gradient(135deg,var(--gold),#9a6500);color:#fff;border:none;padding:11px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;text-decoration:none;display:block}
+.pt-btn:hover{opacity:.9}
+
+/* ─── FOOTER ─── */
+footer{background:#04100a;padding:60px 40px 28px}
+.foot-inner{max-width:1100px;margin:0 auto}
+.foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.foot-logo{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin-bottom:14px}
+.foot-brand-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:4px}
+.foot-brand-tag{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase;margin-bottom:14px;display:block}
+.foot-about{font-size:12px;color:rgba(255,255,255,.35);line-height:1.8}
+.foot-h{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:16px}
+.foot-links a{display:block;color:rgba(255,255,255,.4);font-size:13px;margin-bottom:9px;text-decoration:none;transition:.2s}
+.foot-links a:hover{color:var(--gold2)}
+.foot-contact-row{display:flex;gap:10px;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:9px;line-height:1.5}
+.foot-bar{border-top:1px solid rgba(255,255,255,.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:11px;color:rgba(255,255,255,.2)}
+.fssai-pill{background:rgba(194,135,12,.12);border:1px solid rgba(194,135,12,.25);padding:5px 12px;border-radius:8px;color:var(--gold)}
+.social-row{display:flex;gap:10px;margin-top:16px}
+.social-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none;transition:.2s;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+.social-btn:hover{background:var(--gold);transform:translateY(-2px)}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200%}100%{background-position:200%}}
+
+/* ─── TICKER ─── */
+.ticker{background:var(--gold);padding:10px 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;animation:tickerMove 30s linear infinite}
+@keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{padding:0 32px;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:.5px;display:inline-flex;align-items:center;gap:10px}
+.ticker-dot{width:5px;height:5px;border-radius:50%;background:var(--ink);opacity:.4}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  nav.scrolled{padding:10px 20px}
+  .nav-links a:not(.nav-shop){display:none}
+  .hero-stats-inner{padding:16px 20px;flex-wrap:wrap}
+  .hstat{flex:0 0 50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:8px 0}
+  .founder-inner,.about-grid{grid-template-columns:1fr;gap:48px}
+  .mission-cards{grid-template-columns:1fr}
+  .pt-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .timeline .tl-item,.timeline .tl-item:nth-child(even){flex-direction:column}
+  .journey::after{display:none}
+  .yt-feature{grid-template-columns:1fr}
+  .insta-grid{grid-template-columns:repeat(2,1fr)}
+  .about-values{grid-template-columns:1fr}
+  .about-globe{grid-column:span 1}
+  .media-cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+<!-- Scroll progress -->
+<div class="scroll-bar" id="scrollBar"></div>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav id="mainNav">
+  <div class="nav-brand">
+    <img class="nav-logo" id="navLogo" src="" alt="Shivar Farmfresh">
+    <div>
+      <div class="nav-name">Shivar Farmfresh</div>
+      <span class="nav-sub">Pure Sahyadri Gold</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#story">Our Story</a>
+    <a href="#journey">Journey</a>
+    <a href="#about">About</a>
+    <a href="#instagram">Instagram</a>
+    <a href="#youtube">YouTube</a>
+    <a href="index.html" class="nav-shop">🛒 Shop Now</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO — CINEMATIC SLIDESHOW
+══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-slides">
+    <div class="slide slide-1 active" id="slide0"></div>
+    <div class="slide slide-2" id="slide1"></div>
+    <div class="slide slide-3" id="slide2"></div>
+    <div class="slide slide-4" id="slide3"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ International Women's Day · 8 March 2025 ✦</div>
+    <h1 class="hero-h1">From Our Farm<br>to <em>Every Family</em></h1>
+    <div class="hero-tagline-hi">शुद्ध सह्याद्री सोने · खेतों से सीधे आपके घर तक</div>
+    <p class="hero-sub">Ashwini Ghanwat's bold vision — pure, unadulterated turmeric grown in the mineral-rich Sahyadri hills of Wai-Satara, delivered direct to your door. No middlemen. No adulteration. Ever.</p>
+    <div class="hero-ctas">
+      <a href="index.html" class="btn-primary">🌿 Shop Turmeric</a>
+      <a href="#story" class="btn-outline">Our Story →</a>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="hero-dots">
+    <div class="hero-dot active" onclick="goSlide(0)"></div>
+    <div class="hero-dot" onclick="goSlide(1)"></div>
+    <div class="hero-dot" onclick="goSlide(2)"></div>
+    <div class="hero-dot" onclick="goSlide(3)"></div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>Scroll</span>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="hero-stats">
+    <div class="hero-stats-inner">
+      <div class="hstat"><div class="hstat-n">3–5%</div><div class="hstat-l">Curcumin vs 1–2% market avg</div></div>
+      <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">Farm Direct · Zero Middlemen</div></div>
+      <div class="hstat"><div class="hstat-n">0</div><div class="hstat-l">Additives · Preservatives · Fillers</div></div>
+      <div class="hstat"><div class="hstat-n">2030</div><div class="hstat-l">Global Reach Vision</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TICKER
+══════════════════════════════════════ -->
+<div class="ticker">
+  <div class="ticker-inner" id="tickerInner"></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     WOMEN'S DAY BANNER
+══════════════════════════════════════ -->
+<div class="womens-banner">
+  <div class="wb-inner">
+    <span class="wb-icon">🌸</span>
+    <div class="wb-date">International Women's Day · 8 March 2025</div>
+    <h2 class="wb-h">A Woman's Dream is<br><span>Changing What You Eat</span></h2>
+    <p class="wb-p">Today, Ashwini Ghanwat — a farmer's daughter from the Sahyadri hills — officially launches Shivar Farmfresh. Her mission is simple but powerful: every Indian family deserves to know exactly what goes into their food. Pure. Traceable. Honest.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FOUNDER STORY
+══════════════════════════════════════ -->
+<section id="story" class="founder-strip">
+  <div class="founder-inner">
+    <!-- Photo left -->
+    <div class="founder-img-wrap reveal-left">
+      <div class="founder-img-frame">
+        <!-- Replace the emoji below with: <img src="ashwini-photo.jpg" alt="Ashwini Ghanwat" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="founder-img-placeholder">👩‍🌾</div>
+      </div>
+      <div class="founder-badge">
+        <div class="fb-date">Launched · 8 March 2025</div>
+        <div class="fb-text">Women<br>Entrepreneur</div>
+      </div>
+      <div class="founder-accent"></div>
+    </div>
+    <!-- Text right -->
+    <div class="reveal-right">
+      <div class="founder-eyebrow">✦ The Founder's Story ✦</div>
+      <h2 class="founder-h2">Meet <em>Ashwini</em><br>Ghanwat</h2>
+      <p class="founder-quote">"Every family in India deserves immunity they can trust — not from a pill, but from the earth itself. I saw my own family's turmeric being pushed aside for adulterated, cheap powders. That broke my heart. That lit my fire."</p>
+      <p class="founder-body">Growing up in Wai-Satara surrounded by the golden turmeric fields of the Sahyadri range, Ashwini watched generations of farmers lose their livelihood to a broken supply chain riddled with middlemen and adulteration. She made a decision: bring the farm directly to every family's kitchen table.<br><br>On International Women's Day, 8 March 2025, Ashwini officially launches Shivar Farmfresh — a bold, direct-from-farm brand with a dream to reach every household in India and eventually, the world.</p>
+      <div class="founder-name">Ashwini Ghanwat</div>
+      <div class="founder-title">Founder & CEO · Shivar Farmfresh</div>
+      <div class="founder-devanagari">अश्विनी घणवट · संस्थापक, शिवार फार्मफ्रेश</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     MISSION
+══════════════════════════════════════ -->
+<section class="mission">
+  <div class="mission-inner">
+    <div class="sect-eyebrow reveal">✦ Why We Exist ✦</div>
+    <h2 class="sect-h reveal">Built on Three<br>Unbreakable Promises</h2>
+    <p class="sect-sub reveal">Every decision Ashwini makes comes back to these three principles. No shortcuts. No compromises.</p>
+    <div class="mission-cards">
+      <div class="mc reveal">
+        <div class="mc-icon">🛡️</div>
+        <div class="mc-title">Zero Adulteration, Forever</div>
+        <div class="mc-text">India loses ₹40,000 crore every year to food adulteration. Shivar Farmfresh exists precisely to fight this. Every batch is traceable to the exact farm plot in Wai-Satara. What you see on the label is the only thing in the packet.</div>
+      </div>
+      <div class="mc reveal">
+        <div class="mc-icon">💪</div>
+        <div class="mc-title">Immunity is a Right, Not a Luxury</div>
+        <div class="mc-text">As climate change brings new viruses and health challenges, Ashwini believes nature's best defence — curcumin-rich turmeric — should be affordable and accessible to every family, from villages to metros, India to the world.</div>
+      </div>
+      <div class="mc reveal">
+        <div class="mc-icon">🌍</div>
+        <div class="mc-title">Farmer First. Always.</div>
+        <div class="mc-text">By removing every middleman, Shivar Farmfresh puts fair income directly in the hands of the farmers who grow the turmeric. When you buy from us, you fund a family in Sahyadri — not a warehouse chain.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     JOURNEY TIMELINE
+══════════════════════════════════════ -->
+<section id="journey" class="journey">
+  <div class="journey-inner">
+    <div class="sect-eyebrow reveal">✦ The Road So Far ✦</div>
+    <h2 class="sect-h reveal">Ashwini's Journey</h2>
+    <p class="sect-sub reveal">From a turmeric field in Sahyadri to a pan-India brand. This is just the beginning.</p>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-wrap">
+          <div class="tl-dot">🌱</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-year">The Beginning</div>
+          <div class="tl-title">Growing Up Among Turmeric Fields</div>
+          <div class="tl-text">Ashwini grows up in Wai-Satara, Sahyadri — one of Maharashtra's most mineral-rich agricultural belts. She watches her family grow high-curcumin turmeric but sell it at throwaway prices to middlemen who pocket the margin. The seed of an idea is planted.</div>
+          <div class="tl-tag">Wai-Satara, Maharashtra</div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-wrap">
+          <div class="tl-dot">😤</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-year">The Realization</div>
+          <div class="tl-title">Adulteration Hits Home</div>
+          <div class="tl-text">After discovering that popular branded turmeric powders in supermarkets often contain artificial colour, starch, and sawdust — sometimes even lead chromate — Ashwini makes a personal commitment: her family will never sell anything but pure, unadulterated turmeric.</div>
+          <div class="tl-tag">The Turning Point</div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-wrap">
+          <div class="tl-dot">💡</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-year">The Vision</div>
+          <div class="tl-title">COVID Changes Everything</div>
+          <div class="tl-text">The pandemic brings haldi milk and immunity-boosting turmeric into every household conversation. Ashwini sees the moment clearly: families everywhere are searching for trusted, clean turmeric. She begins building the Shivar Farmfresh concept — farm-direct, FSSAI certified, zero compromise.</div>
+          <div class="tl-tag">Farm-to-Door Concept Born</div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-wrap">
+          <div class="tl-dot">🚀</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-year">8 March 2025 · Launch Day</div>
+          <div class="tl-title">Shivar Farmfresh is Born</div>
+          <div class="tl-text">On International Women's Day, Ashwini Ghanwat officially launches Shivar Farmfresh. FSSAI certified. Direct-from-farm. Four pack sizes shipped pan-India. The mission: reach every Indian family with immunity they can trust. It's not just a brand — it's a movement.</div>
+          <div class="tl-tag">🎉 Officially Launched Today</div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-wrap">
+          <div class="tl-dot">🇮🇳</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-year">2026 Vision</div>
+          <div class="tl-title">Pan-India Presence</div>
+          <div class="tl-text">Partnerships with organic stores, D2C marketplaces, and health platforms across every major Indian city. Ashwini's goal: 10,000 families using Shivar Farmfresh turmeric daily. Subscription packs, bulk retailer pricing, and a farmers' collective model feeding back into the Sahyadri community.</div>
+          <div class="tl-tag">Next Milestone</div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-wrap">
+          <div class="tl-dot">🌏</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-year">By 2030 · The Big Dream</div>
+          <div class="tl-title">Global Families. Immune. Unafraid.</div>
+          <div class="tl-text">Ashwini's 2030 vision: Shivar Farmfresh turmeric in kitchens across the US, UK, UAE, Australia, and Southeast Asia. Not just a spice export — a global immunity movement. Every family, in every climate, armed with nature's most powerful anti-inflammatory. Grown in Sahyadri. Delivered to the world.</div>
+          <div class="tl-tag">🌍 Farm to Globe · 2030</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ABOUT / VISION
+══════════════════════════════════════ -->
+<section id="about" class="about">
+  <div class="about-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sect-eyebrow reveal">✦ Our Philosophy ✦</div>
+        <h2 class="sect-h reveal">Why We Believe<br>in Pure Immunity</h2>
+        <div class="about-pills reveal">
+          <span class="about-pill">🌿 100% Organic</span>
+          <span class="about-pill">✅ FSSAI Certified</span>
+          <span class="about-pill">🏔️ Sahyadri Origin</span>
+          <span class="about-pill">🔬 3–5% Curcumin</span>
+          <span class="about-pill">🚜 Farmer Direct</span>
+        </div>
+        <p class="about-body reveal">Climate change is real. New viruses are coming. Our immune systems are fighting harder than ever. Ashwini Ghanwat believes the answer isn't in the pharmacy — it's in the farm. Turmeric has been India's natural immunity booster for thousands of years. But only if it's pure.<br><br>Shivar Farmfresh exists to ensure that the 3–5% curcumin found naturally in Sahyadri-grown turmeric reaches your kitchen untouched — no synthetic dyes, no preservatives, no fillers. Just the raw healing power of nature.</p>
+        <div class="about-vision reveal">
+          <div class="av-label">Ashwini's Dream</div>
+          <div class="av-text">"I want every family in India — and eventually the world — to be immune to whatever tomorrow brings. Not because they took a pill, but because they cooked with pure food. That's why Shivar Farmfresh exists."</div>
+        </div>
+      </div>
+      <div class="about-values reveal-right">
+        <div class="av-card">
+          <span class="av-card-icon">🌡️</span>
+          <div class="av-card-title">Climate Resilience</div>
+          <div class="av-card-text">As seasons shift and weather extremes grow, a strong immune system is humanity's best defence. Curcumin is nature's answer.</div>
+        </div>
+        <div class="av-card">
+          <span class="av-card-icon">🦠</span>
+          <div class="av-card-title">Virus-Ready Families</div>
+          <div class="av-card-text">The next pandemic won't wait. Daily turmeric isn't a trend — it's ancient wisdom backed by modern science and 500+ clinical studies.</div>
+        </div>
+        <div class="av-card">
+          <span class="av-card-icon">🤝</span>
+          <div class="av-card-title">No Middleman Markup</div>
+          <div class="av-card-text">Every rupee you save goes back to the farmer who grew it. Transparent pricing. Fair trade at every step of the supply chain.</div>
+        </div>
+        <div class="av-card">
+          <span class="av-card-icon">📦</span>
+          <div class="av-card-title">Traceable to the Plot</div>
+          <div class="av-card-text">We know which field your turmeric came from. The Wai-Satara farming belt, specific farms, specific harvests. Full transparency.</div>
+        </div>
+        <div class="about-globe">
+          <div class="ag-label">🌍 2030 Global Vision</div>
+          <div class="ag-text">From small-scale Sahyadri farms to global households — Ashwini's plan to make pure immunity a universal right, not a privilege.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     INSTAGRAM SECTION
+══════════════════════════════════════ -->
+<section id="instagram" class="instagram">
+  <div class="instagram-inner">
+    <div class="insta-header reveal">
+      <div class="insta-brand">
+        <div class="insta-avatar">
+          <div class="insta-avatar-inner">🌿</div>
+        </div>
+        <div>
+          <div class="insta-handle">@shivarfarmfresh</div>
+          <div class="insta-followers">Follow us for farm updates, recipes & health tips</div>
+        </div>
+      </div>
+      <a href="https://instagram.com/shivarfarmfresh" target="_blank" class="btn-insta">📸 Follow on Instagram</a>
+    </div>
+
+    <!-- Mock Instagram grid — replace with real posts once you have them -->
+    <div class="insta-grid reveal">
+      <div class="insta-cell"><div class="insta-cell-bg ic-1">🌿</div><div class="insta-cell-overlay"><span>❤️ 234</span><span>💬 18</span></div></div>
+      <div class="insta-cell"><div class="insta-cell-bg ic-2">🌾</div><div class="insta-cell-overlay"><span>❤️ 412</span><span>💬 31</span></div></div>
+      <div class="insta-cell"><div class="insta-cell-bg ic-3">🏔️</div><div class="insta-cell-overlay"><span>❤️ 189</span><span>💬 14</span></div></div>
+      <div class="insta-cell"><div class="insta-cell-bg ic-4">✨</div><div class="insta-cell-overlay"><span>❤️ 567</span><span>💬 44</span></div></div>
+      <div class="insta-cell"><div class="insta-cell-bg ic-5">🌱</div><div class="insta-cell-overlay"><span>❤️ 328</span><span>💬 27</span></div></div>
+      <div class="insta-cell"><div class="insta-cell-bg ic-6">🧡</div><div class="insta-cell-overlay"><span>❤️ 445</span><span>💬 38</span></div></div>
+      <div class="insta-cell"><div class="insta-cell-bg ic-7">🍵</div><div class="insta-cell-overlay"><span>❤️ 301</span><span>💬 22</span></div></div>
+      <div class="insta-cell"><div class="insta-cell-bg ic-8">💛</div><div class="insta-cell-overlay"><span>❤️ 290</span><span>💬 19</span></div></div>
+    </div>
+
+    <!-- How to connect real Instagram -->
+    <div class="connect-box reveal">
+      <div class="connect-title">📌 How to Connect Your Real Instagram Feed</div>
+      <div class="connect-steps">
+        <div class="connect-step"><div class="cs-num">1</div><span>Create an Instagram Business account and go to <strong>instagram.com</strong> → Settings → Developer → Embed</span></div>
+        <div class="connect-step"><div class="cs-num">2</div><span>Use a free tool like <strong>Elfsight</strong> (elfsight.com) or <strong>Snap Widget</strong> — paste your Instagram username and get an embed code</span></div>
+        <div class="connect-step"><div class="cs-num">3</div><span>Replace the mock grid above in this file with: <code>&lt;script src="YOUR_ELFSIGHT_WIDGET_URL"&gt;&lt;/script&gt;</code></span></div>
+        <div class="connect-step"><div class="cs-num">4</div><span>Your real Instagram posts will now show here and auto-update every time you post</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     YOUTUBE SECTION
+══════════════════════════════════════ -->
+<section id="youtube" class="youtube">
+  <div class="youtube-inner">
+    <div class="sect-eyebrow reveal">▶ Our YouTube Channel</div>
+    <h2 class="sect-h reveal">Watch Our Story</h2>
+    <p class="sect-sub reveal">Farm tours, turmeric harvesting, golden milk recipes, Ashwini's journey — subscribe for weekly content from the fields of Sahyadri.</p>
+
+    <div class="yt-feature">
+      <div class="reveal-left">
+        <!-- 
+          TO ADD YOUR VIDEO: Replace the div below with:
+          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+          Get YOUR_VIDEO_ID from the YouTube URL: youtube.com/watch?v=THIS_PART
+        -->
+        <div class="yt-placeholder" onclick="this.innerHTML='<iframe width=\'100%\' height=\'100%\' src=\'https://www.youtube.com/embed?listType=user_uploads&list=shivarfarmfresh\' allowfullscreen style=\'border:none\'></iframe>'">
+          <div class="yt-play"></div>
+          <p>Watch our latest video</p>
+        </div>
+      </div>
+      <div class="yt-info reveal-right">
+        <h3>From Sahyadri Fields to Your Kitchen</h3>
+        <p>Watch Ashwini walk you through the turmeric harvest, explain why Sahyadri-grown turmeric is special, and show you exactly how your order is packed and dispatched — fresh from the farm.</p>
+        <a href="https://youtube.com/@shivarfarmfresh" target="_blank" class="btn-yt">▶ Subscribe on YouTube</a>
+        <!-- How to add your video -->
+        <div class="yt-howto">
+          <div class="yt-howto-title">📌 How to Add Your YouTube Video Here</div>
+          <div class="yt-step"><span>1.</span><span>Upload video to YouTube → click Share → Embed → copy the <code>src="..."</code> URL</span></div>
+          <div class="yt-step"><span>2.</span><span>Open <code>home.html</code> → find <code>yt-placeholder</code> div → replace with <code>&lt;iframe src="YOUR_URL"...&gt;</code></span></div>
+          <div class="yt-step"><span>3.</span><span>Upload updated <code>home.html</code> to GitHub → live in 2 minutes</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     UPLOAD MEDIA GUIDE
+══════════════════════════════════════ -->
+<section class="media-cta">
+  <div class="media-cta-inner">
+    <div class="sect-eyebrow reveal">✦ Make It Yours ✦</div>
+    <h2 class="sect-h reveal">Add Your Real Photos & Videos</h2>
+    <p class="sect-sub reveal">This website is designed to come alive with your real farm photos. Here's what to replace with your actual media.</p>
+    <div class="media-cards">
+      <div class="mcard reveal">
+        <span class="mcard-icon">👩‍🌾</span>
+        <div class="mcard-title">Founder Photo</div>
+        <div class="mcard-text">Add your photo to the Founder section. Name the file <strong>ashwini.jpg</strong>, upload to GitHub alongside home.html, and replace the 👩‍🌾 placeholder text in the HTML with: <br><code style="font-size:11px;background:#f5f0e8;padding:3px 8px;border-radius:4px;display:inline-block;margin-top:6px">&lt;img src="ashwini.jpg"&gt;</code></div>
+      </div>
+      <div class="mcard reveal">
+        <span class="mcard-icon">📸</span>
+        <div class="mcard-title">Hero Slideshow Photos</div>
+        <div class="mcard-text">Replace the gradient backgrounds with real farm photos. Upload <strong>farm1.jpg, farm2.jpg</strong> etc. to GitHub and change <code>slide-1</code> class background to: <br><code style="font-size:11px;background:#f5f0e8;padding:3px 8px;border-radius:4px;display:inline-block;margin-top:6px">background-image: url(farm1.jpg)</code></div>
+      </div>
+      <div class="mcard reveal">
+        <span class="mcard-icon">▶️</span>
+        <div class="mcard-title">YouTube Video</div>
+        <div class="mcard-text">Upload a farm tour or introduction video on YouTube. Get the embed link and paste it into the YouTube section replacing the placeholder. The video will play directly on your website — no download needed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRODUCT TEASER
+══════════════════════════════════════ -->
+<section class="prod-teaser">
+  <div class="prod-teaser-inner">
+    <div class="sect-eyebrow reveal">✦ Our Products ✦</div>
+    <h2 class="sect-h reveal">One Turmeric. Four Sizes.<br>Infinite Goodness.</h2>
+    <p class="sect-sub reveal">Same premium Sahyadri-grown turmeric in every pack. Choose what works for your family.</p>
+    <div class="pt-grid">
+      <div class="pt-card reveal">
+        <span class="pt-emoji">🌿</span>
+        <div class="pt-weight">100g</div>
+        <div class="pt-name">Trial Pack</div>
+        <div class="pt-mrp">₹150</div>
+        <div class="pt-price">₹120</div>
+        <div class="pt-off">20% OFF</div>
+        <a href="index.html" class="pt-btn">Add to Cart</a>
+      </div>
+      <div class="pt-card reveal">
+        <span class="pt-emoji">🌿</span>
+        <div class="pt-weight">200g</div>
+        <div class="pt-name">Popular</div>
+        <div class="pt-mrp">₹280</div>
+        <div class="pt-price">₹220</div>
+        <div class="pt-off">21% OFF</div>
+        <a href="index.html" class="pt-btn">Add to Cart</a>
+      </div>
+      <div class="pt-card reveal">
+        <span class="pt-emoji">🌿</span>
+        <div class="pt-weight">500g</div>
+        <div class="pt-name">Best Value</div>
+        <div class="pt-mrp">₹600</div>
+        <div class="pt-price">₹480</div>
+        <div class="pt-off">20% OFF</div>
+        <a href="index.html" class="pt-btn">Add to Cart</a>
+      </div>
+      <div class="pt-card reveal">
+        <span class="pt-emoji">🌿</span>
+        <div class="pt-weight">1000g</div>
+        <div class="pt-name">Family Pack</div>
+        <div class="pt-mrp">₹1,100</div>
+        <div class="pt-price">₹880</div>
+        <div class="pt-off">20% OFF</div>
+        <a href="index.html" class="pt-btn">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <img class="foot-logo" id="footLogo" src="" alt="logo">
+        <div class="foot-brand-name">Shivar Farmfresh</div>
+        <span class="foot-brand-tag">शिवार फार्मफ्रेश · Pure Sahyadri Gold</span>
+        <p class="foot-about">Farm-direct organic turmeric from Wai-Satara, Sahyadri, Maharashtra. Founded by Ashwini Ghanwat on International Women's Day 2025. FSSAI certified. Zero adulteration. Forever.</p>
+        <div class="social-row">
+          <a href="https://instagram.com/shivarfarmfresh" target="_blank" class="social-btn">📸</a>
+          <a href="https://youtube.com/@shivarfarmfresh" target="_blank" class="social-btn">▶️</a>
+          <a href="https://wa.me/919987982611" target="_blank" class="social-btn">💬</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-h">Navigate</div>
+        <div class="foot-links">
+          <a href="#story">Our Story</a>
+          <a href="#journey">Journey</a>
+          <a href="#about">About Us</a>
+          <a href="#instagram">Instagram</a>
+          <a href="#youtube">YouTube</a>
+          <a href="index.html">🛒 Shop</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-h">Products</div>
+        <div class="foot-links">
+          <a href="index.html">Turmeric 100g — ₹120</a>
+          <a href="index.html">Turmeric 200g — ₹220</a>
+          <a href="index.html">Turmeric 500g — ₹480</a>
+          <a href="index.html">Turmeric 1kg — ₹880</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-h">Contact</div>
+        <div class="foot-contact-row"><span>📱</span><span>+91 99879 82611</span></div>
+        <div class="foot-contact-row"><span>💬</span><span>WhatsApp Orders</span></div>
+        <div class="foot-contact-row"><span>💳</span><span>UPI: 9511627623@ibl</span></div>
+        <div class="foot-contact-row"><span>📍</span><span>Wai-Satara, Sahyadri, Maharashtra</span></div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2025 Shivar Farmfresh · Founded by Ashwini Ghanwat · All rights reserved</span>
+      <span class="fssai-pill">FSSAI: 21524039000444</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets.js"></script>
+<script>
+/* ════════════════════════════
+   LOGO
+════════════════════════════ */
+document.getElementById('navLogo').src = LOGO_B64;
+document.getElementById('footLogo').src = LOGO_B64;
+
+/* ════════════════════════════
+   CUSTOM CURSOR
+════════════════════════════ */
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('curRing');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+  setTimeout(() => {
+    curRing.style.left = e.clientX + 'px';
+    curRing.style.top  = e.clientY + 'px';
+  }, 60);
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.style.transform = 'translate(-50%,-50%) scale(2.5)');
+  el.addEventListener('mouseleave', () => cur.style.transform = 'translate(-50%,-50%) scale(1)');
+});
+
+/* ════════════════════════════
+   SCROLL BAR + NAV
+════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('scrollBar').style.width = pct + '%';
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+  revealOnScroll();
+});
+
+/* ════════════════════════════
+   HERO SLIDESHOW
+════════════════════════════ */
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.hero-dot');
+let cur_s = 0, slideTimer;
+
+function goSlide(n) {
+  slides[cur_s].classList.remove('active');
+  dots[cur_s].classList.remove('active');
+  cur_s = n;
+  slides[cur_s].classList.add('active');
+  dots[cur_s].classList.add('active');
+}
+function nextSlide() { goSlide((cur_s + 1) % slides.length); }
+slideTimer = setInterval(nextSlide, 4500);
+document.querySelector('.hero').addEventListener('mouseenter', () => clearInterval(slideTimer));
+document.querySelector('.hero').addEventListener('mouseleave', () => { slideTimer = setInterval(nextSlide, 4500); });
+
+/* ════════════════════════════
+   TICKER
+════════════════════════════ */
+const tickerItems = [
+  '🌿 Farm-Direct Organic Turmeric',
+  '✅ FSSAI Certified · Lic. 21524039000444',
+  '🔬 3–5% Curcumin — Up to 3× Higher Than Market Brands',
+  '🚚 Pan India Delivery',
+  '💛 Founded by Ashwini Ghanwat · Women Entrepreneur',
+  '🌍 Wai-Satara, Sahyadri, Maharashtra',
+  '📦 Zero Additives · Zero Preservatives · Zero Fillers',
+  '🇮🇳 Small Scale to Global by 2030',
+];
+const doubled = [...tickerItems, ...tickerItems];
+document.getElementById('tickerInner').innerHTML = doubled.map(t =>
+  `<span class="ticker-item">${t}<span class="ticker-dot"></span></span>`
+).join('');
+
+/* ════════════════════════════
+   SCROLL REVEAL
+════════════════════════════ */
+function revealOnScroll() {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88) el.classList.add('visible');
+  });
+}
+// Stagger mission cards
+document.querySelectorAll('.mc').forEach((el, i) => el.style.transitionDelay = (i * 0.12) + 's');
+document.querySelectorAll('.tl-item').forEach((el, i) => el.style.transitionDelay = (i * 0.1) + 's');
+document.querySelectorAll('.pt-card').forEach((el, i) => el.style.transitionDelay = (i * 0.1) + 's');
+revealOnScroll();
+
+/* ════════════════════════════
+   SMOOTH SCROLL FOR ANCHORS
+════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
